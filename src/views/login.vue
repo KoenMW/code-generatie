@@ -20,7 +20,7 @@
 
 <template>
   <div class="w-100 h-100">
-    <form class="card bg-dark p-3 w-50 m-auto">
+    <form class="card bg-dark p-3 w-50 m-auto my-5">
         <!-- Email input -->
         <div class="form-outline mb-4">
             <label class="form-label" for="form2Example1">Email address</label>
