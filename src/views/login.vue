@@ -19,17 +19,18 @@
 </style>
 
 <template>
-    <form class="card bg-dark p-3 w-50 m-auto mt-5">
+  <div class="w-100 h-100">
+    <form class="card bg-dark p-3 w-50 m-auto">
         <!-- Email input -->
         <div class="form-outline mb-4">
-            <input type="email" id="form2Example1" class="form-control" />
             <label class="form-label" for="form2Example1">Email address</label>
+            <input type="email" id="form2Example1" class="form-control" />
         </div>
     
         <!-- Password input -->
         <div class="form-outline mb-4">
-            <input type="password" id="form2Example2" class="form-control" />
             <label class="form-label" for="form2Example2">Password</label>
+            <input type="password" id="form2Example2" class="form-control" />
         </div>
     
         <!-- 2 column grid layout for inline styling -->
@@ -56,4 +57,6 @@
             <p>Not a member? <a href="#!" class="text-blue">Register</a></p>
         </div>
     </form>
+
+  </div>
 </template>

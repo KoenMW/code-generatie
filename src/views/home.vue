@@ -1,10 +1,14 @@
 <template>
-    <div class="d-flex justify-content-around gap-5">
-        <div>
-            <userOverview/>
-            <accountOverview/>            
+    <div class="container mt-5 mx-auto">
+        <div class="row">
+            <div class="col mx-5">
+                <userOverview/>
+                <accountOverview/>            
+            </div>
+            <div class="col mx-5">
+                <recentTransactions />
+            </div>
         </div>
-        <recentTransactions/>
     </div>
 </template>
 

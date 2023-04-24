@@ -17,7 +17,10 @@
     <nav class="navbar navbar-dark bg-dark flex-column flex-grow-0">
       <RouterLink to="/" class="navbar-brand d-flex flex-column">
         <div class="m-auto text-purple">NovaBank</div>
-        <img id="picture" src="~@/assets/logo.svg" alt="Logo" class="m-auto"/>
+        <div class="w-100">
+          <img id="picture" src="~@/assets/logo.svg" alt="Logo"/>
+
+        </div>
       </RouterLink>
       <ul class="navbar-nav">
         <li class="nav-item active">
