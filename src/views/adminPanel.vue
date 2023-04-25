@@ -41,7 +41,7 @@ hr{
                 <div>
                     <h3 id="mainTitle" class="fs-2">All accounts</h3>
                     <p>See all the accounts, edit accounts or add accounts. Also close accounts for users.</p>
-                    <a href="#" id="functionButton" class="btn">
+                    <a href="/allAccounts" id="functionButton" class="btn">
                         See accounts
                     </a>
                 </div>
@@ -50,17 +50,18 @@ hr{
                 <div
                     class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
                     <svg class="bi" width="1em" height="1em">
-                        <use xlink:href="#cpu-fill" />
+                        <use xlink:href="#tools" />
                     </svg>
                 </div>
                 <div>
-                    <h3 id="mainTitle" class="fs-2">Transactions</h3>
-                    <p>Perform transactions for accounts</p><br>
-                    <a href="#" id="functionButton" class="btn ">
-                        Make transactions
+                    <h3 id="mainTitle" class="fs-2">Register accounts</h3>
+                    <p>See wich users do not have accounts yet and register accounts</p>
+                    <a href="/noAccount" id="functionButton" class="btn ">
+                        Configure accounts
                     </a>
                 </div>
             </div>
+            
             <div id="card" class="col d-flex align-items-start bg-dark">
                 <div
                     class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
@@ -80,17 +81,18 @@ hr{
                 <div
                     class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
                     <svg class="bi" width="1em" height="1em">
-                        <use xlink:href="#tools" />
+                        <use xlink:href="#cpu-fill" />
                     </svg>
                 </div>
                 <div>
-                    <h3 id="mainTitle" class="fs-2">Register accounts</h3>
-                    <p>See wich users do not have accounts yet and register accounts</p>
+                    <h3 id="mainTitle" class="fs-2">Transactions</h3>
+                    <p>Perform transactions for accounts</p><br>
                     <a href="#" id="functionButton" class="btn ">
-                        Configure accounts
+                        Make transactions
                     </a>
                 </div>
             </div>
+            
         </div>
     </div>
 </template>
