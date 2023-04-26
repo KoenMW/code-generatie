@@ -41,7 +41,7 @@ hr{
                 <div>
                     <h3 id="mainTitle" class="fs-2">All accounts</h3>
                     <p>See all the accounts, edit accounts or add accounts. Also close accounts for users.</p>
-                    <a href="/allAccounts" id="functionButton" class="btn">
+                    <a href="/allAccount" id="functionButton" class="btn">
                         See accounts
                     </a>
                 </div>
