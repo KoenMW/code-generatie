@@ -5,6 +5,8 @@ import transfer from '../views/transaction.vue'
 import admin from '../views/adminPanel.vue'
 import allAccounts from '../views/allAccounts.vue'
 import noAccount from '../views/noAccount.vue'
+import configureLimit from '../views/configureLimit.vue'
+import adminTransaction from '../views/adminTransaction.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -38,6 +40,16 @@ const router = createRouter({
       path: '/noAccount',
       name: 'noAccount',
       component: noAccount
+    },
+    {
+      path: '/configureLimit',
+      name: 'configureLimit',
+      component: configureLimit
+    },
+    {
+      path: '/adminTransaction',
+      name: 'adminTransaction',
+      component: adminTransaction
     }
 
   ]

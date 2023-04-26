@@ -1,5 +1,8 @@
 <script>
   import { RouterLink, RouterView } from 'vue-router'
+  export default{
+    title: 'App',
+  }
 </script>
 
 <style>
@@ -13,6 +16,7 @@
 </style>
 
 <template>
+  
   <div class="d-flex flex-row vh-100">
     <nav class="navbar navbar-dark bg-dark flex-column flex-grow-0">
       <RouterLink to="/" class="navbar-brand d-flex flex-column">
