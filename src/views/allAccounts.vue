@@ -50,16 +50,16 @@ hr {
 </style>
 
 <template>
-    <a href="/admin" id="backButton" class="btn">
+    <RouterLink to="/admin" id="backButton" class="btn">
         Back
-    </a>
+    </RouterLink>
     <div class="container px-4 py-5" id="hanging-icons">
         <h2 id="title" class="pb-2 ">All accounts</h2>
         <hr />
 
-        <a href="/admin" id="newButton" class="btn">
+        <RouterLink to="/admin" id="newButton" class="btn">
             New account
-        </a>
+        </RouterLink>
         <table class="table table-dark table-striped">
             <thead>
                 <tr>

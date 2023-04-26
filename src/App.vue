@@ -45,7 +45,6 @@
     </nav>
     <div class="flex-grow-1 overflow-auto bg-black text-white">
       <RouterView/>
-      <!-- Rest of your content goes here -->
     </div>
   </div>
 </template>

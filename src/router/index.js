@@ -5,6 +5,7 @@ import transfer from '../views/transaction.vue'
 import admin from '../views/adminPanel.vue'
 import allAccounts from '../views/allAccounts.vue'
 import noAccount from '../views/noAccount.vue'
+import createAccount from '../views/createAccount.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -30,14 +31,19 @@ const router = createRouter({
       component: admin
     },
     {
-      path: '/allAccount',
+      path: '/admin/allAccounts',
       name: 'allAccount',
       component: allAccounts
     },
     {
-      path: '/noAccount',
+      path: '/admin/noAccount',
       name: 'noAccount',
       component: noAccount
+    },
+    {
+      path: '/Account/create',
+      name: 'createAccount',
+      component: createAccount
     }
 
   ]

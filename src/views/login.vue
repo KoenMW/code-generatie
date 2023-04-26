@@ -34,7 +34,7 @@
         </div>
     
         <!-- 2 column grid layout for inline styling -->
-        <div class="row mb-4">
+        <div class="d-flex mb-4">
             <div class="col d-flex justify-content-center">
                 <!-- Checkbox -->
                 <div class="form-check">
@@ -45,16 +45,21 @@
         
             <div class="col text">
                 <!-- Simple link -->
-                <a href="#!" class="text-blue">Forgot password?</a>
+                <RouterLink to="/forgotPassword" class="text-blue">Forgot password?</RouterLink>
             </div>
         </div>
     
         <!-- Submit button -->
-        <button type="button" class="btn btn-primary bg-purple btn-block mb-4">Sign in</button>
+        <RouterLink to="/" class="w-100 mx-auto btn bg-purple">
+          Sign in
+        </RouterLink>
   
         <!-- Register buttons -->
         <div class="text-center">
-            <p>Not a member? <a href="#!" class="text-blue">Register</a></p>
+            <p>
+              Not a member? 
+              <RouterLink to="/register" class="text-blue">Register</RouterLink>
+            </p>
         </div>
     </form>
 

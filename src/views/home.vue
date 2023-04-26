@@ -15,7 +15,7 @@
 <script>
 import userOverview from '../components/userOverview.vue';
 import recentTransactions from '../components/recentTransactions.vue'
-import accountOverview from '../components/accountOverview.vue';
+import accountOverview from '../components/userAccountOverview.vue';
 export default {
     components: {
         userOverview,
