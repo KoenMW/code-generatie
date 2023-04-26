@@ -36,7 +36,7 @@
           <RouterLink to="/login" class="nav-link">Login</RouterLink>
         </li>
         <li class="nav-item">
-          <RouterLink to="/about" class="nav-link">Admin</RouterLink>
+          <RouterLink to="/admin" class="nav-link">Admin</RouterLink>
         </li>
         <li class="nav-item">
           <RouterLink to="/about" class="nav-link">About</RouterLink>

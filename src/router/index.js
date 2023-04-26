@@ -2,7 +2,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 import login from '../views/login.vue'
 import home from '../views/home.vue'
 import transfer from '../views/transaction.vue'
-import createAccount from '../views/createAccount.vue'
+import admin from '../views/adminPanel.vue'
+import allAccounts from '../views/allAccounts.vue'
+import noAccount from '../views/noAccount.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -23,10 +25,21 @@ const router = createRouter({
       component: transfer
     },
     {
-      path: '/account/create',
-      name: 'createAccount',
-      component: createAccount
+      path: '/admin',
+      name: 'admin',
+      component: admin
+    },
+    {
+      path: '/allAccount',
+      name: 'allAccount',
+      component: allAccounts
+    },
+    {
+      path: '/noAccount',
+      name: 'noAccount',
+      component: noAccount
     }
+
   ]
 })
 
