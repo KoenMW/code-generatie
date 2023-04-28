@@ -72,7 +72,7 @@ hr{
                 <div>
                     <h3 id="mainTitle" class="fs-2">Configure accounts</h3>
                     <p>Change account limits</p><br>
-                    <a href="#" id="functionButton" class="btn ">
+                    <a href="/configureLimit" id="functionButton" class="btn ">
                         Configure accounts
                     </a>
                 </div>
@@ -87,7 +87,7 @@ hr{
                 <div>
                     <h3 id="mainTitle" class="fs-2">Transactions</h3>
                     <p>Perform transactions for accounts</p><br>
-                    <a href="#" id="functionButton" class="btn ">
+                    <a href="/adminTransaction" id="functionButton" class="btn ">
                         Make transactions
                     </a>
                 </div>
