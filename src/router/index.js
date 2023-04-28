@@ -9,6 +9,8 @@ import configureLimit from '../views/configureLimit.vue'
 import adminTransaction from '../views/adminTransaction.vue'
 import bankOwnAccount from '../views/bankOwnAccount.vue'
 
+
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -51,11 +53,13 @@ const router = createRouter({
       path: '/adminTransaction',
       name: 'adminTransaction',
       component: adminTransaction
+
     },
     {
       path: '/bankOwnAccount',
       name: 'bankOwnAccount',
       component: bankOwnAccount
+
     }
 
   ]

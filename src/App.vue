@@ -1,5 +1,6 @@
 <script>
   import { RouterLink, RouterView } from 'vue-router'
+
   import { loginService } from './stores/login';
   export default (await import('vue')).defineComponent({
     title: 'NovaBank',
@@ -12,6 +13,7 @@
       this.store.autoLogin();
     }
   });
+
 </script>
 
 <style>
