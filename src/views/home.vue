@@ -3,8 +3,8 @@
         <div class="row">
             <div class="col mx-5">
                 <userOverview/>
-                <accountOverview/>
-                <totalBalance/>
+                <accountOverview/>            
+                <totalBalance/>     
             </div>
             <div class="col mx-5">
                 <recentTransactions />
