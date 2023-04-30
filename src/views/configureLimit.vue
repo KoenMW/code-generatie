@@ -50,9 +50,9 @@ hr {
 </style>
 
 <template>
-    <a href="/admin" id="backButton" class="btn">
+    <RouterLink to="/admin" id="backButton" class="btn">
         Back
-    </a>
+    </RouterLink>
     <div class="container px-4 py-5" id="hanging-icons">
         <h2 id="title" class="pb-2 ">Configure limit</h2>
         <hr />
@@ -81,9 +81,11 @@ hr {
                     <td>Active</td>
                     <td>100</td>
 
-                    <td><a href="#" id="functionButton" class="btn ">
+                    <td>
+                        <RouterLink to="" id="functionButton" class="btn">
                             Edit
-                        </a></td>
+                        </RouterLink>
+                    </td>
                     
 
                 </tr>
@@ -95,9 +97,11 @@ hr {
                     <td>Credit</td>
                     <td>Active</td>
                     <td>400</td>
-                    <td><a href="#" id="functionButton" class="btn ">
+                    <td>
+                        <RouterLink to="" id="functionButton" class="btn">
                             Edit
-                        </a></td>
+                        </RouterLink>
+                    </td>
                     
                 </tr>
                 <tr>
@@ -108,9 +112,11 @@ hr {
                     <td>Savings</td>
                     <td>Active</td>
                     <td>1200</td>
-                    <td><a href="#" id="functionButton" class="btn ">
+                    <td>
+                        <RouterLink to="" id="functionButton" class="btn">
                             Edit
-                        </a></td>
+                        </RouterLink>
+                    </td>
                     
                 </tr>
             </tbody>

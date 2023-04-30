@@ -103,9 +103,9 @@ hr{
                 <div>
                     <h3 id="mainTitle" class="fs-2">NovaBank account</h3>
                     <p>See the NovaBank account</p><br>
-                    <a href="/bankOwnAccount" id="functionButton" class="btn ">
+                    <RouterLink to="/bankOwnAccount" id="functionButton" class="btn ">
                         See account
-                    </a>
+                    </RouterLink>
                 </div>
             </div>
             
@@ -114,14 +114,13 @@ hr{
 </template>
   
 <script>
+import { RouterLink } from 'vue-router';
+
 export default {
     data() {
-        return {
-
-        }
+        return {};
     },
-    methods: {
-
-    },
+    methods: {},
+    components: { RouterLink }
 }
 </script>

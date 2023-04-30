@@ -82,12 +82,16 @@ hr {
                     <td>Savings</td>
                     <td>Active</td>
 
-                    <td><a href="#" id="functionButton" class="btn ">
+                    <td>
+                        <RouterLink to="" id="functionButton" class="btn">
                             Edit
-                        </a></td>
-                    <td><a href="#" id="functionButton" class="btn ">
+                        </RouterLink>
+                    </td>
+                    <td>
+                        <RouterLink to="" id="functionButton" class="btn">
                             Close
-                        </a></td>
+                        </RouterLink>
+                    </td>
 
                 </tr>
                 <tr>
@@ -98,12 +102,16 @@ hr {
                     <td>Credit</td>
                     <td>Active</td>
 
-                    <td><a href="#" id="functionButton" class="btn ">
+                    <td>
+                        <RouterLink to="" id="functionButton" class="btn">
                             Edit
-                        </a></td>
-                    <td><a href="#" id="functionButton" class="btn ">
+                        </RouterLink>
+                    </td>
+                    <td>
+                        <RouterLink to="" id="functionButton" class="btn">
                             Close
-                        </a></td>
+                        </RouterLink>
+                    </td>
                 </tr>
                 <tr>
                     <th scope="row">123456789</th>
@@ -113,12 +121,16 @@ hr {
                     <td>Savings</td>
                     <td>Active</td>
 
-                    <td><a href="#" id="functionButton" class="btn ">
+                    <td>
+                        <RouterLink to="" id="functionButton" class="btn">
                             Edit
-                        </a></td>
-                    <td><a href="#" id="functionButton" class="btn ">
+                        </RouterLink>
+                    </td>
+                    <td>
+                        <RouterLink to="" id="functionButton" class="btn">
                             Close
-                        </a></td>
+                        </RouterLink>
+                    </td>
                 </tr>
             </tbody>
         </table>

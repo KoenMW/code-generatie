@@ -43,9 +43,9 @@ hr {
     <div id="transfer" class="bg-dark">
 
         <section>
-            <a href="/admin" id="backButton" class="btn">
+            <RouterLink to="/admin" id="backButton" class="btn">
                 Back
-            </a>
+            </RouterLink>
             <div class="container">
                 <form ref="form">
                     <h1 id="title">Transfer</h1>
