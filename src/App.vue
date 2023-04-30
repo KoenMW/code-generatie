@@ -30,7 +30,7 @@
           <RouterLink to="/about" class="nav-link">Deposit/Withdraw</RouterLink>
         </li>
         <li class="nav-item">
-          <RouterLink to="/about" class="nav-link">Profile</RouterLink>
+          <RouterLink to="/profile" class="nav-link">Profile</RouterLink>
         </li>
         <li class="nav-item">
           <RouterLink to="/login" class="nav-link">Login</RouterLink>
