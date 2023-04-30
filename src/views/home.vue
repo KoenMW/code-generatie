@@ -1,5 +1,7 @@
 <template>
-    <div class="container mt-5 mx-auto">
+    <div class="container px-4 py-5">
+        <h2 id="title" class="pb-2  ">Home</h2>
+        <hr />
         <div class="row">
             <div class="col mx-5">
                 <userOverview/>

@@ -19,20 +19,20 @@
 </style>
 
 <template>
-  <div class="w-100 h-100">
+  <div class="container px-4 py-5">
+      <h2 id="title" class="pb-2  ">Login</h2>
+      <hr />
     <form class="card bg-dark p-3 w-50 m-auto my-5">
         <!-- Email input -->
         <div class="form-outline mb-4">
-            <input type="email" id="form2Example1" v-model="username" class="form-control" />
-            <label class="form-label" for="form2Example1">Email address</label>
-            <input type="email" id="form2Example1" class="form-control" />
+            <label class="form-label" for="form2Example1">User name</label>
+            <input id="form2Example1" v-model="username" class="form-control" />
         </div>
     
         <!-- Password input -->
         <div class="form-outline mb-4">
-            <input type="password" id="form2Example2" v-model="password" class="form-control" />
             <label class="form-label" for="form2Example2">Password</label>
-            <input type="password" id="form2Example2" class="form-control" />
+            <input type="password" id="form2Example2" v-model="password" class="form-control" />
         </div>
     
         <!-- 2 column grid layout for inline styling -->
