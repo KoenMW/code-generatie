@@ -1,8 +1,19 @@
 <script>
   import { RouterLink, RouterView } from 'vue-router'
-  export default{
-    title: 'App',
-  }
+
+  import { loginService } from './stores/login';
+  export default (await import('vue')).defineComponent({
+    title: 'NovaBank',
+    setup() {
+      return {
+         store : loginService()
+      }
+    },
+    created(){
+      this.store.autoLogin();
+    }
+  });
+
 </script>
 
 <style>
