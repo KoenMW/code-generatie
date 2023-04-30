@@ -20,6 +20,7 @@ hr{
 }
 #functionButton{
     background-color: #9F82EB;
+    margin-bottom: 20px;
 }
 #functionButton:hover{
     background-color: #321A72;
@@ -41,7 +42,7 @@ hr{
                 <div>
                     <h3 id="mainTitle" class="fs-2">All accounts</h3>
                     <p>See all the accounts, edit accounts or add accounts. Also close accounts for users.</p>
-                    <a href="/allAccounts" id="functionButton" class="btn">
+                    <a href="/allAccount" id="functionButton" class="btn">
                         See accounts
                     </a>
                 </div>
@@ -72,7 +73,7 @@ hr{
                 <div>
                     <h3 id="mainTitle" class="fs-2">Configure accounts</h3>
                     <p>Change account limits</p><br>
-                    <a href="#" id="functionButton" class="btn ">
+                    <a href="/configureLimit" id="functionButton" class="btn ">
                         Configure accounts
                     </a>
                 </div>
@@ -87,8 +88,23 @@ hr{
                 <div>
                     <h3 id="mainTitle" class="fs-2">Transactions</h3>
                     <p>Perform transactions for accounts</p><br>
-                    <a href="#" id="functionButton" class="btn ">
+                    <a href="/adminTransaction" id="functionButton" class="btn ">
                         Make transactions
+                    </a>
+                </div>
+            </div>
+            <div id="card" class="col d-flex align-items-start bg-dark">
+                <div
+                    class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+                    <svg class="bi" width="1em" height="1em">
+                        <use xlink:href="#cpu-fill" />
+                    </svg>
+                </div>
+                <div>
+                    <h3 id="mainTitle" class="fs-2">NovaBank account</h3>
+                    <p>See the NovaBank account</p><br>
+                    <a href="/bankOwnAccount" id="functionButton" class="btn ">
+                        See account
                     </a>
                 </div>
             </div>

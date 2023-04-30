@@ -1,5 +1,19 @@
 <script>
   import { RouterLink, RouterView } from 'vue-router'
+
+  import { loginService } from './stores/login';
+  export default (await import('vue')).defineComponent({
+    title: 'NovaBank',
+    setup() {
+      return {
+         store : loginService()
+      }
+    },
+    created(){
+      this.store.autoLogin();
+    }
+  });
+
 </script>
 
 <style>
@@ -13,6 +27,7 @@
 </style>
 
 <template>
+  
   <div class="d-flex flex-row vh-100">
     <nav class="navbar navbar-dark bg-dark flex-column flex-grow-0">
       <RouterLink to="/" class="navbar-brand d-flex flex-column">

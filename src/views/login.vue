@@ -22,13 +22,13 @@
     <form class="card bg-dark p-3 w-50 m-auto mt-5">
         <!-- Email input -->
         <div class="form-outline mb-4">
-            <input type="email" id="form2Example1" class="form-control" />
+            <input type="email" id="form2Example1" v-model="username" class="form-control" />
             <label class="form-label" for="form2Example1">Email address</label>
         </div>
     
         <!-- Password input -->
         <div class="form-outline mb-4">
-            <input type="password" id="form2Example2" class="form-control" />
+            <input type="password" id="form2Example2" v-model="password" class="form-control" />
             <label class="form-label" for="form2Example2">Password</label>
         </div>
     
@@ -49,7 +49,7 @@
         </div>
     
         <!-- Submit button -->
-        <button type="button" class="btn btn-primary bg-purple btn-block mb-4">Sign in</button>
+        <button type="button" @click=login() class="btn btn-primary bg-purple btn-block mb-4">Sign in</button>
   
         <!-- Register buttons -->
         <div class="text-center">
@@ -57,3 +57,38 @@
         </div>
     </form>
 </template>
+
+<script>
+import { loginService } from '../stores/login';
+export default {
+  setup() {
+    return {
+       store : loginService()
+    }
+
+  },
+  name: "Login",
+  data() {
+    return {
+      username: "",
+      password: "",
+    };
+  },
+  methods: {
+    async login() {
+
+      try{
+        await this.store.login(this.username, this.password)
+        this.$router.push('/');
+      }
+      catch(error){
+        console.log(error);
+      }
+    }
+  }
+};
+
+
+
+
+</script>
