@@ -20,7 +20,8 @@ export default {
     components: {
         userOverview,
         recentTransactions,
-        accountOverview
+        accountOverview,
+        totalBalance
     }
 }
 </script>
