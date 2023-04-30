@@ -23,12 +23,14 @@
     <form class="card bg-dark p-3 w-50 m-auto my-5">
         <!-- Email input -->
         <div class="form-outline mb-4">
+            <input type="email" id="form2Example1" v-model="username" class="form-control" />
             <label class="form-label" for="form2Example1">Email address</label>
             <input type="email" id="form2Example1" class="form-control" />
         </div>
     
         <!-- Password input -->
         <div class="form-outline mb-4">
+            <input type="password" id="form2Example2" v-model="password" class="form-control" />
             <label class="form-label" for="form2Example2">Password</label>
             <input type="password" id="form2Example2" class="form-control" />
         </div>
@@ -62,6 +64,40 @@
             </p>
         </div>
     </form>
-
   </div>
 </template>
+
+<script>
+import { loginService } from '../stores/login';
+export default {
+  setup() {
+    return {
+       store : loginService()
+    }
+
+  },
+  name: "Login",
+  data() {
+    return {
+      username: "",
+      password: "",
+    };
+  },
+  methods: {
+    async login() {
+
+      try{
+        await this.store.login(this.username, this.password)
+        this.$router.push('/');
+      }
+      catch(error){
+        console.log(error);
+      }
+    }
+  }
+};
+
+
+
+
+</script>
