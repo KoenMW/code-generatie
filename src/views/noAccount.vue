@@ -51,78 +51,78 @@ hr {
 
 <template>
     <RouterLink to="" id="backButton" class="btn">
-        Back
+      Back
     </RouterLink>
     <div class="container px-4 py-5" id="hanging-icons">
-        <h2 id="title" class="pb-2 ">All users without account</h2>
-        <hr />
-
-
-        <table class="table table-dark table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">Firstname</th>
-                    <th scope="col">Lastname</th>
-                    <th scope="col">Accounts</th>
-                    <th scope="col">New account</th>
-
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">123456789</th>
-                    <td>Henk</td>
-                    <td>€ Bakker</td>
-                    <td>0</td>
-
-                    <td>
-                        <RouterLink to="/newAccount" id="functionButton" class="btn">
-                            New account
-                        </RouterLink>
-                    </td>
-
-
-                </tr>
-                <tr>
-                    <th scope="row">123456789</th>
-                    <td>Gerda</td>
-                    <td>€ Beentjes</td>
-                    <td>0</td>
-
-                    <td>
-                        <RouterLink to="/newAccount" id="functionButton" class="btn">
-                            New account
-                        </RouterLink>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">123456789</th>
-                    <td>Jan-Willem</td>
-                    <td>€ Postma</td>
-                    <td>0</td>
-
-                    <td>
-                        <RouterLink to="/newAccount" id="functionButton" class="btn">
-                            New account
-                        </RouterLink>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-
-    </div>
-</template>
+      <h2 id="title" class="pb-2 ">All users without account</h2>
+      <hr />
   
-<script>
-export default {
+      <table class="table table-dark table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Firstname</th>
+            <th scope="col">Lastname</th>
+            <th scope="col">Accounts</th>
+            <th scope="col">New account</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(row, index) in rows" :key="index">
+            <th scope="row">{{ row.id }}</th>
+            <td>{{ row.firstName }}</td>
+            <td>{{ row.lastName }}</td>
+            <td>{{ row.accounts }}</td>
+  
+            <td>
+              <button
+                v-if="selectedRow !== index"
+                @click="selectedRow = index"
+                id="functionButton"
+                class="btn"
+              >
+                New account
+              </button>
+              <createAccount v-else />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </template>
+  
+  <script>
+  import createAccount from "../components/createAccount.vue";
+  
+  export default {
+    components: {
+      createAccount,
+    },
     data() {
-        return {
-
-        }
+      return {
+        rows: [
+          {
+            id: "123456789",
+            firstName: "Henk",
+            lastName: "€ Bakker",
+            accounts: 0,
+          },
+          {
+            id: "123456789",
+            firstName: "Gerda",
+            lastName: "€ Beentjes",
+            accounts: 0,
+          },
+          {
+            id: "123456789",
+            firstName: "Jan-Willem",
+            lastName: "€ Postma",
+            accounts: 0,
+          },
+        ],
+        selectedRow: null,
+      };
     },
-    methods: {
-
-    },
-}
-</script>
+  };
+  </script>
+  

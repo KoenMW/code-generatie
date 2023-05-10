@@ -88,7 +88,7 @@ hr{
                 <div>
                     <h3 id="mainTitle" class="fs-2">Transactions</h3>
                     <p>Perform transactions for accounts</p><br>
-                    <RouterLink to="#" id="functionButton" class="btn ">
+                    <RouterLink to="/admin/transaction" id="functionButton" class="btn ">
                         Make transactions
                     </RouterLink>
                 </div>
@@ -103,7 +103,7 @@ hr{
                 <div>
                     <h3 id="mainTitle" class="fs-2">NovaBank account</h3>
                     <p>See the NovaBank account</p><br>
-                    <RouterLink to="/bankOwnAccount" id="functionButton" class="btn ">
+                    <RouterLink to="/admin/bankOwnAccount" id="functionButton" class="btn ">
                         See account
                     </RouterLink>
                 </div>

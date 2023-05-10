@@ -40,38 +40,40 @@ hr {
 </style>
 
 <template>
-  <div id="transfer" class="bg-dark">
+  <div class="container px-4 py-5">
+    <h2 id="title" class="pb-2  ">Transfer</h2>
+    <hr />
+    <div id="transfer" class="bg-dark">
 
-    <section>
-      <div class="container">
-        <form ref="form">
-          <h1 id="title">Bank Transfer</h1>
-          <hr />
-          <h5 class="mb-4"></h5>
-          <div class="form-group">
-            <label id="label" for="fromAccount">From Account:</label><br>
-            <select id="select" v-model="fromAccountId">
-              <option v-for="account in accounts" :value="account.id">{{ account.name }}</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label id="label" for="Account">Receiver:</label><br>
-            <input type="text" id="select" v-model="toAccountId" required>
-          </div>
-          <div class="form-group">
-            <label id="label" for="Account">Iban:</label><br>
-            <input type="text" id="select" v-model="iban" required>
-          </div>
-          <div class="form-group">
-            <label id="label" for="amount">Amount:</label><br>
-            <input type="number" id="select" v-model="amount" required>
-          </div>
-          <button type="submit" id="submitButton" class="btn" @click="transfer">Transfer</button>
+      <section>
+        <div class="container">
+          <form ref="form">
+            <h5 class="mb-4"></h5>
+            <div class="form-group">
+              <label id="label" for="fromAccount">From Account:</label><br>
+              <select id="select" v-model="fromAccountId">
+                <option v-for="account in accounts" :value="account.id">{{ account.name }}</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label id="label" for="Account">Receiver:</label><br>
+              <input type="text" id="select" v-model="toAccountId" required>
+            </div>
+            <div class="form-group">
+              <label id="label" for="Account">Iban:</label><br>
+              <input type="text" id="select" v-model="iban" required>
+            </div>
+            <div class="form-group">
+              <label id="label" for="amount">Amount:</label><br>
+              <input type="number" id="select" v-model="amount" required>
+            </div>
+            <button type="submit" id="submitButton" class="btn" @click="transfer">Transfer</button>
 
-        </form>
-      </div>
-    </section>
+          </form>
+        </div>
+      </section>
 
+    </div>
   </div>
 </template>
   

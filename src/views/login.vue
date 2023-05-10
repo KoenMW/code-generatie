@@ -60,7 +60,7 @@
         <div class="text-center">
             <p>
               Not a member? 
-              <RouterLink to="/register" class="text-blue">Register</RouterLink>
+              <RouterLink to="/signup" class="text-blue">signup</RouterLink>
             </p>
         </div>
     </form>

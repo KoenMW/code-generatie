@@ -11,6 +11,7 @@ export const loginService = defineStore('loginStore', {
     }),
     getters: {
         isLoggedIn: (state) => state.jwt != '',
+        isAdmin: (state) => state.role == 'admin',
     },
     actions: {
         login(username, password) {
@@ -56,3 +57,5 @@ export const loginService = defineStore('loginStore', {
 
     }
 })
+
+export default loginService;
