@@ -75,12 +75,7 @@ hr {
             <td>{{ row.accounts }}</td>
   
             <td>
-              <button
-                v-if="selectedRow !== index"
-                @click="selectedRow = index"
-                id="functionButton"
-                class="btn"
-              >
+              <button v-if="selectedRow !== index" @click="selectedRow = index" id="functionButton" class="btn">
                 New account
               </button>
               <createAccount v-else />
