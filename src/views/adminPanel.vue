@@ -42,9 +42,9 @@ hr{
                 <div>
                     <h3 id="mainTitle" class="fs-2">All accounts</h3>
                     <p>See all the accounts, edit accounts or add accounts. Also close accounts for users.</p>
-                    <a href="/allAccount" id="functionButton" class="btn">
+                    <RouterLink to="/admin/allAccounts" id="functionButton" class="btn">
                         See accounts
-                    </a>
+                    </RouterLink>
                 </div>
             </div>
             <div id="card" class="col d-flex align-items-start bg-dark">
@@ -57,9 +57,9 @@ hr{
                 <div>
                     <h3 id="mainTitle" class="fs-2">Register accounts</h3>
                     <p>See wich users do not have accounts yet and register accounts</p>
-                    <a href="/noAccount" id="functionButton" class="btn ">
+                    <RouterLink to="/admin/NoAccount" id="functionButton" class="btn">
                         Configure accounts
-                    </a>
+                    </RouterLink>
                 </div>
             </div>
             
@@ -73,9 +73,9 @@ hr{
                 <div>
                     <h3 id="mainTitle" class="fs-2">Configure accounts</h3>
                     <p>Change account limits</p><br>
-                    <a href="/configureLimit" id="functionButton" class="btn ">
+                    <RouterLink to="#" id="functionButton" class="btn ">
                         Configure accounts
-                    </a>
+                    </RouterLink>
                 </div>
             </div>
             <div id="card" class="col d-flex align-items-start bg-dark">
@@ -88,9 +88,9 @@ hr{
                 <div>
                     <h3 id="mainTitle" class="fs-2">Transactions</h3>
                     <p>Perform transactions for accounts</p><br>
-                    <a href="/adminTransaction" id="functionButton" class="btn ">
+                    <RouterLink to="#" id="functionButton" class="btn ">
                         Make transactions
-                    </a>
+                    </RouterLink>
                 </div>
             </div>
             <div id="card" class="col d-flex align-items-start bg-dark">
@@ -103,9 +103,9 @@ hr{
                 <div>
                     <h3 id="mainTitle" class="fs-2">NovaBank account</h3>
                     <p>See the NovaBank account</p><br>
-                    <a href="/bankOwnAccount" id="functionButton" class="btn ">
+                    <RouterLink to="/bankOwnAccount" id="functionButton" class="btn ">
                         See account
-                    </a>
+                    </RouterLink>
                 </div>
             </div>
             
@@ -114,14 +114,13 @@ hr{
 </template>
   
 <script>
+import { RouterLink } from 'vue-router';
+
 export default {
     data() {
-        return {
-
-        }
+        return {};
     },
-    methods: {
-
-    },
+    methods: {},
+    components: { RouterLink }
 }
 </script>

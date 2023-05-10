@@ -50,9 +50,9 @@ hr {
 </style>
 
 <template>
-    <a href="/admin" id="backButton" class="btn">
+    <RouterLink to="" id="backButton" class="btn">
         Back
-    </a>
+    </RouterLink>
     <div class="container px-4 py-5" id="hanging-icons">
         <h2 id="title" class="pb-2 ">All users without account</h2>
         <hr />
@@ -76,9 +76,11 @@ hr {
                     <td>€ Bakker</td>
                     <td>0</td>
 
-                    <td><a href="#" id="functionButton" class="btn ">
+                    <td>
+                        <RouterLink to="/newAccount" id="functionButton" class="btn">
                             New account
-                        </a></td>
+                        </RouterLink>
+                    </td>
 
 
                 </tr>
@@ -88,9 +90,11 @@ hr {
                     <td>€ Beentjes</td>
                     <td>0</td>
 
-                    <td><a href="#" id="functionButton" class="btn ">
+                    <td>
+                        <RouterLink to="/newAccount" id="functionButton" class="btn">
                             New account
-                        </a></td>
+                        </RouterLink>
+                    </td>
                 </tr>
                 <tr>
                     <th scope="row">123456789</th>
@@ -98,9 +102,11 @@ hr {
                     <td>€ Postma</td>
                     <td>0</td>
 
-                    <td><a href="#" id="functionButton" class="btn ">
+                    <td>
+                        <RouterLink to="/newAccount" id="functionButton" class="btn">
                             New account
-                        </a></td>
+                        </RouterLink>
+                    </td>
                 </tr>
             </tbody>
         </table>

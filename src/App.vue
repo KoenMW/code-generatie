@@ -21,18 +21,18 @@
 .text-purple {
   color: #9F82EB;
 }
-#picture{
-  margin-left: 5px;
-}
 </style>
 
 <template>
   
   <div class="d-flex flex-row vh-100">
-    <nav class="navbar navbar-dark bg-dark flex-column flex-grow-0">
-      <RouterLink to="/" class="navbar-brand d-flex flex-column">
+    <nav class="navbar navbar-dark bg-dark flex-column flex-grow-0 p-2">
+      <RouterLink to="/" class="navbar-brand d-flex flex-column mx-auto">
         <div class="m-auto text-purple">NovaBank</div>
-        <img id="picture" src="~@/assets/logo.svg" alt="Logo" class="m-auto"/>
+        <div class="w-100">
+          <img src="~@/assets/logo.svg" alt="Logo" class="m-auto"/>
+
+        </div>
       </RouterLink>
       <ul class="navbar-nav">
         <li class="nav-item active">
@@ -60,7 +60,6 @@
     </nav>
     <div class="flex-grow-1 overflow-auto bg-black text-white">
       <RouterView/>
-      <!-- Rest of your content goes here -->
     </div>
   </div>
 </template>

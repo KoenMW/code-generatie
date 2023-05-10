@@ -44,9 +44,9 @@ hr {
 </style>
 
 <template>
-    <a href="/admin" id="backButton" class="btn">
+    <RouterLink to="/admin" id="backButton" class="btn">
         Back
-    </a>
+    </RouterLink>
     <div class="container px-4 py-5" id="hanging-icons">
         <h2 id="title" class="pb-2  ">Novabank account</h2>
         <hr />

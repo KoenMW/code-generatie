@@ -50,16 +50,16 @@ hr {
 </style>
 
 <template>
-    <a href="/admin" id="backButton" class="btn">
+    <RouterLink to="/admin" id="backButton" class="btn">
         Back
-    </a>
+    </RouterLink>
     <div class="container px-4 py-5" id="hanging-icons">
         <h2 id="title" class="pb-2 ">All accounts</h2>
         <hr />
 
-        <a href="/admin" id="newButton" class="btn">
+        <RouterLink to="/admin" id="newButton" class="btn">
             New account
-        </a>
+        </RouterLink>
         <table class="table table-dark table-striped">
             <thead>
                 <tr>
@@ -82,12 +82,16 @@ hr {
                     <td>Savings</td>
                     <td>Active</td>
 
-                    <td><a href="#" id="functionButton" class="btn ">
+                    <td>
+                        <RouterLink to="" id="functionButton" class="btn">
                             Edit
-                        </a></td>
-                    <td><a href="#" id="functionButton" class="btn ">
+                        </RouterLink>
+                    </td>
+                    <td>
+                        <RouterLink to="" id="functionButton" class="btn">
                             Close
-                        </a></td>
+                        </RouterLink>
+                    </td>
 
                 </tr>
                 <tr>
@@ -98,12 +102,16 @@ hr {
                     <td>Credit</td>
                     <td>Active</td>
 
-                    <td><a href="#" id="functionButton" class="btn ">
+                    <td>
+                        <RouterLink to="" id="functionButton" class="btn">
                             Edit
-                        </a></td>
-                    <td><a href="#" id="functionButton" class="btn ">
+                        </RouterLink>
+                    </td>
+                    <td>
+                        <RouterLink to="" id="functionButton" class="btn">
                             Close
-                        </a></td>
+                        </RouterLink>
+                    </td>
                 </tr>
                 <tr>
                     <th scope="row">123456789</th>
@@ -113,12 +121,16 @@ hr {
                     <td>Savings</td>
                     <td>Active</td>
 
-                    <td><a href="#" id="functionButton" class="btn ">
+                    <td>
+                        <RouterLink to="" id="functionButton" class="btn">
                             Edit
-                        </a></td>
-                    <td><a href="#" id="functionButton" class="btn ">
+                        </RouterLink>
+                    </td>
+                    <td>
+                        <RouterLink to="" id="functionButton" class="btn">
                             Close
-                        </a></td>
+                        </RouterLink>
+                    </td>
                 </tr>
             </tbody>
         </table>
