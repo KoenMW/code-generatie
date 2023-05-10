@@ -44,25 +44,12 @@
                     <label class="form-check-label" for="form2Example31"> Remember me </label>
                 </div>
             </div>
-        
-            <div class="col text">
-                <!-- Simple link -->
-                <RouterLink to="/forgotPassword" class="text-blue">Forgot password?</RouterLink>
-            </div>
         </div>
     
         <!-- Submit button -->
         <RouterLink to="/" class="w-100 mx-auto btn bg-purple">
           Sign in
         </RouterLink>
-  
-        <!-- Register buttons -->
-        <div class="text-center">
-            <p>
-              Not a member? 
-              <RouterLink to="/signup" class="text-blue">signup</RouterLink>
-            </p>
-        </div>
     </form>
   </div>
 </template>
