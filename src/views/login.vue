@@ -16,6 +16,17 @@
 .text-blue {
   color: #50A0C6;
 }
+
+#login{
+  background-color: #9F82EB;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 5px;
+}
 </style>
 
 <template>
@@ -51,18 +62,9 @@
             </div>
         </div>
     
-        <!-- Submit button -->
-        <RouterLink to="/" class="w-100 mx-auto btn bg-purple">
-          Sign in
-        </RouterLink>
+        <button id="login" type="button" @click=login() name="loginButton" class="btn">Login</button>
   
-        <!-- Register buttons -->
-        <div class="text-center">
-            <p>
-              Not a member? 
-              <RouterLink to="/signup" class="text-blue">signup</RouterLink>
-            </p>
-        </div>
+        
     </form>
   </div>
 </template>

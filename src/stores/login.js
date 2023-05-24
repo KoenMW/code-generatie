@@ -1,13 +1,14 @@
 import { defineStore } from 'pinia';
 import axios from '../axios';
+import { formToJSON } from 'axios';
 
 
 export const loginService = defineStore('loginStore', {
     state: () => ({
-        username: '',
         jwt: '',
         role: '',
         id: '',
+        username: '',
     }),
     getters: {
         isLoggedIn: (state) => state.jwt != '',
@@ -16,21 +17,26 @@ export const loginService = defineStore('loginStore', {
     actions: {
         login(username, password) {
             return new Promise((resolve, reject) => {
-                axios.post('/users/login', {
+                axios.post('/login', {
                     username: username,
                     password: password
                 })
                     .then((res) => {
                         console.log(res);
-                        axios.defaults.headers.common['Authorization'] = "Bearer" + res.data.jwt;
-                        localStorage.setItem('token', res.data.jwt);
-                        localStorage.setItem('username', res.data.username);
-                        localStorage.setItem('role', res.data.role);
-                        localStorage.setItem('id', res.data.id);
-                        this.jwt = res.data.jwt;
-                        this.username = res.data.username;
-                        this.role = res.data.role;
-                        this.id = res.data.id;
+                        axios.defaults.headers.common['Authorization'] = "Bearer" + res.data.token;
+                        localStorage.setItem('token', res.data.token);
+                        var decoded = JSON.parse(atob(res.data.token.split('.')[1]));
+                        
+                        
+                        this.jwt = res.data.token;
+                        this.role = decoded.auth;
+                        this.id = decoded.id;
+                        this.username = decoded.sub;
+                        localStorage.setItem('role', decoded.auth);
+                        localStorage.setItem('id', decoded.id);
+                        localStorage.setItem('username', decoded.sub);
+                        
+                        
                         resolve();
                     }).catch((err) => {
                         console.log(err);
@@ -42,18 +48,20 @@ export const loginService = defineStore('loginStore', {
 
         autoLogin() {
             const token = localStorage.getItem('token');
-            const username = localStorage.getItem('username');
             const role = localStorage.getItem('role');
             const id = localStorage.getItem('id');
-            if (token && username) {
+            const username = localStorage.getItem('username');
+            if (token  && id) {
                 axios.defaults.headers.common["Authorization"] =
                     "Bearer " + token;
                 this.jwt = token;
-                this.username = username;
                 this.role = role;
                 this.id = id;
+                this.username = username;
             }
         },
+
+        
 
     }
 })
