@@ -90,7 +90,7 @@ export default {
 
       try{
         await this.store.login(this.username, this.password)
-        this.$router.push('/');
+        this.$router.push('/home');
       }
       catch(error){
         console.log(error);
