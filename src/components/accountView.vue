@@ -1,22 +1,65 @@
 <style>
-    hr {
-        border: 1px solid #50A0C6;
-        }
+hr {
+    border: 1px solid #50A0C6;
+}
 </style>
 
 <template>
-    <hr/>
+    <hr />
     <div class="d-flex justify-content-between">
-        <div>
+        
+        <div v-for="account in accounts" :key="account.id">
             <div>
-                rekening type
+                {{ account.iban }}
             </div>
             <div>
-                rekening nummer/ naam
+                {{ account.accountType }}
+                <div>
+                    {{ account.balance }}
+                </div>
             </div>
+            
         </div>
-        <h5>
-            rekening saldo
-        </h5>
+
     </div>
 </template>
+
+<script>
+import { loginService } from '../stores/login';
+import axios from '../axios';
+import { h } from 'vue';
+import { AxiosHeaders } from 'axios';
+export default {
+    setup() {
+        return {
+            store: loginService()
+        }
+
+    },
+    name: "Login",
+    data() {
+        return {
+            accounts: [],
+        };
+    },
+    methods: {
+        //get all accounts from user
+        async getAccounts() {
+            try {
+                //get all accounts from user with token
+                const response = await axios.get('/accounts/' + this.store.id);
+                this.accounts = response.data;
+                console.log(this.accounts);
+
+
+            }
+            catch (error) {
+                console.log(error);
+            }
+        }
+    },
+    mounted() {
+        this.getAccounts();
+    }
+};
+</script>

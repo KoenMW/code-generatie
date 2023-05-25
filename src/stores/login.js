@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 import axios from '../axios';
-import { formToJSON } from 'axios';
+
 
 
 export const loginService = defineStore('loginStore', {
@@ -23,7 +23,7 @@ export const loginService = defineStore('loginStore', {
                 })
                     .then((res) => {
                         console.log(res);
-                        axios.defaults.headers.common['Authorization'] = "Bearer" + res.data.token;
+                        axios.defaults.headers.common['Authorization'] = "Bearer " + res.data.token;
                         localStorage.setItem('token', res.data.token);
                         var decoded = JSON.parse(atob(res.data.token.split('.')[1]));
                         

@@ -57,13 +57,13 @@ hr {
         <h2 id="title" class="pb-2 ">All accounts</h2>
         <hr />
 
-        <RouterLink to="/admin" id="newButton" class="btn">
+        <RouterLink to="/Account/create" id="newButton" class="btn">
             New account
         </RouterLink>
         <table class="table table-dark table-striped">
             <thead>
                 <tr>
-                    <th scope="col">Id</th>
+
                     <th scope="col">Iban</th>
                     <th scope="col">Balance</th>
                     <th scope="col">User id</th>
@@ -74,60 +74,20 @@ hr {
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">123456789</th>
-                    <td>NL20INGB123132</td>
-                    <td>€ 1000</td>
-                    <td>23123</td>
-                    <td>Savings</td>
-                    <td>Active</td>
-
+                <tr v-for="account in accounts" :key="account.iban">
+                    
+                    <td>{{account.iban}}</td>
+                    <td>{{account.balance}}</td>
+                    <td>{{account.userReferenceId}}</td>
+                    <td>{{account.accountType}}</td>
+                    <td>{{account.active}}</td>
                     <td>
-                        <RouterLink to="" id="functionButton" class="btn">
+                        <RouterLink to="/" id="functionButton" class="btn">
                             Edit
                         </RouterLink>
                     </td>
                     <td>
-                        <RouterLink to="" id="functionButton" class="btn">
-                            Close
-                        </RouterLink>
-                    </td>
-
-                </tr>
-                <tr>
-                    <th scope="row">123456789</th>
-                    <td>NL20INGB123132</td>
-                    <td>€ 1000</td>
-                    <td>23123</td>
-                    <td>Credit</td>
-                    <td>Active</td>
-
-                    <td>
-                        <RouterLink to="" id="functionButton" class="btn">
-                            Edit
-                        </RouterLink>
-                    </td>
-                    <td>
-                        <RouterLink to="" id="functionButton" class="btn">
-                            Close
-                        </RouterLink>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">123456789</th>
-                    <td>NL20INGB123132</td>
-                    <td>€ 1000</td>
-                    <td>23123</td>
-                    <td>Savings</td>
-                    <td>Active</td>
-
-                    <td>
-                        <RouterLink to="" id="functionButton" class="btn">
-                            Edit
-                        </RouterLink>
-                    </td>
-                    <td>
-                        <RouterLink to="" id="functionButton" class="btn">
+                        <RouterLink to="/" id="functionButton" class="btn">
                             Close
                         </RouterLink>
                     </td>
@@ -139,14 +99,43 @@ hr {
 </template>
   
 <script>
+import { loginService } from '../stores/login';
+import axios from '../axios';
+
 export default {
+    setup() {
+        return {
+            store: loginService()
+        }
+
+    },
+    name: "Login",
     data() {
         return {
-
-        }
+            accounts: [],
+            
+        };
     },
     methods: {
+        //get all accounts from user
+        async getAccounts() {
+            try {
+                //get all accounts from user with token
+                const response = await axios.get('/accounts?offset=0&limit=100');
+                this.accounts = response.data;
+                console.log(this.accounts);
 
+
+            }
+            catch (error) {
+                console.log(error);
+            }
+        },
+        
     },
-}
+    mounted() {
+        this.getAccounts();
+        
+    }
+};
 </script>

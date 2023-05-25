@@ -50,7 +50,7 @@ hr {
 </style>
 
 <template>
-    <RouterLink to="" id="backButton" class="btn">
+    <RouterLink to="/admin/noAccount" id="backButton" class="btn">
       Back
     </RouterLink>
     <div class="container px-4 py-5" id="hanging-icons">
@@ -95,6 +95,7 @@ hr {
     },
     data() {
       return {
+        
         rows: [
           {
             id: "123456789",
@@ -117,6 +118,11 @@ hr {
         ],
         selectedRow: null,
       };
+    },
+    methods: {
+        
+        
+        
     },
   };
   </script>
