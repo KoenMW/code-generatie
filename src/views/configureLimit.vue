@@ -23,21 +23,14 @@ hr {
 
 #functionButton {
     background-color: #9F82EB;
-    
+
 }
 
 #functionButton:hover {
     background-color: #321A72;
 }
 
-#newButton {
-    background-color: #9F82EB;
-    margin-bottom: 20px;
-}
 
-#newButton:hover {
-    background-color: #321A72;
-}
 
 #backButton {
     background-color: #9F82EB;
@@ -54,70 +47,39 @@ hr {
         Back
     </RouterLink>
     <div class="container px-4 py-5" id="hanging-icons">
-        <h2 id="title" class="pb-2 ">Configure limit</h2>
+        <h2 id="title" class="pb-2 ">All accounts</h2>
         <hr />
 
         
         <table class="table table-dark table-striped">
             <thead>
                 <tr>
-                    <th scope="col">Id</th>
+
                     <th scope="col">Iban</th>
                     <th scope="col">Balance</th>
                     <th scope="col">User id</th>
                     <th scope="col">Account type</th>
                     <th scope="col">Account status</th>
-                    <th scope="col">Account limit</th>
-                    <th scope="col">Edit</th>
+                    <th scope="col">Limit</th>
+                    <th scope="col">Configure limit</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">123456789</th>
-                    <td>NL20INGB123132</td>
-                    <td>€ 1000</td>
-                    <td>23123</td>
-                    <td>Savings</td>
-                    <td>Active</td>
-                    <td>100</td>
+                <tr v-for="account in accounts" :key="account.iban">
+
+                    <td>{{ account.iban }}</td>
+                    <td>{{ account.balance }}</td>
+                    <td>{{ account.userReferenceId }}</td>
+                    <td>{{ account.accountType }}</td>
+                    <td>{{ account.active }}</td>
+                    <td>{{ account.absoluteLimit }}</td>
 
                     <td>
-                        <RouterLink to="" id="functionButton" class="btn">
-                            Edit
-                        </RouterLink>
+                        <button v-if="account.iban != 'NL01INHO0000000001'" id="functionButton" type="button" class="btn"
+                            @click="this.$router.push('/changeLimit/' + account.iban);">
+                            Configure limit
+                        </button>
                     </td>
-                    
-
-                </tr>
-                <tr>
-                    <th scope="row">123456789</th>
-                    <td>NL20INGB123132</td>
-                    <td>€ 1000</td>
-                    <td>23123</td>
-                    <td>Credit</td>
-                    <td>Active</td>
-                    <td>400</td>
-                    <td>
-                        <RouterLink to="" id="functionButton" class="btn">
-                            Edit
-                        </RouterLink>
-                    </td>
-                    
-                </tr>
-                <tr>
-                    <th scope="row">123456789</th>
-                    <td>NL20INGB123132</td>
-                    <td>€ 1000</td>
-                    <td>23123</td>
-                    <td>Savings</td>
-                    <td>Active</td>
-                    <td>1200</td>
-                    <td>
-                        <RouterLink to="" id="functionButton" class="btn">
-                            Edit
-                        </RouterLink>
-                    </td>
-                    
                 </tr>
             </tbody>
         </table>
@@ -126,14 +88,50 @@ hr {
 </template>
   
 <script>
+import { loginService } from '../stores/login';
+import axios from '../axios';
+
 export default {
+    setup() {
+        return {
+            store: loginService()
+        }
+
+    },
+    name: "Login",
     data() {
         return {
-
-        }
+            accounts: [],
+            accountUpdate: {
+                iban: "",
+                op: "update",
+                key: "absoluteLimit",
+                value: 0
+            }
+        };
     },
     methods: {
+        //get all accounts from user
+        async getAccounts() {
+            try {
+                //get all accounts from user with token
+                const response = await axios.get('/accounts?offset=0&limit=100');
+                this.accounts = response.data;
+                console.log(this.accounts);
+
+
+            }
+            catch (error) {
+                console.log(error);
+            }
+        },
+        
+
 
     },
-}
+    mounted() {
+        this.getAccounts();
+
+    }
+};
 </script>

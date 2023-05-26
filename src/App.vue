@@ -54,6 +54,9 @@ export default (await import('vue')).defineComponent({
           <RouterLink v-if="store.username.length != 0" to="/home" class="nav-link">Home</RouterLink>
         </li>
         <li class="nav-item">
+          <RouterLink v-if="store.username.length != 0" to="/" class="nav-link">Transactions</RouterLink>
+        </li>
+        <li class="nav-item">
           <RouterLink v-if="store.username.length != 0" to="/transfer" class="nav-link">Transfer</RouterLink>
         </li>
         <li class="nav-item">
@@ -61,6 +64,9 @@ export default (await import('vue')).defineComponent({
         </li>
         <li class="nav-item">
           <RouterLink v-if="store.username.length != 0" to="/profile" class="nav-link">Profile</RouterLink>
+        </li>
+        <li class="nav-item">
+          <RouterLink v-if="store.username.length != 0" to="/" class="nav-link">Search users</RouterLink>
         </li>
         <li class="nav-item">
           <RouterLink v-if="store.username.length == 0" to="/" class="nav-link">Login</RouterLink>
