@@ -15,7 +15,7 @@ import totalBalance from "@/components/totalBalance.vue";
 import configureLimit from '../views/configureLimit.vue'
 import adminTransaction from '../views/adminTransaction.vue'
 import bankOwnAccount from '../views/bankOwnAccount.vue'
-
+import changeLimit from '../views/changeLimit.vue'
 import loginStore from '../stores/login.js';
 
 
@@ -131,6 +131,12 @@ const router = createRouter({
       path: '/admin/bankOwnAccount',
       name: 'bankOwnAccount',
       component: bankOwnAccount
+    },
+    {
+      path: '/changeLimit/:iban',
+      name: 'changeLimit',
+      component: changeLimit,
+      props:true
     }
   ]
 })

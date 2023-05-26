@@ -30,15 +30,15 @@ hr {
 }
 
 #transfer {
-  margin: 0 auto;
-  margin-top: 10%;
-  width: 50%;
-  padding: 10px;
-  border-radius: 5px;
+    margin: 0 auto;
+    margin-top: 10%;
+    width: 50%;
+    padding: 10px;
+    border-radius: 5px;
 
 }
 
-#accountName{
+#accountName {
     color: #9F82EB;
 }
 </style>
@@ -54,24 +54,66 @@ hr {
             <div id="transfer" class="bg-dark">
                 <h3 id="accountName">Account</h3>
                 <hr />
-                <p id="accountNumber">Account number: IBAN NL01INHO0000000001</p>
-                <p id="accountBalance">Balance: 102131312</p>
-                
+                <div v-for="account in accounts" :key="account.id">
+                    <div v-if="account.iban == 'NL01INHO0000000001'">
+                        <div>
+                            Iban: 
+                            {{ account.iban }}
+                        </div>
+                        <div>
+                            Account type:
+                            {{ account.accountType }}
+                            <div>
+                                Balance:
+                                {{ account.balance }}
+                            </div>
+                        </div>
+
+
+                    </div>
                     
+
+                </div>
             </div>
         </div>
     </div>
 </template>
   
 <script>
+import { loginService } from '../stores/login';
+import axios from '../axios';
+
 export default {
+    setup() {
+        return {
+            store: loginService()
+        }
+
+    },
+    name: "Login",
     data() {
         return {
-
-        }
+            accounts: [],
+        };
     },
     methods: {
+        //get all accounts from user
+        async getAccounts() {
+            try {
+                //get all accounts from user with token
+                const response = await axios.get('/accounts/' + 2);
+                this.accounts = response.data;
+                console.log(this.accounts);
 
+
+            }
+            catch (error) {
+                console.log(error);
+            }
+        }
     },
-}
+    mounted() {
+        this.getAccounts();
+    }
+};
 </script>

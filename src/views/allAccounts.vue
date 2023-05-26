@@ -69,27 +69,26 @@ hr {
                     <th scope="col">User id</th>
                     <th scope="col">Account type</th>
                     <th scope="col">Account status</th>
-                    <th scope="col">Edit</th>
+                    
                     <th scope="col">Close</th>
                 </tr>
             </thead>
             <tbody>
                 <tr v-for="account in accounts" :key="account.iban">
+
+
                     
                     <td>{{account.iban}}</td>
                     <td>{{account.balance}}</td>
                     <td>{{account.userReferenceId}}</td>
                     <td>{{account.accountType}}</td>
                     <td>{{account.active}}</td>
+                    
                     <td>
-                        <RouterLink to="/" id="functionButton" class="btn">
-                            Edit
-                        </RouterLink>
-                    </td>
-                    <td>
-                        <RouterLink to="/" id="functionButton" class="btn">
+                        <button v-if="account.iban != 'NL01INHO0000000001'" id="functionButton" @click="setAccountInnactive(account.iban,'update','active',false)" type="button" class="btn">
                             Close
-                        </RouterLink>
+                        </button>
+                        
                     </td>
                 </tr>
             </tbody>
@@ -113,7 +112,12 @@ export default {
     data() {
         return {
             accounts: [],
-            
+            accountUpdate: {
+                iban:"",
+                op: "update",
+                key: "active",
+                value: false	
+            }
         };
     },
     methods: {
@@ -130,6 +134,21 @@ export default {
             catch (error) {
                 console.log(error);
             }
+        },
+        setAccountInnactive(iban,op,key,value) {
+            this.accountUpdate.iban = iban;
+            this.accountUpdate.op = op;
+            this.accountUpdate.key = key;
+            this.accountUpdate.value = value;
+            
+            axios.patch('/accounts', this.accountUpdate)
+                .then(response => {
+                    console.log(response);
+                    this.getAccounts();
+                })
+                .catch(error => {
+                    console.log(error);
+                })
         },
         
     },

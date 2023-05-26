@@ -41,7 +41,7 @@ hr{
                 </div>
                 <div>
                     <h3 id="mainTitle" class="fs-2">All accounts</h3>
-                    <p>See all the accounts, edit accounts or add accounts. Also close accounts for users.</p>
+                    <p>See all the accounts, add accounts. Also close accounts for users.</p>
                     <RouterLink to="/admin/allAccounts" id="functionButton" class="btn">
                         See accounts
                     </RouterLink>
@@ -73,7 +73,7 @@ hr{
                 <div>
                     <h3 id="mainTitle" class="fs-2">Configure accounts</h3>
                     <p>Change account limits</p><br>
-                    <RouterLink to="#" id="functionButton" class="btn ">
+                    <RouterLink to="/configureLimit" id="functionButton" class="btn ">
                         Configure accounts
                     </RouterLink>
                 </div>
@@ -105,6 +105,22 @@ hr{
                     <p>See the NovaBank account</p><br>
                     <RouterLink to="/admin/bankOwnAccount" id="functionButton" class="btn ">
                         See account
+                    </RouterLink>
+                </div>
+            </div>
+
+            <div id="card" class="col d-flex align-items-start bg-dark">
+                <div
+                    class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+                    <svg class="bi" width="1em" height="1em">
+                        <use xlink:href="#cpu-fill" />
+                    </svg>
+                </div>
+                <div>
+                    <h3 id="mainTitle" class="fs-2">User management</h3>
+                    <p>Change day and transaction limit for users, Also add users</p><br>
+                    <RouterLink to="/admin/bankOwnAccount" id="functionButton" class="btn ">
+                        See users
                     </RouterLink>
                 </div>
             </div>
