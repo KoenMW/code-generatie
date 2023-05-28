@@ -17,6 +17,10 @@ import adminTransaction from '../views/adminTransaction.vue'
 import bankOwnAccount from '../views/bankOwnAccount.vue'
 import changeLimit from '../views/changeLimit.vue'
 import loginStore from '../stores/login.js';
+import userOverview from '../views/userManagement/userOverview.vue'
+import changeDailyLimit from '../views/userManagement/changeDailyLimit.vue'
+import transactionLimit from '../views/userManagement/changeTransactionLimit.vue'
+import newUser from '../views/userManagement/newUser.vue'
 
 
 const router = createRouter({
@@ -137,7 +141,31 @@ const router = createRouter({
       name: 'changeLimit',
       component: changeLimit,
       props:true
+    },
+    {
+      path: '/userOverview',
+      name: 'userOverview',
+      component: userOverview
+    },
+    {
+      path: '/changeDailyLimit/:username',
+      name: 'changeDailyLimit',
+      component: changeDailyLimit,
+      props:true
+    },
+    {
+      path: '/transactionLimit/:username',
+      name: 'transactionLimit',
+      component: transactionLimit,
+      props:true
+    },
+    {
+      path: '/newUser',
+      name: 'newUser',
+      component: newUser
     }
+
+
   ]
 })
 

@@ -119,7 +119,7 @@ hr{
                 <div>
                     <h3 id="mainTitle" class="fs-2">User management</h3>
                     <p>Change day and transaction limit for users, Also add users</p><br>
-                    <RouterLink to="/admin/bankOwnAccount" id="functionButton" class="btn ">
+                    <RouterLink to="/userOverview" id="functionButton" class="btn ">
                         See users
                     </RouterLink>
                 </div>
