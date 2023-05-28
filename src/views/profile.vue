@@ -39,7 +39,7 @@
                 <li class="listItem">Transaction limit</li>
                 <li class="listContent">EUR 2000</li>
                 <li class="listItem">Remaining transaction limit today</li>
-                <li class="listContent">EUR 912,45</li>
+                <li class="listContent">EUR {{remainingDailyLimit}}</li>
             </ul>
         </div>
 
@@ -48,8 +48,38 @@
 </template>
 
 <script>
+import axios from '../axios';
+import loginService from '../stores/login';
+
+//on page load get the remaining daily limit from /users/dailylimit/{id} and display it
+
 export default {
-    name: "profile"
+    name: "profile",
+    data() {
+        return {
+            remainingDailyLimit: 0,
+            login: loginService()
+        }
+    },
+    setup() {
+        return {
+            login: loginService()
+        }
+    },
+    methods: {
+        async getRemainingDailyLimit() {
+            try {
+                const response = await axios.get(`users/dailylimit/${this.login.id}`);
+                console.log(response);
+                this.remainingDailyLimit = response.data;
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    },
+    mounted() {
+        this.getRemainingDailyLimit();
+    }
 }
 </script>
 
