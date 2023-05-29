@@ -45,8 +45,7 @@
             <label class="form-label" for="form2Example2">Password</label>
             <input type="password" id="form2Example2" v-model="password" class="form-control" />
         </div>
-    
-        
+   
     
         <button id="login" type="button" @click=login() name="loginButton" class="btn">Login</button>
   

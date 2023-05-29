@@ -13,6 +13,7 @@ export const loginService = defineStore('loginStore', {
     getters: {
         isLoggedIn: (state) => state.jwt != '',
         isAdmin: (state) => state.role == 'admin',
+        getId: (state) => state.id,
     },
     actions: {
         login(username, password) {
@@ -24,10 +25,13 @@ export const loginService = defineStore('loginStore', {
                     .then((res) => {
                         console.log(res);
                         axios.defaults.headers.common['Authorization'] = "Bearer " + res.data.token;
+                        console.log(axios.defaults.headers.common['Authorization']);
                         localStorage.setItem('token', res.data.token);
                         var decoded = JSON.parse(atob(res.data.token.split('.')[1]));
                         
-                        
+                        console.log(decoded);
+                        console.log(decoded.id);
+
                         this.jwt = res.data.token;
                         this.role = decoded.auth;
                         this.id = decoded.id;
