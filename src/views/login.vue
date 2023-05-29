@@ -36,7 +36,7 @@
     <form class="card bg-dark p-3 w-50 m-auto my-5">
         <!-- Email input -->
         <div class="form-outline mb-4">
-            <label class="form-label" for="form2Example1">User name</label>
+            <label class="form-label" for="form2Example1">Username</label>
             <input id="form2Example1" v-model="username" class="form-control" />
         </div>
     
@@ -45,17 +45,7 @@
             <label class="form-label" for="form2Example2">Password</label>
             <input type="password" id="form2Example2" v-model="password" class="form-control" />
         </div>
-    
-        <!-- 2 column grid layout for inline styling -->
-        <div class="d-flex mb-4">
-            <div class="col d-flex justify-content-center">
-                <!-- Checkbox -->
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
-                    <label class="form-check-label" for="form2Example31"> Remember me </label>
-                </div>
-            </div>
-        </div>
+   
     
         <button id="login" type="button" @click=login() name="loginButton" class="btn">Login</button>
   
