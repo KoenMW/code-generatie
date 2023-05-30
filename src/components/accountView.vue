@@ -2,23 +2,42 @@
 hr {
     border: 1px solid #50A0C6;
 }
+#accountCard{
+    background-color: #50A0C6;;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    
+    
+}
+.labelText{
+    font-weight: bold;
+}
 </style>
 
 <template>
     <hr />
     <div class="d-flex justify-content-between">
-        
+
         <div v-for="account in accounts" :key="account.id">
-            <div>
-                {{ account.iban }}
-            </div>
-            <div>
-                {{ account.accountType }}
+            <div id="accountCard" class="card">
+                <label class="labelText">Iban: </label>
+                <div>
+                    {{ account.iban }}
+                </div>
+                <label class="labelText">Account type: </label>
+                <div>
+                    {{ account.accountType }}
+                </div>
+                <label class="labelText">Balance: </label>
                 <div>
                     {{ account.balance }}
                 </div>
             </div>
-            
+
+
         </div>
 
     </div>
