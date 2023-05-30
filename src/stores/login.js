@@ -9,11 +9,13 @@ export const loginService = defineStore('loginStore', {
         role: '',
         id: '',
         username: '',
+        remainingDailyLimit: 0,
     }),
     getters: {
         isLoggedIn: (state) => state.jwt != '',
         isAdmin: (state) => state.role == 'admin',
         getId: (state) => state.id,
+        getRemainingDailyLimit: (state) => state.remainingDailyLimit,
     },
     actions: {
         login(username, password) {
@@ -64,6 +66,15 @@ export const loginService = defineStore('loginStore', {
                 this.username = username;
             }
         },
+        async setRemainingDailyLimit() {
+            try {
+                const response = await axios.get(`users/dailylimit/${this.id}`);
+                this.remainingDailyLimit = response.data;
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
 
         
 
