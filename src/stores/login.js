@@ -2,7 +2,6 @@ import { defineStore } from 'pinia';
 import axios from '../axios';
 
 
-
 export const loginService = defineStore('loginStore', {
     state: () => ({
         jwt: '',
