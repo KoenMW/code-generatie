@@ -85,7 +85,7 @@ hr {
                     <td>{{account.active}}</td>
                     
                     <td>
-                        <button v-if="account.iban != 'NL01INHO0000000001'" id="functionButton" @click="setAccountInnactive(account.iban,'update','active',false)" type="button" class="btn">
+                        <button v-if="!checkUser(account)" id="functionButton" @click="setAccountInnactive(account.iban,'update','active',false)" type="button" class="btn">
                             Close
                         </button>
                         
@@ -149,6 +149,15 @@ export default {
                 .catch(error => {
                     console.log(error);
                 })
+        },
+        checkUser(account){
+            if(account.userReferenceId == this.store.getId || account.iban == 'NL01INHO0000000001'){
+                
+                return true;
+            }
+            else{
+                return false;
+            }
         },
         
     },

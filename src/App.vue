@@ -66,7 +66,7 @@ export default (await import('vue')).defineComponent({
           <RouterLink v-if="store.username.length != 0" to="/profile" class="nav-link">Profile</RouterLink>
         </li>
         <li class="nav-item">
-          <RouterLink v-if="store.username.length != 0" to="/" class="nav-link">Search users</RouterLink>
+          <RouterLink v-if="store.username.length != 0" to="/searchUser" class="nav-link">Search users</RouterLink>
         </li>
         <li class="nav-item">
           <RouterLink v-if="store.username.length == 0" to="/" class="nav-link">Login</RouterLink>

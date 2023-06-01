@@ -75,10 +75,11 @@ hr {
                     <td>{{ account.absoluteLimit }}</td>
 
                     <td>
-                        <button v-if="account.iban != 'NL01INHO0000000001'" id="functionButton" type="button" class="btn"
+                        <button v-if="!checkUser(account)" id="functionButton" type="button" class="btn"
                             @click="this.$router.push('/changeLimit/' + account.iban);">
                             Configure limit
                         </button>
+
                     </td>
                 </tr>
             </tbody>
@@ -125,6 +126,17 @@ export default {
                 console.log(error);
             }
         },
+
+        checkUser(account){
+            if(account.userReferenceId == this.store.getId || account.iban == 'NL01INHO0000000001'){
+                
+                return true;
+            }
+            else{
+                return false;
+            }
+        },
+        
         
 
 
@@ -132,6 +144,7 @@ export default {
     mounted() {
         this.getAccounts();
 
-    }
+    },
+    
 };
 </script>
