@@ -21,6 +21,7 @@ import userOverview from '../views/userManagement/userOverview.vue'
 import changeDailyLimit from '../views/userManagement/changeDailyLimit.vue'
 import transactionLimit from '../views/userManagement/changeTransactionLimit.vue'
 import newUser from '../views/userManagement/newUser.vue'
+import searchUser from '../views/searchUsers.vue'
 
 
 const router = createRouter({
@@ -163,6 +164,11 @@ const router = createRouter({
       path: '/newUser',
       name: 'newUser',
       component: newUser
+    },
+    {
+      path: '/searchUser',
+      name: 'searchUser',
+      component: searchUser
     }
 
 
