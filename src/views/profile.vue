@@ -38,7 +38,7 @@
                 <li class="listContent">EUR 5000</li>
                 <li class="listItem">Transaction limit</li>
                 <li class="listContent">EUR 2000</li>
-                <li class="listItem">Remaining transaction limit today</li>
+                <li class="listItem">Remaining day limit today</li>
                 <li class="listContent">EUR {{remainingDailyLimit}}</li>
             </ul>
         </div>
