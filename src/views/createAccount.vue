@@ -5,18 +5,17 @@
             <h5 class="mb-4"></h5>
 
 
-            <div class="input-group mb-3">
-                <span class="input-group-text">Absolute limit</span>
-                <input type="number" v-model="account.absoluteLimit" class="form-control" placeholder="Absolute limit"
-                    aria-label="Absolute limit" aria-describedby="basic-addon1">
-                <span class="input-group-text">Greater than 0 and lower than 1.000.000</span>
+            <div class="mb-3">
+                
+                <label for="accountType" class="labelText">Absolute limit</label>
+                <input class="inputField" type="number" v-model="account.absoluteLimit"  placeholder="Absolute limit">
             </div>
 
-            <div class="input-group mb-3">
-                <span class="input-group-text">Account type</span>
+            <div class="mb-3">
+                <label for="accountType" class="labelText">Account type</label><br>
                 <select v-model="account.accountType">
                     <option value="SAVINGS">SAVINGS</option>
-                    <option value="CURRENT">CHECKING</option>
+                    <option value="CHECKING">CHECKING</option>
                     <option value="CREDIT">CREDIT</option>
                 </select>
 
@@ -25,9 +24,9 @@
 
 
 
-            <div class="input-group mb-3">
-                <span class="input-group-text">User</span>
-                <select v-model="account.userReferenceId">
+            <div class="mb-3">
+                <label for="accountType" class="labelText">User</label><br>
+                <select  v-model="account.userReferenceId">
                     <template v-for="user in users">
                         <option v-if="checkUser(user)" :value="user.id" disabled>{{ user.username }}</option>
                         <option v-else :value="user.id">{{ user.username }}</option>
@@ -38,12 +37,13 @@
 
 
 
-            <div class="input-group mt-4">
+            <div class="mt-2">
                 <button id="submitB" @click="newAccount()" type="button" class="btn">New account</button>
                 <button id="cancel" type="button" class="btn" @click="this.$router.push('/admin/allAccounts')">
                     Cancel
                 </button>
             </div>
+            <p id="error"></p>
         </form>
     </div>
 </template>
@@ -56,7 +56,21 @@
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
-    margin: 5px;
+    
+}
+#submitB:hover{
+    background-color: #321A72;
+}
+.labelText{
+    color: white;
+    margin-bottom: 5px;
+}
+
+.inputField{
+    background-color: white;
+    max-width: 300px;
+    border-radius: 5px;
+    margin-right: 80px;
 }
 
 #cancel {
@@ -69,6 +83,9 @@
     cursor: pointer;
     margin: 5px;
 }
+#cancel:hover{
+    background-color: #321A72;
+}
 
 #new {
     margin: 0 auto;
@@ -76,6 +93,7 @@
     width: 50%;
     padding: 10px;
     border-radius: 5px;
+    max-width: 400px;
 }
 </style>
 <script>
@@ -103,6 +121,7 @@ export default {
     methods: {
         //get all accounts from user
         newAccount() {
+            console.log(this.account);
             axios.post('/accounts', this.account)
                 .then(response => {
                     console.log(response);
@@ -110,6 +129,7 @@ export default {
                 })
                 .catch(error => {
                     console.log(error);
+                    document.getElementById("error").innerHTML = "Please fill in every field";
                 })
 
         },
