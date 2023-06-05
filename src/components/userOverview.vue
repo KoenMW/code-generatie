@@ -1,19 +1,6 @@
 <template>
     <div class="card bg-dark m-5 p-3 w-100">
-        <h3 class="text-purple">Welcome</h3>
-        <div class="d-flex justify-content-between">
-            <div>
-                <div>
-                    {{ this.store.username }}
-                </div>
-                <div>
-                    
-                </div>
-            </div>
-            <h5>
-                
-            </h5>
-        </div>
+        <h3 class="text-purple">Welcome {{user.firstName}} {{user.lastName}}</h3>
     </div>
 </template>
 <script>
@@ -25,35 +12,26 @@ export default {
         return {
             store: loginService()
         }
-
     },
     name: "Login",
     data() {
         return {
-            accounts: [],
-            
+            user: {}
         };
     },
     methods: {
-        //get all accounts from user
-        async getAccounts() {
+        async getById(){
             try {
-                //get all accounts from user with token
-                const response = await axios.get('/accounts/' + this.store.id);
-                this.accounts = response.data;
-                console.log(this.accounts);
-
-
-            }
-            catch (error) {
+                const response = await axios.get(`users/${this.store.id}`);
+                console.log(response);
+                this.user = response.data;
+            } catch (error) {
                 console.log(error);
             }
-        },
-        
+        }
     },
     mounted() {
-        this.getAccounts();
-        
+        this.getById();
     }
 };
 </script>

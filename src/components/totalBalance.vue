@@ -9,12 +9,12 @@ hr {
         <hr/>
         <div class="d-flex justify-content-between">
             <div>
-                <div>
+                <h5>
                     Total balance
-                </div>
+                </h5>
             </div>
             <h5>
-                {{ totalBalance() }}
+                EUR {{ totalBalance() }}
             </h5>
         </div>
     </div>

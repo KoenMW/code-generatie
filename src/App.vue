@@ -69,11 +69,11 @@ export default (await import('vue')).defineComponent({
           <RouterLink v-if="store.username.length != 0" to="/searchUser" class="nav-link">Search users</RouterLink>
         </li>
         <li class="nav-item">
-          <RouterLink v-if="store.username.length == 0" to="/" class="nav-link">Login</RouterLink>
-          <RouterLink v-else to="/" class="nav-link" @click="logout()">Logout</RouterLink>
+          <RouterLink v-if="store.role == 'ROLE_ADMIN'" to="/admin" class="nav-link">Admin</RouterLink>
         </li>
         <li class="nav-item">
-          <RouterLink v-if="store.role == 'ROLE_ADMIN'" to="/admin" class="nav-link">Admin</RouterLink>
+            <RouterLink v-if="store.username.length == 0" to="/" class="nav-link">Login</RouterLink>
+            <RouterLink v-else to="/" class="nav-link" @click="logout()">Logout</RouterLink>
         </li>
         
       </ul>
