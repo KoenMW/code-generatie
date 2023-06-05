@@ -38,8 +38,6 @@ export default {
             if (!this.store.isLoggedIn) {
                 this.$router.push('/');
             }
-
-            
         }
     },
     
