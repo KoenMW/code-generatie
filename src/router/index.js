@@ -117,14 +117,14 @@ const router = createRouter({
       component: userOverview
     },
     {
-      path: '/changeDailyLimit/:username',
+      path: '/changeDailyLimit/:id',
       name: 'changeDailyLimit',
       component: changeDailyLimit,
       props:true
     },
     {
-      path: '/transactionLimit/:username',
-      name: 'transactionLimit',
+      path: '/changeTransactionLimit/:id',
+      name: 'changeTransactionLimit',
       component: transactionLimit,
       props:true
     },

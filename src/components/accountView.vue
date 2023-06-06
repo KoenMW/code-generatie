@@ -1,6 +1,6 @@
 <style>
 hr {
-    border: 1px solid #50A0C6;
+    color: #50A0C6;
 }
 #accountCard{
     background-color: #50A0C6;;
@@ -9,8 +9,7 @@ hr {
     border-radius: 5px;
     padding: 10px 20px;
     font-size: 16px;
-    
-    
+    margin: 10px;
 }
 .labelText{
     font-weight: bold;

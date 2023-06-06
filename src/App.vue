@@ -36,6 +36,28 @@ export default (await import('vue')).defineComponent({
 
 .text-purple {
   color: #9F82EB;
+  text-align: center;
+}
+.nav-item:hover {
+  color: #ffffff;
+}
+.nav-item{
+  margin-bottom: 5px;
+}
+.last{
+  margin-top: 30px;
+  margin-bottom: 25px;
+  font-weight: 600;
+}
+.logo{
+  margin:auto;
+  margin-top: 25px;
+  align-items: center;
+}
+.test{
+  max-width: 80%;
+  display: block;
+  margin: auto;
 }
 </style>
 
@@ -43,11 +65,11 @@ export default (await import('vue')).defineComponent({
   <div class="d-flex flex-row vh-100">
     <nav class="navbar navbar-dark bg-dark flex-column flex-grow-0 p-2">
       <RouterLink to="/" class="navbar-brand d-flex flex-column mx-auto">
-        <div class="m-auto text-purple">NovaBank</div>
-        <div class="w-100">
-          <img src="~@/assets/logo.svg" alt="Logo" class="m-auto" />
-
-        </div>
+      <div class="logo">
+          <div class="m-auto text-purple">NovaBank</div>
+          <img src="~@/assets/logo.svg" alt="Logo" class="test" />
+      </div>
+        
       </RouterLink>
       <ul class="navbar-nav">
         <li class="nav-item active">
@@ -70,15 +92,11 @@ export default (await import('vue')).defineComponent({
         </li>
         <li class="nav-item">
           <RouterLink v-if="store.role == 'ROLE_ADMIN'" to="/admin" class="nav-link">Admin</RouterLink>
-         </li>
+        </li>
         <li class="nav-item">
-
           <RouterLink v-if="!store.isLoggedIn" to="/" class="nav-link">Login</RouterLink>
           <RouterLink v-else to="/" class="nav-link" @click="logout()">Logout</RouterLink>
-
         </li>
-        
-        
       </ul>
     </nav>
     <div class="flex-grow-1 overflow-auto bg-black text-white">

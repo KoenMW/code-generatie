@@ -1,4 +1,4 @@
-<!-- <style>
+<style>
     #changeLimit{
         margin: 0 auto;
         margin-top: 10%;
@@ -40,18 +40,18 @@
     <section>
         <div id="changeLimit" class="bg-dark">
             <form ref="form">
-                <h2 class="mt-3 mt-lg-5">Change limit</h2>
+                <h2 class="mt-3 mt-lg-5">Change transaction limit</h2>
                 <h5 class="mb-4"></h5>
 
                 <div class="input-group mb-3">
-                    <span>New limit</span>
-                    <input type="number" v-model="accountUpdate.value"  placeholder="New limit"
-                        aria-label="New limit" aria-describedby="basic-addon1">
+                    <span>New transaction limit</span>
+                    <input type="number" v-model="userUpdate.value"  placeholder="New limit"
+                        aria-label="New limit" aria-describedby="basic-addon1" required>
                 </div>
 
                 <div class="input-group mt-4">
-                    <button id="submitB" @click="updateLimit()" type="button" class="btn">Change transaction limit</button>
-                    <button type="button" id="cancel" @click="this.$router.push('/configureLimit')">
+                    <button id="submitB" @click="updateLimit()" type="button" class="btn">Change limit</button>
+                    <button type="button" id="cancel" @click="this.$router.push('/userOverview')">
                         Cancel
                     </button>
                 </div>
@@ -63,10 +63,11 @@
 </template>
 
 <script>  
-    
+    import axios from "@/axios";
+    import loginService from "@/stores/login";
     export default {    
     props: {
-        id: Long,
+        id: String,
     },
     setup() {
         return {
@@ -81,12 +82,11 @@
                 key: "transactionLimit",
                 value: 0
             }
-
         };
     },
     methods: {
         updateLimit(){
-            axios.patch('/accounts', this.userUpdate)
+            axios.patch('/users', this.userUpdate)
                 .then(response => {
                     console.log(response);
                     this.$router.push('/userOverview');
@@ -96,11 +96,6 @@
                     document.getElementById("error").innerHTML = "Something went wrong, please try again";
                 })
         }
-
     }, 
 };
-</script> -->
-
-<script>
 </script>
-<template></template>
