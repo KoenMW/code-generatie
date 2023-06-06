@@ -89,8 +89,6 @@ export default {
                 })
         },
     },
-    mounted() {
-        this.getAllUsers();
-    }
+    
 };
 </script>
