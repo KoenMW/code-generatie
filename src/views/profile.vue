@@ -41,7 +41,8 @@
                 <li class="listItem">Transaction limit</li>
                 <li class="listContent">EUR {{user.transactionLimit}}</li>
                 <li class="listItem">Remaining day limit</li>
-                <li class="listContent">EUR {{remainingDailyLimit}}</li>
+                <li class="listContent">EUR {{login.getRemainingDailyLimit}}</li>
+
             </ul>
         </div>
     </section>
@@ -57,6 +58,7 @@ export default {
     name: "profile",
     data() {
         return {
+            login: loginService(),
             remainingDailyLimit: 0,
             login: loginService(),
             user: {},
@@ -68,6 +70,8 @@ export default {
             login: loginService(),
         }
     },
+
+    
     methods: {
         async getRemainingDailyLimit() {
             try {
@@ -98,7 +102,7 @@ export default {
         }
     },
     mounted() {
-        this.getRemainingDailyLimit();
+        this.login.setRemainingDailyLimit();
         this.getById();
         this.getByUserId();
     }

@@ -44,65 +44,93 @@ hr {
     <h2 id="title" class="pb-2  ">Transfer</h2>
     <hr />
     <div id="transfer" class="bg-dark">
+      <div class="container form">
+        <label id="label" for="fromAccount">From Account:</label><br>
+        <select id="accountDropdown" v-model="fromAccountIban" class="form-control" required>
+          <option v-for="account in accounts" :value="account.iban" class="">Iban: {{ account.iban }} Balance: {{ account.balance }}</option>
+        </select>
 
-      <section>
-        <div class="container">
-          <form ref="form">
-            <h5 class="mb-4"></h5>
-            <div class="form-group">
-              <label id="label" for="fromAccount">From Account:</label><br>
-              <select id="select" v-model="fromAccountId">
-                <option v-for="account in accounts" :value="account.id">{{ account.name }}</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label id="label" for="Account">Receiver:</label><br>
-              <input type="text" id="select" v-model="toAccountId" required>
-            </div>
-            <div class="form-group">
-              <label id="label" for="Account">Iban:</label><br>
-              <input type="text" id="select" v-model="iban" required>
-            </div>
-            <div class="form-group">
-              <label id="label" for="amount">Amount:</label><br>
-              <input type="number" id="select" v-model="amount" required>
-            </div>
-            <button type="submit" id="submitButton" class="btn" @click="transfer">Transfer</button>
+        <label id="label" for="Account" class="form-label">Receiver Iban:</label><br>
+        <input type="text" id="select" v-model="toAccountIban" class="form-control" required placeholder="Iban">
 
-          </form>
-        </div>
-      </section>
+        <label id="label" for="amount">Amount:</label><br>
+        <input type="number" id="select" v-model="amount" class="form-control" required min="0" step="0.01" @input="validateAmount">
+
+        <label id="label" for="description">Description:</label><br>
+        <input type="text" id="select" v-model="description" class="form-control">
+
+        <button type="submit" id="submitButton" class="btn" @click="transfer">Transfer</button>
+      </div>
 
     </div>
   </div>
 </template>
   
 <script>
+import axios from '../axios';
+import accountview from '../components/accountView.vue'
+import loginService from '../stores/login'
 export default {
   data() {
     return {
-      accounts: [
-        { id: 1, name: 'Checking', balance: 1000 },
-        { id: 2, name: 'Savings', balance: 5000 },
-        { id: 3, name: 'Credit Card', balance: -2000 },
-      ],
-      fromAccountId: null,
-      toAccountId: null,
-      amount: null,
+      accounts: [],
+      fromAccountIban: "",
+      toAccountIban: "",
+      amount: 0,
+      description: ""
     }
   },
+  setup() {
+    return {
+      store: loginService()
+    }
+  },
+  components: {
+    accountview
+  },
   methods: {
-    transfer() {
-      const fromAccount = this.accounts.find(account => account.id === this.fromAccountId)
-      const toAccount = this.accounts.find(account => account.id === this.toAccountId)
+    async transfer() {
+      console.log(this.fromAccountIban)
+      const fromAccount = this.accounts.find(account => account.iban === this.fromAccountIban)
       if (fromAccount.balance < this.amount) {
-        alert('Insufficient funds')
+        alert('Insufficient funds' + fromAccount.balance)
         return
       }
-      fromAccount.balance -= this.amount
-      toAccount.balance += this.amount
-      alert('Transfer successful')
+      const responce = await axios.post('/transactions', {
+        fromAccount: this.fromAccountIban,
+        toAccount: this.toAccountIban,
+        amount: this.amount,
+        description: this.description
+      });
+      if (responce.status !== 200) {
+        alert('Transfer failed')
+        return
+      }
+      else {
+        alert('Transfer successful')
+        this.$router.push('/home')
+      }
+    }, 
+    validateAmount() {
+      if (this.amount < 0) {
+        this.amount = 0;
+      } else if (this.amount % 0.01 !== 0) {
+        this.amount = Math.floor(this.amount * 100) / 100; // Round down to the nearest multiple of 0.01
+      }
     },
   },
+  async mounted() {
+    try {
+        //get all accounts from user with token
+        const response = await axios.get('/accounts/' + this.store.id);
+        this.accounts = response.data;
+        console.log(this.accounts);
+
+
+    }
+    catch (error) {
+        console.log(error);
+    }
+  }
 }
 </script>

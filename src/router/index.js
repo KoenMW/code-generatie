@@ -16,14 +16,15 @@ import configureLimit from '../views/configureLimit.vue'
 import adminTransaction from '../views/adminTransaction.vue'
 import bankOwnAccount from '../views/bankOwnAccount.vue'
 import changeLimit from '../views/changeLimit.vue'
-import loginStore from '../stores/login.js';
 import userOverview from '../views/userManagement/userOverview.vue'
 import changeDailyLimit from '../views/userManagement/changeDailyLimit.vue'
 import transactionLimit from '../views/userManagement/changeTransactionLimit.vue'
 import newUser from '../views/userManagement/newUser.vue'
 import searchUser from '../views/searchUsers.vue'
+import depositWithdraw from '../views/depositWithdraw.vue'
 import newUserAnon from '../views/userManagement/newUserAnon.vue'
 import createAccountSpecific from '../views/createAccountSpecific.vue'
+
 
 
 const router = createRouter({
@@ -57,54 +58,26 @@ const router = createRouter({
     {
       path: '/admin',
       name: 'admin',
-      component: admin,/*
-      beforeEnter: (to, from, next) => {
-        if (loginStore.isAdmin) {
-          next()
-        }
-        else {
-          next(from)
-      }
-    }*/
+      component: admin,
+      beforeEnter: checkAdminRole
     },
     {
       path: '/admin/allAccounts',
       name: 'allAccount',
-      component: allAccounts,/*
-      beforeEnter: (to, from, next) => {
-        if (loginStore.isAdmin) {
-          next()
-        }
-        else {
-          next(from)
-      }
-    }*/
+      component: allAccounts,
+      beforeEnter: checkAdminRole
     },
     {
       path: '/admin/noAccount',
       name: 'noAccount',
-      component: noAccount/*,
-      beforeEnter: (to, from, next) => {
-        if (loginStore.isAdmin) {
-          next()
-        }
-        else {
-          next(from)
-      }
-    }*/
+      component: noAccount,
+      beforeEnter: checkAdminRole
     },
     {
       path: '/Account/create',
       name: 'createAccount',
-      component: createAccount/*,
-      beforeEnter: (to, from, next) => {
-        if (loginStore.isAdmin) {
-          next()
-        }
-        else {
-          next(from)
-      }
-    }*/
+      component: createAccount,
+      beforeEnter: checkAdminRole
     },
     {
       path: '/profile',
@@ -124,15 +97,8 @@ const router = createRouter({
     {
       path: '/admin/transaction',
       name: 'adminTransaction',
-      component: adminTransaction,/*
-      beforeEnter: (to, from, next) => {
-        if (loginStore.isAdmin) {
-          next()
-        }
-        else {
-          next(from)
-      }
-    }*/
+      component: adminTransaction,
+      beforeEnter: checkAdminRole
     },
     {
       path: '/admin/bankOwnAccount',
@@ -173,6 +139,11 @@ const router = createRouter({
       component: searchUser
     },
     {
+      path: '/depositWithdraw',
+      name: 'depositWithdraw',
+      component: depositWithdraw
+    },
+    {
       path: '/newUserAnon',
       name: 'newUserAnon',
       component: newUserAnon,
@@ -187,13 +158,31 @@ const router = createRouter({
 
 
 
+
+
   ]
 })
 
-//uncommend code when login is complete, makes the user go to login page if not logged in
-/*router.beforeEach((to, from, next) => {
-  if (to.name !== 'login' && !loginStore.isLoggedIn && to.name !== 'signup' && to.name !== 'forgotPassword') next({ name: 'login' })
-  else next()
-})*/
+
+function checkAdminRole(to, from, next) {
+  console.log(localStorage.getItem('role'))
+  console.log(to.name)
+  if(localStorage.getItem('role') !== 'ROLE_ADMIN'){
+    //console.log('not admin')
+    next(from)
+  }
+  console.log('admin')
+  next()
+}
+
+router.beforeEach((to, from, next) => {
+  if(!localStorage.getItem('role') && to.name !== 'login'){
+    //console.log("storage isn't set yet and should redirect to login")
+    next('/')
+  }
+  else
+    next()
+})
+
 
 export default router

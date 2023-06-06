@@ -73,31 +73,30 @@ export default (await import('vue')).defineComponent({
       </RouterLink>
       <ul class="navbar-nav">
         <li class="nav-item active">
-          <RouterLink v-if="store.username.length != 0" to="/home" class="nav-link">Home</RouterLink>
+          <RouterLink v-if="store.isLoggedIn" to="/home" class="nav-link">Home</RouterLink>
         </li>
         <li class="nav-item">
-          <RouterLink v-if="store.username.length != 0" to="/" class="nav-link">Transactions</RouterLink>
+          <RouterLink v-if="store.isLoggedIn" to="/" class="nav-link">Transactions</RouterLink>
         </li>
         <li class="nav-item">
-          <RouterLink v-if="store.username.length != 0" to="/transfer" class="nav-link">Transfer</RouterLink>
+          <RouterLink v-if="store.isLoggedIn" to="/transfer" class="nav-link">Transfer</RouterLink>
         </li>
         <li class="nav-item">
-          <RouterLink v-if="store.username.length != 0" to="/about" class="nav-link">Deposit/Withdraw</RouterLink>
+          <RouterLink v-if="store.isLoggedIn" to="/depositWithdraw" class="nav-link">Deposit/Withdraw</RouterLink>
         </li>
         <li class="nav-item">
-          <RouterLink v-if="store.username.length != 0" to="/profile" class="nav-link">Profile</RouterLink>
+          <RouterLink v-if="store.isLoggedIn" to="/profile" class="nav-link">Profile</RouterLink>
         </li>
         <li class="nav-item">
-          <RouterLink v-if="store.username.length != 0" to="/searchUser" class="nav-link">Search users</RouterLink>
+          <RouterLink v-if="store.isLoggedIn" to="/" class="nav-link">Search users</RouterLink>
         </li>
         <li class="nav-item">
           <RouterLink v-if="store.role == 'ROLE_ADMIN'" to="/admin" class="nav-link">Admin</RouterLink>
         </li>
-        <li class="nav-item last">
-            <RouterLink v-if="store.username.length == 0" to="/" class="nav-link">Login</RouterLink>
-            <RouterLink v-else to="/" class="nav-link" @click="logout()">Logout</RouterLink>
+        <li class="nav-item">
+          <RouterLink v-if="!store.isLoggedIn" to="/" class="nav-link">Login</RouterLink>
+          <RouterLink v-else to="/" class="nav-link" @click="logout()">Logout</RouterLink>
         </li>
-        
       </ul>
     </nav>
     <div class="flex-grow-1 overflow-auto bg-black text-white">
