@@ -19,7 +19,7 @@ export const loginService = defineStore('loginStore', {
     actions: {
         login(username, password) {
             return new Promise((resolve, reject) => {
-                axios.post('/login', {
+                axios.post('/auth/login', {
                     username: username,
                     password: password
                 })

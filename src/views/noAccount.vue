@@ -50,7 +50,7 @@ hr {
 </style>
 
 <template>
-    <RouterLink to="/admin/noAccount" id="backButton" class="btn">
+    <RouterLink to="/admin" id="backButton" class="btn">
       Back
     </RouterLink>
     <div class="container px-4 py-5" id="hanging-icons">
