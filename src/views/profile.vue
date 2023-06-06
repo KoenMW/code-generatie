@@ -27,19 +27,20 @@
         <div class="container bg-dark">
             <h1 id="title">Profile</h1>
             <hr />
-            <ul>
+            <ul >
                 <li class="listItem">Name</li>
-                <li class="listContent">Piet</li>
+                <li class="listContent">{{user.firstName}}</li>
                 <li class="listItem">Email</li>
-                <li class="listContent">Piet@gmai.com</li>
+                <li class="listContent">{{user.email}}</li>
                 <li class="listItem">IBAN</li>
                 <li class="listContent">NL55 INHO 0000 0000 01</li>
                 <li class="listItem">Day limit</li>
-                <li class="listContent">EUR 5000</li>
+                <li class="listContent">EUR {{user.dayLimit}}</li>
                 <li class="listItem">Transaction limit</li>
-                <li class="listContent">EUR 2000</li>
-                <li class="listItem">Remaining transaction limit today</li>
+                <li class="listContent">EUR {{user.transactionLimit}}</li>
+                <li class="listItem">Remaining day limit</li>
                 <li class="listContent">EUR {{login.getRemainingDailyLimit}}</li>
+
             </ul>
         </div>
 
@@ -58,15 +59,43 @@ export default {
     data() {
         return {
             login: loginService()
+            remainingDailyLimit: 0,
+            login: loginService(),
+            user: {},
+
         }
     },
     setup() {
         return {
-            login: loginService()
+            login: loginService(),
+        }
+    },
+
+    
+    methods: {
+        async getRemainingDailyLimit() {
+            try {
+                const response = await axios.get(`users/dailylimit/${this.login.id}`);
+                console.log(response);
+                this.remainingDailyLimit = response.data;
+            } catch (error) {
+                console.log(error);
+            }
+        },
+        async getById(){
+            try {
+                const response = await axios.get(`users/${this.login.id}`);
+                console.log(response);
+                this.user = response.data;
+            } catch (error) {
+                console.log(error);
+            }
         }
     },
     mounted() {
         this.login.setRemainingDailyLimit();
+        this.getById();
+
     }
 }
 </script>

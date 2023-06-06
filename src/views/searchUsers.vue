@@ -77,6 +77,7 @@ export default {
             accounts: [],
             users: [],
             input: '',
+            search: 'xuqgeyqwejhqb',
         };
     },
     methods: {

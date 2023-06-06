@@ -1,9 +1,8 @@
 <template>
     <div id="new" class="bg-dark">
         <form ref="form">
-            <h2 class="mt-3 mt-lg-5">New account</h2>
+            <h2 class="mt-3 mt-lg-5">New account for {{ user.firstName }}</h2>
             <h5 class="mb-4"></h5>
-
 
             <div class="mb-3">
                 
@@ -21,25 +20,9 @@
 
             </div>
 
-
-
-
-            <div class="mb-3">
-                <label for="accountType" class="labelText">User</label><br>
-                <select  v-model="account.userReferenceId">
-                    <template v-for="user in users">
-                        <option v-if="checkUser(user)" :value="user.id" disabled>{{ user.username }}</option>
-                        <option v-else :value="user.id">{{ user.username }}</option>
-                    </template>
-                    
-                </select>
-            </div>
-
-
-
             <div class="mt-2">
                 <button id="submitB" @click="newAccount()" type="button" class="btn">New account</button>
-                <button id="cancel" type="button" class="btn" @click="this.$router.push('/admin/allAccounts')">
+                <button id="cancel" type="button" class="btn" @click="this.$router.push('/admin/noAccount')">
                     Cancel
                 </button>
             </div>
@@ -101,6 +84,9 @@ import { loginService } from '../stores/login';
 import axios from '../axios';
 
 export default {
+    props: {
+        id: String,
+    },
     setup() {
         return {
             store: loginService()
@@ -111,11 +97,11 @@ export default {
     data() {
         return {
             account: {
-                userReferenceId: 0,
+                userReferenceId: this.id,
                 accountType: "",
                 absoluteLimit: 0,
             },
-            users: [],
+            user:{},
         };
     },
     methods: {
@@ -125,7 +111,7 @@ export default {
             axios.post('/accounts', this.account)
                 .then(response => {
                     console.log(response);
-                    this.$router.push('/admin/allAccounts');
+                    this.$router.push('/admin/noAccount');
                 })
                 .catch(error => {
                     console.log(error);
@@ -133,29 +119,22 @@ export default {
                 })
 
         },
-        getAllUsers() {
-            axios.get('/users')
+        getUser() {
+            axios.get('/users',this.id)
                 .then(response => {
                     console.log(response);
-                    this.users = response.data;
+                    this.user = response.data;
                 })
                 .catch(error => {
                     console.log(error);
                 })
         },
-        checkUser(user) {
-            if (user.username == this.store.getUsername|| user.username == "Bank") {
-                
-                return true;
-            } else {
-                return false;
-            }
-        },
+        
     
 
     },
     mounted() {
-        this.getAllUsers();
+        this.getUser();
     }
 
 };

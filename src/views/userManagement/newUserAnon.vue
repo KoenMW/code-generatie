@@ -47,10 +47,11 @@
 
             <div class="input-group mt-4">
                 <button id="submitB" @click="add()" type="button" class="btn">New user</button>
-                <button id="cancel" type="button" class="btn" @click="this.$router.push('/userOverview')">
+                <button id="cancel" type="button" class="btn" @click="this.$router.push('/')">
                     Cancel
                 </button>
             </div>
+            <p id="error"></p>
         </form>
     </div>
 </template>
@@ -74,7 +75,7 @@ export default {
                 password: "",
                 email: "",
             },
-            users: [],
+            
         };
     },
     methods: {
@@ -82,10 +83,11 @@ export default {
             axios.post('/users', this.user)
                 .then(response => {
                     console.log(response);
-                    this.$router.push('/userOverview');
+                    this.$router.push('/');
                 })
                 .catch(error => {
                     console.log(error);
+                    document.getElementById("error").innerHTML = "Please fill in all the fields correctly";
                 })
         },
     },

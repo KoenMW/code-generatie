@@ -13,10 +13,6 @@
     color: #9F82EB;
 }
 
-#mainTitle {
-    color: #9F82EB;
-}
-
 hr {
     color: #9F82EB;
 }
@@ -57,41 +53,34 @@ hr {
         <h2 id="title" class="pb-2 ">All users</h2>
         <hr />
 
-        <RouterLink to="/Account/create" id="newButton" class="btn">
+        <RouterLink to="/newUser" id="newButton" class="btn">
             New user
         </RouterLink>
         <table class="table table-dark table-striped">
             <thead>
                 <tr>
-
-                    
                     <th scope="col">Username</th>
                     <th scope="col">Role</th>
                     <th scope="col">Daily limit</th>
                     <th scope="col">Transaction limit</th>
                     <th scope="col">Change daily</th>
                     <th scope="col">Change transaction</th>
-                    
                 </tr>
             </thead>
             <tbody>
                 <tr v-for="user in users" :key="user.id">
-
-
-                    
-                    
                     <td>{{user.username}}</td>
                     <td>{{user.role}}</td>
                     <td>{{user.dayLimit}}</td>
                     <td>{{user.transactionLimit}}</td>
-                    
+
                     <td>
-                        <RouterLink to="/changeDailyLimit" id="functionButton" class="btn">
+                        <RouterLink v-if = "user.username != 'Bank'" to="/changeDailyLimit" id="functionButton" class="btn">
                             Change daily limit
                         </RouterLink>
                     </td>
                     <td>
-                        <RouterLink to="/changeTransactionLimit" id="functionButton" class="btn">
+                        <RouterLink v-if = "user.username != 'Bank'" to="/changeTransactionLimit" id="functionButton" class="btn">
                             Change transaction limit
                         </RouterLink> 
                     </td>
@@ -111,13 +100,11 @@ export default {
         return {
             store: loginService()
         }
-
     },
     name: "UserOverview",
     data() {
         return {
             users: [],
-            
         };
     },
     methods: {
@@ -130,13 +117,9 @@ export default {
                 console.error(error);
             }
         },
-        
-        
-        
     },
     mounted() {
         this.getUsers();
-        
     }
 };
 </script>
