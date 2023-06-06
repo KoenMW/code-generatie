@@ -62,6 +62,7 @@
                     Cancel
                 </button>
             </div>
+            <p id="error"></p>
         </form>
     </div>
 </template>
@@ -97,6 +98,7 @@ export default {
                 })
                 .catch(error => {
                     console.log(error);
+                    document.getElementById("error").innerHTML = "Something went wrong, please try again";
                 })
         },
     },
