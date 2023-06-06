@@ -12,9 +12,10 @@ export const loginService = defineStore('loginStore', {
     }),
     getters: {
         isLoggedIn: (state) => state.jwt != '',
-        isAdmin: (state) => state.role == 'admin',
+        isAdmin: (state) => state.role == 'ROLE_ADMIN',
         getId: (state) => state.id,
         getRemainingDailyLimit: (state) => state.remainingDailyLimit,
+        getUsername: (state) => state.username,
     },
     actions: {
         login(username, password) {

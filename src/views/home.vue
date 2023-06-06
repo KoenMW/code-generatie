@@ -20,12 +20,31 @@ import userOverview from '../components/userOverview.vue';
 import recentTransactions from '../components/recentTransactions.vue'
 import accountOverview from '../components/userAccountOverview.vue';
 import totalBalance from "@/components/totalBalance.vue";
+import { loginService } from '../stores/login';
 export default {
     components: {
         userOverview,
         recentTransactions,
         accountOverview,
         totalBalance
+    },
+    setup() {
+        return {
+            store: loginService()
+        }
+    },
+    methods: {
+        checkIfLoggedIn() {
+            if (!this.store.isLoggedIn) {
+                this.$router.push('/');
+            }
+
+            
+        }
+    },
+    
+    mounted() {
+        this.checkIfLoggedIn();
     }
 }
 </script>

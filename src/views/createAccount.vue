@@ -9,6 +9,7 @@
                 <span class="input-group-text">Absolute limit</span>
                 <input type="number" v-model="account.absoluteLimit" class="form-control" placeholder="Absolute limit"
                     aria-label="Absolute limit" aria-describedby="basic-addon1">
+                <span class="input-group-text">Greater than 0 and lower than 1.000.000</span>
             </div>
 
             <div class="input-group mb-3">
@@ -27,7 +28,11 @@
             <div class="input-group mb-3">
                 <span class="input-group-text">User</span>
                 <select v-model="account.userReferenceId">
-                    <option v-for="user in users" :value="user.id">{{ user.username }}</option>
+                    <template v-for="user in users">
+                        <option v-if="checkUser(user)" :value="user.id" disabled>{{ user.username }}</option>
+                        <option v-else :value="user.id">{{ user.username }}</option>
+                    </template>
+                    
                 </select>
             </div>
 
@@ -117,7 +122,16 @@ export default {
                 .catch(error => {
                     console.log(error);
                 })
-        }
+        },
+        checkUser(user) {
+            if (user.username == this.store.getUsername|| user.username == "Bank") {
+                
+                return true;
+            } else {
+                return false;
+            }
+        },
+    
 
     },
     mounted() {
