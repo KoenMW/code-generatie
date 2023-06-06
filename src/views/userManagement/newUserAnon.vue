@@ -11,6 +11,12 @@
         padding: 10px;
         border-radius: 5px;
     }
+    span{
+        display:block;
+        width: 25%;
+        height: 25%;
+        align-self: center;
+    }
 </style>
 
 <template>

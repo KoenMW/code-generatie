@@ -6,7 +6,6 @@
     margin-right: 20px;
     border-radius: 10px;
     padding: 10px;
-
 }
 
 #title {
@@ -68,11 +67,7 @@ hr {
                                 {{ account.balance }}
                             </div>
                         </div>
-
-
                     </div>
-                    
-
                 </div>
             </div>
         </div>
@@ -88,7 +83,6 @@ export default {
         return {
             store: loginService()
         }
-
     },
     name: "Login",
     data() {
@@ -104,8 +98,6 @@ export default {
                 const response = await axios.get('/accounts/' + 2);
                 this.accounts = response.data;
                 console.log(this.accounts);
-
-
             }
             catch (error) {
                 console.log(error);
