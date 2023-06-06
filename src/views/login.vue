@@ -48,6 +48,9 @@
    
     
         <button id="login" type="button" @click=login() name="loginButton" class="btn">Login</button>
+
+        
+        <router-link to="/newUserAnon" class="text-blue">Create Account</router-link>
   
         
     </form>
