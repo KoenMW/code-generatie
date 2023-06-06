@@ -68,11 +68,11 @@ hr {
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(row, index) in rows" :key="index">
-            <th scope="row">{{ row.id }}</th>
-            <td>{{ row.firstName }}</td>
-            <td>{{ row.lastName }}</td>
-            <td>{{ row.accounts }}</td>
+          <tr v-for="user in users" :key="user.id" >
+            <th scope="row">{{ user.id }}</th>
+            <td>{{ user.firstName }}</td>
+            <td>{{ user.lastName }}</td>
+            <td>{{ user.accounts }}</td>
   
             <td>
               <button v-if="selectedRow !== index" @click="selectedRow = index" id="functionButton" class="btn">
@@ -88,42 +88,29 @@ hr {
   
   <script>
   import createAccount from "../components/createAccount.vue";
-  
+  import axios from '../axios';
   export default {
-    components: {
-      createAccount,
-    },
+    name: "noAccount",
     data() {
       return {
-        
-        rows: [
-          {
-            id: "123456789",
-            firstName: "Henk",
-            lastName: "€ Bakker",
-            accounts: 0,
-          },
-          {
-            id: "123456789",
-            firstName: "Gerda",
-            lastName: "€ Beentjes",
-            accounts: 0,
-          },
-          {
-            id: "123456789",
-            firstName: "Jan-Willem",
-            lastName: "€ Postma",
-            accounts: 0,
-          },
-        ],
+        users: {},
         selectedRow: null,
       };
     },
     methods: {
-        
-        
-        
+      async getAll(){
+            try {
+                const response = await axios.get(`/users?isActive=true&offset=0&limit=50`);
+                console.log(response);
+                this.users = response.data;
+            } catch (error) {
+                console.log(error);
+            }
+        },
     },
+    mounted() {
+        this.getAll();
+    }
   };
   </script>
   

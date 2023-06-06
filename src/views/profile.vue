@@ -21,8 +21,8 @@
     list-style: none;
 }
 </style>
-<template>
 
+<template>
     <section>
         <div class="container bg-dark">
             <h1 id="title">Profile</h1>
@@ -32,8 +32,10 @@
                 <li class="listContent">{{user.firstName}}</li>
                 <li class="listItem">Email</li>
                 <li class="listContent">{{user.email}}</li>
-                <li class="listItem">IBAN</li>
-                <li class="listContent">NL55 INHO 0000 0000 01</li>
+                <div v-for="account in accounts">
+                    <li class="listItem">IBAN ({{account.accountType}})</li>
+                    <li class="listContent">{{account.iban}}</li>
+                </div>
                 <li class="listItem">Day limit</li>
                 <li class="listContent">EUR {{user.dayLimit}}</li>
                 <li class="listItem">Transaction limit</li>
@@ -42,9 +44,7 @@
                 <li class="listContent">EUR {{remainingDailyLimit}}</li>
             </ul>
         </div>
-
     </section>
-
 </template>
 
 <script>
@@ -60,6 +60,7 @@ export default {
             remainingDailyLimit: 0,
             login: loginService(),
             user: {},
+            accounts: {}
         }
     },
     setup() {
@@ -85,11 +86,21 @@ export default {
             } catch (error) {
                 console.log(error);
             }
+        },
+        async getByUserId(){
+            try{
+                const response = await axios.get(`accounts/${this.login.id}`);
+                console.log(response);
+                this.accounts = response.data;
+            } catch (error) {
+                console.log(error);
+            }
         }
     },
     mounted() {
         this.getRemainingDailyLimit();
         this.getById();
+        this.getByUserId();
     }
 }
 </script>
