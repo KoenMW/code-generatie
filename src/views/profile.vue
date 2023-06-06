@@ -58,7 +58,7 @@ export default {
     name: "profile",
     data() {
         return {
-            login: loginService()
+            login: loginService(),
             remainingDailyLimit: 0,
             login: loginService(),
             user: {},

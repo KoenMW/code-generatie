@@ -96,13 +96,13 @@ export default {
         alert('Insufficient funds' + fromAccount.balance)
         return
       }
-      const responce = await axios.post('/transactions', {
+      const response = await axios.post('/transactions', {
         fromAccount: this.fromAccountIban,
         toAccount: this.toAccountIban,
         amount: this.amount,
         description: this.description
       });
-      if (responce.status !== 200) {
+      if (response.status !== 200) {
         alert('Transfer failed')
         return
       }
