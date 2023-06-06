@@ -60,7 +60,6 @@ export default {
         return {
             login: loginService(),
             remainingDailyLimit: 0,
-            login: loginService(),
             user: {},
             accounts: {}
         }

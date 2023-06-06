@@ -66,7 +66,7 @@ export default (await import('vue')).defineComponent({
           <RouterLink v-if="store.isLoggedIn" to="/profile" class="nav-link">Profile</RouterLink>
         </li>
         <li class="nav-item">
-          <RouterLink v-if="store.isLoggedIn" to="/" class="nav-link">Search users</RouterLink>
+          <RouterLink v-if="store.isLoggedIn" to="/searchUser" class="nav-link">Search users</RouterLink>
         </li>
         <li class="nav-item">
           <RouterLink v-if="store.role == 'ROLE_ADMIN'" to="/admin" class="nav-link">Admin</RouterLink>
