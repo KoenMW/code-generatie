@@ -2,18 +2,19 @@ import { defineStore } from 'pinia';
 import axios from '../axios';
 
 
-
 export const loginService = defineStore('loginStore', {
     state: () => ({
         jwt: '',
         role: '',
         id: '',
         username: '',
+        remainingDailyLimit: 0,
     }),
     getters: {
         isLoggedIn: (state) => state.jwt != '',
         isAdmin: (state) => state.role == 'ROLE_ADMIN',
         getId: (state) => state.id,
+        getRemainingDailyLimit: (state) => state.remainingDailyLimit,
         getUsername: (state) => state.username,
     },
     actions: {
@@ -65,6 +66,15 @@ export const loginService = defineStore('loginStore', {
                 this.username = username;
             }
         },
+        async setRemainingDailyLimit() {
+            try {
+                const response = await axios.get(`users/dailylimit/${this.id}`);
+                this.remainingDailyLimit = response.data;
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
 
         
 

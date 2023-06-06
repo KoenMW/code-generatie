@@ -8,6 +8,24 @@
             <span class="input-group-text" id="basic-addon1">€</span>
             <input type="text" class="form-control" placeholder="daily limit" aria-label="Amount" aria-describedby="basic-addon1">
         </div>
-        <button type="submit" id="functionButton" class="btn">Create account</button>
+        <button id="functionButton" class="btn" onclick="test()">Create account</button>
     </form>
 </template>
+
+<script>
+import loginService from '../stores/login';
+
+export default {
+    name: "createAccount",
+    setup() {
+        return {
+            store: loginService()
+        }
+    },
+    methods: {
+        test() {
+            console.log("test");
+        }
+    }
+}
+</script>
