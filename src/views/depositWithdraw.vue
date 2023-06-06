@@ -96,3 +96,13 @@ export default {
     }
 }
 </script>
+<style>
+#label{
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.form-control{
+    margin-bottom: 10px;
+    margin-top: 0;
+}
+</style>
