@@ -23,6 +23,7 @@ import transactionLimit from '../views/userManagement/changeTransactionLimit.vue
 import newUser from '../views/userManagement/newUser.vue'
 import searchUser from '../views/searchUsers.vue'
 import newUserAnon from '../views/userManagement/newUserAnon.vue'
+import createAccountSpecific from '../views/createAccountSpecific.vue'
 
 
 const router = createRouter({
@@ -172,11 +173,18 @@ const router = createRouter({
       component: searchUser
     },
     {
-      path: '/newUserAnon/:id',
+      path: '/newUserAnon',
       name: 'newUserAnon',
       component: newUserAnon,
+      
+    },
+    {
+      path: '/createAccountSpecific/:id',
+      name: 'createAccountSpecific',
+      component: createAccountSpecific,
       props:true
-    }
+    },
+
 
 
   ]

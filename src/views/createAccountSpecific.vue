@@ -85,7 +85,7 @@ import axios from '../axios';
 
 export default {
     props: {
-        id: int,
+        id: String,
     },
     setup() {
         return {
