@@ -21,6 +21,7 @@ import changeDailyLimit from '../views/userManagement/changeDailyLimit.vue'
 import transactionLimit from '../views/userManagement/changeTransactionLimit.vue'
 import newUser from '../views/userManagement/newUser.vue'
 import searchUser from '../views/searchUsers.vue'
+import depositWithdraw from '../views/depositWithdraw.vue'
 
 
 const router = createRouter({
@@ -133,7 +134,13 @@ const router = createRouter({
       path: '/searchUser',
       name: 'searchUser',
       component: searchUser
+    },
+    {
+      path: '/depositWithdraw',
+      name: 'depositWithdraw',
+      component: depositWithdraw
     }
+
 
 
   ]
@@ -144,7 +151,7 @@ function checkAdminRole(to, from, next) {
   console.log(localStorage.getItem('role'))
   console.log(to.name)
   if(localStorage.getItem('role') !== 'ROLE_ADMIN'){
-    console.log('not admin')
+    //console.log('not admin')
     next(from)
   }
   console.log('admin')
@@ -153,7 +160,7 @@ function checkAdminRole(to, from, next) {
 
 router.beforeEach((to, from, next) => {
   if(!localStorage.getItem('role') && to.name !== 'login'){
-    console.log("storage isn't set yet and should redirect to login")
+    //console.log("storage isn't set yet and should redirect to login")
     next('/')
   }
   else

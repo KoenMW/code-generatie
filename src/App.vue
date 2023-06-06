@@ -60,7 +60,7 @@ export default (await import('vue')).defineComponent({
           <RouterLink v-if="store.isLoggedIn" to="/transfer" class="nav-link">Transfer</RouterLink>
         </li>
         <li class="nav-item">
-          <RouterLink v-if="store.isLoggedIn" to="/about" class="nav-link">Deposit/Withdraw</RouterLink>
+          <RouterLink v-if="store.isLoggedIn" to="/depositWithdraw" class="nav-link">Deposit/Withdraw</RouterLink>
         </li>
         <li class="nav-item">
           <RouterLink v-if="store.isLoggedIn" to="/profile" class="nav-link">Profile</RouterLink>
