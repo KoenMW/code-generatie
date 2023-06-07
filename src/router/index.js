@@ -187,11 +187,9 @@ function checkAdminRole(to, from, next) {
 
 router.beforeEach((to, from, next) => {
 
-  //check if the user is logged in and if not redirect to login page or signup page
   if(!localStorage.getItem('role'))
   {
     if(to.name !== 'login' && to.name !== 'signup' && to.name !== 'forgotPassword' && to.name !== 'newUserAnon'){
-      //console.log("storage isn't set yet and should redirect to login")
       next('/')
     }
     else
@@ -200,14 +198,6 @@ router.beforeEach((to, from, next) => {
   else
     next()
 
-  /*
-  if(!localStorage.getItem('role') && to.name !== 'login'){
-    //console.log("storage isn't set yet and should redirect to login")
-    next('/')
-  }
-  else
-    next()
-    */
 })
 
 
