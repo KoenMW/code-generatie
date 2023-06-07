@@ -3,20 +3,24 @@
         <h2 id="title" class="pb-2  ">Deposit/Withdraw</h2>
         <hr />
 
-        <div id="transfer" class="bg-dark">
-            <div class="container form">
-                <label id="label" for="fromAccount">From Account:</label><br>
-                <select id="accountDropdown" v-model="fromAccountIban" class="form-control" required>
-                    <option v-for="account in accounts" :value="account.iban" class="">Iban: {{ account.iban }} Balance: {{ account.balance }}</option>
-                </select>
+        <div>
+            <div id="transfer" class="bg-dark">
+                <div class="container form">
+                    <label id="label" for="fromAccount">From Account:</label><br>
+                    <select id="accountDropdown" v-model="selectedAccount" class="form-control" required>
+                        <option v-for="account in accounts" :value="account" class="">Iban: {{ account.iban }} Balance: {{ account.balance }}</option>
+                    </select>
 
-                <label id="label" for="amount">Amount:</label><br>
-                <input type="number" id="select" v-model="amount" class="form-control" required min="0" step="0.01" @input="validateAmount">
+                    <label id="label" for="amount">Amount:</label><br>
+                    <input type="number" id="select" v-model="amount" class="form-control" required min="0" step="0.01" @input="validateAmount">
 
-                <button type="submit" id="submitButton" class="btn" @click="deposit">Deposit</button>
-                <button type="submit" id="submitButton" class="btn" @click="withdraw">Withdraw</button>
+                    <button type="submit" id="submitButton" class="btn" @click="deposit">Deposit</button>
+                    <button type="submit" id="submitButton" class="btn" @click="withdraw">Withdraw</button>
+                </div>
+
+                <singleAccountView :account="selectedAccount"></singleAccountView>
+
             </div>
-
         </div>
     </div>
 </template>
@@ -25,12 +29,12 @@
 import axios from '../axios';
 import accountview from '../components/accountView.vue'
 import loginService from '../stores/login'
-
+import singleAccountView from '../components/singleAccountView.vue';
 export default {
     data() {
         return {
             accounts: [],
-            fromAccountIban: "",
+            selectedAccount: Object,
             amount: 0
         }
     },
@@ -40,13 +44,16 @@ export default {
         }
     },
     components: {
-        accountview
+        accountview,
+        singleAccountView
     },
     methods: {
         async getAccounts() {
             try {
                 const response = await axios.get('/accounts/' + this.store.getId);
                 this.accounts = response.data;
+                console.log(this.accounts)
+                console.log(this.accounts[0].type)
             } catch (error) {
                 console.error(error);
             }
