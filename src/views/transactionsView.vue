@@ -1,5 +1,5 @@
 <template>
-    <div class="card bg-dark m-5 p-3 w-100">
+    <div class="card bg-dark mt-5 m-auto p-3 w-75">
         <h3 class="text-purple mx-auto">All transactions</h3>
         <transaction v-for="transaction in transactions" :key="transaction.id" :transaction="transaction"></transaction>
     </div>

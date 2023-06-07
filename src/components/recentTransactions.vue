@@ -1,7 +1,7 @@
 <template>
     <div class="card bg-dark m-5 p-3 w-100">
         <h3 class="text-purple mx-auto">Recent Transaction</h3>
-        <transaction v-for="transaction in transactions" :key="transaction.id" :transaction="transaction"></transaction>
+        <transaction v-for="transaction in transactionData" :key="transaction.id" :transaction="transaction"></transaction>
         <RouterLink to="/transactions" >view all transactions</RouterLink>
     </div>
 </template>
@@ -16,7 +16,7 @@ export default {
     },
     data() {
         return {
-            transactions: []
+            transactionData: []
         };
     },
     setup() {
@@ -28,8 +28,7 @@ export default {
         async getTransactions() {
             try {
                 const response = await axios.get(`/transactions/byUser/${this.store.getId}`);
-                //reverse the list and get the last 5:
-                this.transactions = response.data.reverse().slice(0, 5);
+                this.transactionData = response.data.reverse().slice(0, 5);
                 
             }
             catch (error) {
