@@ -63,6 +63,7 @@ export default {
                 this.description = "";
                 this.getAccounts();
             } catch (error) {
+                
                 console.error(error);
             }
         },
@@ -82,6 +83,7 @@ export default {
                 this.description = "";
                 this.getAccounts();
             } catch (error) {
+                alert('Withdrawal failed, please check absolut limit')
                 console.error(error);
             }
         },

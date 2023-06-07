@@ -24,6 +24,7 @@ import searchUser from '../views/searchUsers.vue'
 import depositWithdraw from '../views/depositWithdraw.vue'
 import newUserAnon from '../views/userManagement/newUserAnon.vue'
 import createAccountSpecific from '../views/createAccountSpecific.vue'
+import transactionsView from '../views/transactionsView.vue'
 
 
 
@@ -155,6 +156,15 @@ const router = createRouter({
       component: createAccountSpecific,
       props:true
     },
+    {
+      path: '/:pathMatch(.*)*',
+      redirect: '/'
+    },
+    {
+      path: '/transactions',
+      name: 'transactions',
+      component: transactionsView
+    }
 
 
 
@@ -165,8 +175,8 @@ const router = createRouter({
 
 
 function checkAdminRole(to, from, next) {
-  console.log(localStorage.getItem('role'))
-  console.log(to.name)
+  //console.log(localStorage.getItem('role'))
+  //console.log(to.name)
   if(localStorage.getItem('role') !== 'ROLE_ADMIN'){
     //console.log('not admin')
     next(from)
