@@ -59,7 +59,7 @@ export default {
             for(let i = 0; i < this.accounts.length; i++){
                 totalBalance += this.accounts[i].balance;
             }
-            return totalBalance;
+            return totalBalance.toLocaleString('nl-NL', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
         }
     },
     mounted() {

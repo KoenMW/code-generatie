@@ -32,7 +32,7 @@ hr {
                 </div>
                 <label class="labelText">Balance: </label>
                 <div>
-                    {{ account.balance }}
+                    {{ formatString(account.balance) }}
                 </div>
             </div>
 
@@ -74,6 +74,10 @@ export default {
             catch (error) {
                 console.log(error);
             }
+        },
+        formatString(string){
+            let number = parseFloat(string);
+            return number.toLocaleString('nl-NL', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
         }
     },
     mounted() {
