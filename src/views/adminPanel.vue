@@ -1,19 +1,17 @@
 <style>
 #card{
-    margin-top: 20px;
-    margin-bottom: 20px;
-    margin-left: 20px;
-    margin-right: 20px;
+    margin: 10px;
     border-radius: 10px;
-    padding: 10px;
-    
 }
-
+p{
+    margin-right: 20px;
+}
 #title{
     color: #9F82EB;
 }
 #mainTitle{
     color: #9F82EB;
+    margin-top: 20px;
 }
 hr{
     color: #9F82EB;
@@ -118,7 +116,7 @@ hr{
                 </div>
                 <div>
                     <h3 id="mainTitle" class="fs-2">User management</h3>
-                    <p>Change day and transaction limit for users, Also add users</p><br>
+                    <p>Change day and transaction limit for users, and add users</p><br>
                     <RouterLink to="/userOverview" id="functionButton" class="btn ">
                         See users
                     </RouterLink>
