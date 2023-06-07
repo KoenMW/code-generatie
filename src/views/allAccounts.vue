@@ -76,8 +76,6 @@ hr {
             <tbody>
                 <tr v-for="account in accounts" :key="account.iban">
 
-
-                    
                     <td>{{account.iban}}</td>
                     <td>{{account.balance}}</td>
                     <td>{{account.userReferenceId}}</td>
@@ -88,7 +86,6 @@ hr {
                         <button v-if="!checkUser(account)" id="functionButton" @click="setAccountInnactive(account.iban,'update','active',false)" type="button" class="btn">
                             Close
                         </button>
-                        
                     </td>
                 </tr>
             </tbody>
@@ -106,7 +103,6 @@ export default {
         return {
             store: loginService()
         }
-
     },
     name: "Login",
     data() {
@@ -128,8 +124,6 @@ export default {
                 const response = await axios.get('/accounts?offset=0&limit=100');
                 this.accounts = response.data;
                 console.log(this.accounts);
-
-
             }
             catch (error) {
                 console.log(error);

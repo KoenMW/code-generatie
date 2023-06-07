@@ -11,6 +11,17 @@
         padding: 10px;
         border-radius: 5px;
     }
+    #test{
+       max-height: 50%;
+       margin: auto;
+    }
+    span{
+        display:block;
+        width: 25%;
+        height: 25%;
+        align-self: center;
+    }
+
 </style>
 
 <template>
@@ -19,10 +30,10 @@
             <h2 class="mt-3 mt-lg-5">New user</h2>
             <h5 class="mb-4"></h5>
 
-            <div class="input-group mb-3">
+            <div class="test input-group mb-3">
                 <span class="input-group-text">First name</span>
                 <input type="text" v-model="user.firstName" class="form-control" placeholder="First name"
-                       aria-label="First name" aria-describedby="basic-addon1">
+                       aria-label="First name" >
             </div>
             <div class="input-group mb-3">
                 <span class="input-group-text">Last name</span>
@@ -46,11 +57,12 @@
             </div>
 
             <div class="input-group mt-4">
-                <button id="submitB" @click="add()" type="button" class="btn">New user</button>
+                <button id="submitB" @click="add()" type="button" class="btn">New user</button> 
                 <button id="cancel" type="button" class="btn" @click="this.$router.push('/userOverview')">
                     Cancel
                 </button>
             </div>
+            <p id="error"></p>
         </form>
     </div>
 </template>
@@ -86,6 +98,7 @@ export default {
                 })
                 .catch(error => {
                     console.log(error);
+                    document.getElementById("error").innerHTML = "Something went wrong, please try again";
                 })
         },
     },

@@ -1,6 +1,6 @@
 <style>
 hr {
-    border: 1px solid #50A0C6;
+    color: #50A0C6;
 }
 #accountCard{
     background-color: #50A0C6;;
@@ -9,8 +9,7 @@ hr {
     border-radius: 5px;
     padding: 10px 20px;
     font-size: 16px;
-    
-    
+    margin: 10px;
 }
 .labelText{
     font-weight: bold;
@@ -33,7 +32,7 @@ hr {
                 </div>
                 <label class="labelText">Balance: </label>
                 <div>
-                    {{ account.balance }}
+                    {{ formatString(account.balance) }}
                 </div>
             </div>
 
@@ -75,6 +74,10 @@ export default {
             catch (error) {
                 console.log(error);
             }
+        },
+        formatString(string){
+            let number = parseFloat(string);
+            return number.toLocaleString('nl-NL', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
         }
     },
     mounted() {

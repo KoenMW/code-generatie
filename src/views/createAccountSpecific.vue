@@ -1,9 +1,9 @@
 <template>
     <div id="new" class="bg-dark">
         <form ref="form">
-            <h2 class="mt-3 mt-lg-5">New account for {{ user.firstName }}</h2>
+            <h4 class="mt-3 mt-lg-5">New account for {{ user.firstName }}</h4>
             <h5 class="mb-4"></h5>
-
+            
             <div class="mb-3">
                 
                 <label for="accountType" class="labelText">Absolute limit</label>
@@ -101,7 +101,7 @@ export default {
                 accountType: "",
                 absoluteLimit: 0,
             },
-            user:{},
+            user: {},
         };
     },
     methods: {
@@ -119,22 +119,21 @@ export default {
                 })
 
         },
-        getUser() {
-            axios.get('/users',this.id)
-                .then(response => {
-                    console.log(response);
-                    this.user = response.data;
-                })
-                .catch(error => {
-                    console.log(error);
-                })
+        async getById(){
+            try {
+                const response = await axios.get(`users/${this.id}`);
+                console.log(response);
+                this.user = response.data;
+            } catch (error) {
+                console.log(error);
+            }
         },
         
     
 
     },
     mounted() {
-        this.getUser();
+        this.getById();
     }
 
 };

@@ -75,14 +75,16 @@ hr {
                     <td>{{user.transactionLimit}}</td>
 
                     <td>
-                        <RouterLink v-if = "user.username != 'Bank'" to="/changeDailyLimit" id="functionButton" class="btn">
-                            Change daily limit
-                        </RouterLink>
+                        <button v-if = "checkUser(user) == true" id="functionButton" type="button" class="btn"
+                            @click="this.$router.push('/changeDailyLimit/' + user.id);">
+                            Change day limit
+                        </button>
                     </td>
                     <td>
-                        <RouterLink v-if = "user.username != 'Bank'" to="/changeTransactionLimit" id="functionButton" class="btn">
+                        <button v-if = "checkUser(user) == true" id="functionButton" type="button" class="btn"
+                            @click="this.$router.push('/changeTransactionLimit/' + user.id);">
                             Change transaction limit
-                        </RouterLink> 
+                        </button>
                     </td>
                 </tr>
             </tbody>
@@ -117,6 +119,15 @@ export default {
                 console.error(error);
             }
         },
+        checkUser(user) {
+            if (user.id == this.store.id) {
+                return false
+            } else if(user.id == 2){ //bank
+                return false
+            }else {
+                return true;
+            }
+        }
     },
     mounted() {
         this.getUsers();
