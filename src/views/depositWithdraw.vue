@@ -91,6 +91,15 @@ export default {
             if (this.amount < 0) {
                 this.amount = 0;
             }
+            if(this.amount > 1000)
+            {
+                this.amount = 1000;
+            }
+            if(this.amount % 0.01 != 0)
+            {
+                this.amount = Math.round(this.amount * 100) / 100;
+            }
+
         }
     },
     mounted() {

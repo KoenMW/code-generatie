@@ -1,8 +1,17 @@
+<style>
+#functionButton{
+    background-color: #9F82EB;
+}
+#functionButton:hover{
+    background-color: #321A72;
+}
+</style>
+
 <template>
     <div class="card bg-dark m-5 p-3 w-100">
         <h3 class="text-purple mx-auto">Recent Transaction</h3>
         <transaction v-for="transaction in transactionData" :key="transaction.id" :transaction="transaction"></transaction>
-        <RouterLink to="/transactions" >view all transactions</RouterLink>
+        <RouterLink to="/transactions" id="functionButton" class="btn mt-4">view all transactions</RouterLink>
     </div>
 </template>
 

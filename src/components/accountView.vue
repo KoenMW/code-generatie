@@ -18,9 +18,9 @@ hr {
 
 <template>
     <hr />
-    <div class="d-flex justify-content-between">
+    <div class="d-flex justify-content-between flex-wrap">
 
-        <div v-for="account in accounts" :key="account.id">
+        <div v-for="account in accounts" :key="account.id" class="mx-auto">
             <div id="accountCard" class="card">
                 <label class="labelText">Iban: </label>
                 <div>
