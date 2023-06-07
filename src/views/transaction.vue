@@ -123,10 +123,12 @@ export default {
   },
   async mounted() {
     try {
-        //get all accounts from user with token
-        const response = await axios.get('/accounts/' + this.store.id);
-        this.accounts = response.data;
-        console.log(this.accounts);
+        await axios.get('/accounts/' + this.store.id)
+        .then(response => {
+          this.accounts = response.data;
+        }).catch(error => {
+          console.log(error);
+        });
 
 
     }
