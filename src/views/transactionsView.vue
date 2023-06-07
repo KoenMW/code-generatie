@@ -1,43 +1,41 @@
 <template>
     <div class="card bg-dark m-5 p-3 w-100">
-        <h3 class="text-purple mx-auto">Recent Transaction</h3>
+        <h3 class="text-purple mx-auto">All transactions</h3>
         <transaction v-for="transaction in transactions" :key="transaction.id" :transaction="transaction"></transaction>
-        <RouterLink to="/transactions" >view all transactions</RouterLink>
     </div>
 </template>
 
 <script>
-import transaction from './transaction.vue';
+import transaction from '../components/transaction.vue';
 import { loginService } from '../stores/login';
 import axios from '../axios';
-export default {
+
+export default{
     components: {
         transaction
     },
-    data() {
-        return {
+    data(){
+        return{
             transactions: []
         };
     },
-    setup() {
-        return {
+    setup(){
+        return{
             store: loginService()
         }
     },
-    methods: {
-        async getTransactions() {
-            try {
+    methods:{
+        async getTransactions(){
+            try{
                 const response = await axios.get(`/transactions/byUser/${this.store.getId}`);
-                //reverse the list and get the last 5:
-                this.transactions = response.data.reverse().slice(0, 5);
-                
+                this.transactions = response.data.reverse();
             }
-            catch (error) {
+            catch(error){
                 console.log(error);
             }
         }
     },
-    mounted() {
+    mounted(){
         this.getTransactions();
     }
 }
