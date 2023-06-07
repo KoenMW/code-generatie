@@ -123,7 +123,14 @@ export default {
                 })
                 .catch(error => {
                     console.log(error);
-                    document.getElementById("error").innerHTML = "Please fill in every field";
+                    if(error.response.status == 403){
+                        document.getElementById("error").innerHTML = "Please fill all fields";
+                    }
+                    else{
+                        document.getElementById("error").innerHTML = error.response.data.message;
+                    }
+
+                    
                 })
 
         },
@@ -135,6 +142,7 @@ export default {
                 })
                 .catch(error => {
                     console.log(error);
+                    alert(error.response.data.message);
                 })
         },
         checkUser(user) {
