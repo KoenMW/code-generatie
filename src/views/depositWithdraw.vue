@@ -3,13 +3,14 @@
         <h2 id="title" class="pb-2  ">Deposit/Withdraw</h2>
         <hr />
 
-        <div class="depositWithdraw">
-            <div id="transfer" class="bg-dark">
-                <div class="container form">
-                    <label id="label" for="fromAccount">From Account:</label><br>
-                    <select id="accountDropdown" v-model="fromAccountIban" class="form-control" required @change="setSelectAccount">
-                        <option v-for="account in accounts" :value="account.iban">Iban: {{ account.iban }} Balance: {{ account.balance }}</option>
-                    </select>
+        <div id="transfer" class="bg-dark">
+            <div class="container form">
+                <label id="label" for="fromAccount">From Account:</label><br>
+                <select id="accountDropdown" v-model="fromAccountIban" class="form-control" required @change="setSelectAccount">
+                    <div v-for="account in accounts">
+                        <option v-if="account.accountType != 'SAVINGS'" :value="account.iban" class="">Iban: {{ account.iban }} Balance: {{ account.balance }}</option>
+                    </div>
+                </select>
 
                     <label id="label" for="amount">Amount:</label><br>
                     <input type="number" id="select" v-model="amount" class="form-control" required min="0" step="0.01" @input="validateAmount">
