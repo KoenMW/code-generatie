@@ -8,7 +8,7 @@
                 <div class="input-group mb-3">
                     <span>New limit</span>
                     <input type="number" v-model="accountUpdate.value"  placeholder="New limit"
-                        aria-label="New limit" aria-describedby="basic-addon1">
+                        aria-label="New limit" aria-describedby="basic-addon1" required>
                 </div>
 
                 <div class="input-group mt-4">

@@ -6,12 +6,12 @@
 
             <div class="mb-3">
                 <label for="accountType" class="labelText">Absolute limit</label>
-                <input class="inputField" type="number" v-model="account.absoluteLimit"  placeholder="Absolute limit">
+                <input class="inputField" type="number" v-model="account.absoluteLimit"  placeholder="Absolute limit" required>
             </div>
 
             <div class="mb-3">
                 <label for="accountType" class="labelText">Account type</label><br>
-                <select v-model="account.accountType">
+                <select v-model="account.accountType" required>
                     <option value="SAVINGS">SAVINGS</option>
                     <option value="CHECKING">CHECKING</option>
                     <option value="CREDIT">CREDIT</option>
@@ -21,7 +21,7 @@
 
             <div class="mb-3">
                 <label for="accountType" class="labelText">User</label><br>
-                <select  v-model="account.userReferenceId">
+                <select  v-model="account.userReferenceId" required>
                     <template v-for="user in users">
                         <option v-if="checkUser(user)" :value="user.id" disabled>{{ user.username }}</option>
                         <option v-else :value="user.id">{{ user.username }}</option>

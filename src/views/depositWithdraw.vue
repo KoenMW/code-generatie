@@ -7,7 +7,9 @@
             <div class="container form">
                 <label id="label" for="fromAccount">From Account:</label><br>
                 <select id="accountDropdown" v-model="fromAccountIban" class="form-control" required>
-                    <option v-for="account in accounts" :value="account.iban" class="">Iban: {{ account.iban }} Balance: {{ account.balance }}</option>
+                    <template v-for="account in accounts">
+                        <option v-if="account.accountType != 'SAVINGS'" :value="account.iban" class="">Iban: {{ account.iban }} Balance: {{ account.balance }}</option>
+                    </template>
                 </select>
 
                 <label id="label" for="amount">Amount:</label><br>
