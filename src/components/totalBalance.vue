@@ -45,7 +45,6 @@ export default {
                 //get all accounts from user with token
                 const response = await axios.get('/accounts/' + this.store.id);
                 this.accounts = response.data;
-                console.log(this.accounts);
 
 
             }

@@ -103,7 +103,6 @@ export default {
     async getAll() {
       try {
         const response = await axios.get(`/users?isActive=true&offset=0&limit=50`);
-        console.log(response);
         this.users = response.data;
       } catch (error) {
         console.log(error);

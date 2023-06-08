@@ -75,7 +75,6 @@ export default {
         async getRemainingDailyLimit() {
             try {
                 const response = await axios.get(`users/dailylimit/${this.login.id}`);
-                console.log(response);
                 this.remainingDailyLimit = response.data;
             } catch (error) {
                 console.log(error);
@@ -84,7 +83,6 @@ export default {
         async getById(){
             try {
                 const response = await axios.get(`users/${this.login.id}`);
-                console.log(response);
                 this.user = response.data;
             } catch (error) {
                 console.log(error);
@@ -93,7 +91,6 @@ export default {
         async getByUserId(){
             try{
                 const response = await axios.get(`accounts/${this.login.id}`);
-                console.log(response);
                 this.accounts = response.data;
             } catch (error) {
                 console.log(error);

@@ -88,7 +88,6 @@
         updateLimit(){
             axios.patch('/users', this.userUpdate)
                 .then(response => {
-                    console.log(response);
                     this.$router.push('/userOverview');
                 })
                 .catch(error => {

@@ -118,7 +118,6 @@ export default {
                 //get all accounts from user with token
                 const response = await axios.get('/accounts?offset=0&limit=100');
                 this.accounts = response.data;
-                console.log(this.accounts);
 
 
             }

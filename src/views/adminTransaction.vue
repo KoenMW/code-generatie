@@ -133,7 +133,6 @@ export default {
         setFromAccountList(){
             axios.get('/accounts/' + this.fromUser).then(response => {
                 this.fromAccountList = response.data
-                console.log(response.data)
             })
             .catch(error => {
                 console.log(error)
@@ -142,7 +141,6 @@ export default {
         setToAccountList(){
             axios.get('/accounts/' + this.toUser).then(response => {
                 this.toAccountList = response.data
-                console.log(response.data)
             })
             .catch(error => {
                 console.log(error)
@@ -152,7 +150,6 @@ export default {
     mounted() {
         axios.get('/users').then(response => {
             this.users = response.data
-            console.log(response.data)
         })
         .catch(error => {
             console.log(error)

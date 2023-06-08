@@ -21,11 +21,6 @@ export default {
         return {
             store: loginService()
         }
-    },
-    methods: {
-        test() {
-            console.log("test");
-        }
     }
 }
 </script>

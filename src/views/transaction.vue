@@ -94,7 +94,6 @@ export default {
   },
   methods: {
     async transfer() {
-      console.log(this.fromAccountIban)
       const fromAccount = this.accounts.find(account => account.iban === this.fromAccountIban)
       if (fromAccount.balance < this.amount) {
         alert('Insufficient funds' + fromAccount.balance)

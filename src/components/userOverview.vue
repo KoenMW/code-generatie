@@ -23,7 +23,6 @@ export default {
         async getById(){
             try {
                 const response = await axios.get(`users/${this.store.id}`);
-                console.log(response);
                 this.user = response.data;
             } catch (error) {
                 console.log(error);
