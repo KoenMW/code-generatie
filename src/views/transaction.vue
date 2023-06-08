@@ -106,7 +106,6 @@ export default {
         amount: this.amount,
         description: this.description
       }).then(response => {
-        console.log(response)
         this.$router.push('/home')
       }).catch(error => {
         this.errorMessage = error.response.data.message
