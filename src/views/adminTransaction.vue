@@ -47,37 +47,41 @@ hr {
                 Back
             </RouterLink>
             <div class="container">
-                <form ref="form">
+                <div ref="form">
                     <h1 id="title">Transfer</h1>
                     <hr />
                     <h5 class="mb-4"></h5>
                     <div class="form-group">
-                        <label id="label" for="fromAccount">From user:</label><br>
-                        <select id="select" v-model="fromUser">
-                            <option v-for="user in users" :value="user.id">{{ user.name }}</option>
+                        <label id="label" for="fromUser">From user:</label><br>
+                        <select id="accountDropdown" v-model="fromUser" class="form-control" required @change="setFromAccountList">
+                            <option v-for="user in users" :value="user.id">name: {{ user.username }}</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label id="label" for="fromAccount">From Account:</label><br>
-                        <select id="select" v-model="fromAccountId">
-                            <option v-for="account in accounts" :value="account.id">{{ account.name }}</option>
+                        <select id="select" v-model="fromAccount" class="form-control" >
+                            <option v-for="account in fromAccountList" :value="account.iban">Iban: {{ account.iban }}</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label id="label" for="Account">Receiver:</label><br>
-                        <input type="text" id="select" v-model="toAccountId" required>
+                        <label id="label" for="toUser">To user:</label><br>
+                        <select id="accountDropdown" v-model="toUser" class="form-control" required @change="setToAccountList">
+                            <option v-for="user in users" :value="user.id">name: {{ user.username }}</option>
+                        </select>
                     </div>
                     <div class="form-group">
-                        <label id="label" for="Account">Iban:</label><br>
-                        <input type="text" id="select" v-model="iban" required>
+                        <label id="label" for="toAccount">To Account:</label><br>
+                        <select id="select" v-model="toAccount" class="form-control">
+                            <option v-for="account in toAccountList" :value="account.iban">Iban: {{ account.iban }}</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label id="label" for="amount">Amount:</label><br>
-                        <input type="number" id="select" v-model="amount" required>
+                        <input type="number" id="select" v-model="amount" class="form-control" required min="0" step="0.01" @input="validateAmount">
                     </div>
                     <button type="submit" id="submitButton" class="btn" @click="transfer">Transfer</button>
 
-                </form>
+                </div>
             </div>
         </section>
 
@@ -85,39 +89,74 @@ hr {
 </template>
   
 <script>
+import axios from '../axios.js'
 export default {
     data() {
         return {
-            accounts: [
-                { id: 1, name: 'Checking', balance: 1000 },
-                { id: 2, name: 'Savings', balance: 5000 },
-                { id: 3, name: 'Credit Card', balance: -2000 },
-            ],
-            users: [
-                { id: 1, name: 'John Doe' },
-                { id: 2, name: 'Jane Doe' },
-                { id: 3, name: 'John Smith' },
-            ],
-            iban: null,
-
-            fromUser: null,
-            fromAccountId: null,
-            toAccountId: null,
-            amount: null,
+            users: [],
+            fromAccountList: [],
+            toAccountList: [],
+            fromUser: "",
+            toUser: "",
+            fromAccount: "",
+            toAccount: "",
+            amount: 0,
+            description: "transaction made by employee",
         }
     },
     methods: {
         transfer() {
-            const fromAccount = this.accounts.find(account => account.id === this.fromAccountId)
-            const toAccount = this.accounts.find(account => account.id === this.toAccountId)
-            if (fromAccount.balance < this.amount) {
-                alert('Insufficient funds')
-                return
-            }
-            fromAccount.balance -= this.amount
-            toAccount.balance += this.amount
-            alert('Transfer successful')
+            axios.post('/transactions', {
+                fromAccount: this.fromAccount,
+                toAccount: this.toAccount,
+                amount: this.amount,
+                description: this.description,
+            }).then(response => {
+                alert("Transfer successful")
+                this.$router.push('/home')
+            })
+            .catch(error => {
+                console.log(error)
+                alert("Transfer failed")
+            })
         },
+        
+        validateAmount() {
+            if (this.amount < 0) {
+                this.amount = 0;
+            }
+            if(this.amount % 0.01 != 0)
+            {
+                this.amount = Math.round(this.amount * 100) / 100;
+            }
+        },
+        setFromAccountList(){
+            axios.get('/accounts/' + this.fromUser).then(response => {
+                this.fromAccountList = response.data
+                console.log(response.data)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+        },
+        setToAccountList(){
+            axios.get('/accounts/' + this.toUser).then(response => {
+                this.toAccountList = response.data
+                console.log(response.data)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+        },
+    },
+    mounted() {
+        axios.get('/users').then(response => {
+            this.users = response.data
+            console.log(response.data)
+        })
+        .catch(error => {
+            console.log(error)
+        })
     },
 }
 </script>

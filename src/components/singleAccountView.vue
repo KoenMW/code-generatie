@@ -17,7 +17,7 @@ hr {
 </style>
 
 <template>
-    <div class="d-flex justify-content-between flex-wrap mx-auto">
+    <div class="d-flex justify-content-between flex-wrap m-auto h-100">
         <div id="accountCard" class="card">
             <label class="labelText">Iban: </label>
             <div>
@@ -37,7 +37,6 @@ hr {
 
 <script>
 import { loginService } from '../stores/login';
-import axios from '../axios';
 export default {
     setup() {
         return {
@@ -45,21 +44,20 @@ export default {
         }
 
     },
-    name: "Login",
-    data() {
-        return {
-            account: {}
-        };
-    },
-    methods: {
-        formatString(string){
-            let number = parseFloat(string);
-            return number.toLocaleString('nl-NL', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-        }
-    },
-    mounted(account) {
-        this.account = account;
-        console.log(this.account);
+  props: {
+    account: {
+      type: Object,
+      default: null
     }
+  },
+  methods: {
+    formatString(string) {
+      let number = parseFloat(string);
+      return number.toLocaleString("nl-NL", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      });
+    }
+  }
 };
 </script>

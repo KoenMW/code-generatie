@@ -3,12 +3,12 @@
         <h2 id="title" class="pb-2  ">Deposit/Withdraw</h2>
         <hr />
 
-        <div>
+        <div class="depositWithdraw">
             <div id="transfer" class="bg-dark">
                 <div class="container form">
                     <label id="label" for="fromAccount">From Account:</label><br>
-                    <select id="accountDropdown" v-model="selectedAccount" class="form-control" required>
-                        <option v-for="account in accounts" :value="account" class="">Iban: {{ account.iban }} Balance: {{ account.balance }}</option>
+                    <select id="accountDropdown" v-model="fromAccountIban" class="form-control" required @change="setSelectAccount">
+                        <option v-for="account in accounts" :value="account.iban">Iban: {{ account.iban }} Balance: {{ account.balance }}</option>
                     </select>
 
                     <label id="label" for="amount">Amount:</label><br>
@@ -17,10 +17,9 @@
                     <button type="submit" id="submitButton" class="btn" @click="deposit">Deposit</button>
                     <button type="submit" id="submitButton" class="btn" @click="withdraw">Withdraw</button>
                 </div>
-
-                <singleAccountView :account="selectedAccount"></singleAccountView>
-
             </div>
+            
+            <singleAccountView :account="selectedAccount"></singleAccountView>
         </div>
     </div>
 </template>
@@ -34,8 +33,16 @@ export default {
     data() {
         return {
             accounts: [],
-            selectedAccount: Object,
-            amount: 0
+            fromAccountIban: "",
+            amount: 0,
+            selectedAccount: {
+                absoluteLimit: 0,
+                accountType: "",
+                active: false,
+                balance: 0,
+                iban: "",
+                userReferenceId: 0
+            }
         }
     },
     setup() {
@@ -52,8 +59,9 @@ export default {
             try {
                 const response = await axios.get('/accounts/' + this.store.getId);
                 this.accounts = response.data;
-                console.log(this.accounts)
-                console.log(this.accounts[0].type)
+                //set the first account as selected
+                this.fromAccountIban = this.accounts[0].iban;
+                this.setSelectAccount();
             } catch (error) {
                 console.error(error);
             }
@@ -107,6 +115,11 @@ export default {
                 this.amount = Math.round(this.amount * 100) / 100;
             }
 
+        },
+        setSelectAccount() {
+            this.selectedAccount = this.accounts.find(
+                account => account.iban === this.fromAccountIban
+            );
         }
     },
     mounted() {
@@ -122,5 +135,17 @@ export default {
 .form-control{
     margin-bottom: 10px;
     margin-top: 0;
+}
+
+.depositWithdraw{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+@media (max-width: 1000px) {
+    .depositWithdraw{
+        flex-direction: column;
+    }
 }
 </style>
