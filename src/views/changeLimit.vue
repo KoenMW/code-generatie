@@ -91,7 +91,6 @@ export default {
         updateLimit(){
             axios.patch('/accounts', this.accountUpdate)
                 .then(response => {
-                    console.log(response);
                     this.$router.push('/configureLimit');
                 })
                 .catch(error => {

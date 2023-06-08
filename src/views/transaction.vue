@@ -65,6 +65,9 @@ hr {
       </div>
 
     </div>
+    <div class="alert alert-danger m-5" role="alert" v-if="errorMessage">
+      <strong>Error:</strong> {{ errorMessage }}
+    </div>
   </div>
 </template>
   
@@ -79,7 +82,8 @@ export default {
       fromAccountIban: "",
       toAccountIban: "",
       amount: 0,
-      description: ""
+      description: "",
+      errorMessage: ""
     }
   },
   setup() {
@@ -92,26 +96,21 @@ export default {
   },
   methods: {
     async transfer() {
-      console.log(this.fromAccountIban)
       const fromAccount = this.accounts.find(account => account.iban === this.fromAccountIban)
       if (fromAccount.balance < this.amount) {
         alert('Insufficient funds' + fromAccount.balance)
         return
       }
-      const response = await axios.post('/transactions', {
+      await axios.post('/transactions', {
         fromAccount: this.fromAccountIban,
         toAccount: this.toAccountIban,
         amount: this.amount,
         description: this.description
-      });
-      if (response.status !== 200) {
-        alert('Transfer failed')
-        return
-      }
-      else {
-        alert('Transfer successful')
+      }).then(response => {
         this.$router.push('/home')
-      }
+      }).catch(error => {
+        this.errorMessage = error.response.data.message
+      });
     }, 
     validateAmount() {
       if (this.amount < 0) {
@@ -125,10 +124,12 @@ export default {
   },
   async mounted() {
     try {
-        //get all accounts from user with token
-        const response = await axios.get('/accounts/' + this.store.id);
-        this.accounts = response.data;
-        console.log(this.accounts);
+        await axios.get('/accounts/' + this.store.id)
+        .then(response => {
+          this.accounts = response.data;
+        }).catch(error => {
+          console.log(error);
+        });
 
 
     }

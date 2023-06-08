@@ -88,7 +88,6 @@ export default {
         add() {
             axios.post('/users', this.user)
                 .then(response => {
-                    console.log(response);
                     this.$router.push('/');
                 })
                 .catch(error => {

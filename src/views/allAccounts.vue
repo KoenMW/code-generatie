@@ -123,7 +123,6 @@ export default {
                 //get all accounts from user with token
                 const response = await axios.get('/accounts?offset=0&limit=100');
                 this.accounts = response.data;
-                console.log(this.accounts);
             }
             catch (error) {
                 console.log(error);
@@ -137,7 +136,6 @@ export default {
             
             axios.patch('/accounts', this.accountUpdate)
                 .then(response => {
-                    console.log(response);
                     this.getAccounts();
                 })
                 .catch(error => {

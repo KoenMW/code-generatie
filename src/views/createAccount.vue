@@ -115,10 +115,8 @@ export default {
     methods: {
         //get all accounts from user
         newAccount() {
-            console.log(this.account);
             axios.post('/accounts', this.account)
                 .then(response => {
-                    console.log(response);
                     this.$router.push('/admin/allAccounts');
                 })
                 .catch(error => {
@@ -137,7 +135,6 @@ export default {
         getAllUsers() {
             axios.get('/users')
                 .then(response => {
-                    console.log(response);
                     this.users = response.data;
                 })
                 .catch(error => {

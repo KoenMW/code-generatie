@@ -97,7 +97,6 @@ export default {
                 //get all accounts from user with token
                 const response = await axios.get('/accounts/' + 2);
                 this.accounts = response.data;
-                console.log(this.accounts);
             }
             catch (error) {
                 console.log(error);

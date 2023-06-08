@@ -1,7 +1,7 @@
 <template>
     <hr>
     <div class="d-flex justify-content-between">
-        <div>Amount: {{ transaction.amount }}</div>
+        <div>Amount: {{ transaction.direction }}{{ transaction.amount }}</div>
         <div>Description: {{ transaction.description }}</div>
     </div>
 </template>
@@ -15,7 +15,8 @@ export default{
                 fromAccount: "",
                 toAccount: "",
                 amount: 0,
-                description: ""
+                description: "",
+                direction: ""
             }
         }
     },

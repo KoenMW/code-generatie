@@ -87,7 +87,6 @@ export default {
                 //get all accounts from user with token
                 const response = await axios.get('/accounts/search?offset=0&limit=100');
                 this.accounts = response.data;
-                console.log(this.accounts);
 
 
             }
@@ -100,7 +99,6 @@ export default {
                 //get all accounts from user with token
                 const response = await axios.get('/users');
                 this.users = response.data;
-                console.log(this.users);
             }
             catch (error) {
                 console.log(error);

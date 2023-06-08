@@ -107,10 +107,8 @@ export default {
     methods: {
         //get all accounts from user
         newAccount() {
-            console.log(this.account);
             axios.post('/accounts', this.account)
                 .then(response => {
-                    console.log(response);
                     this.$router.push('/admin/noAccount');
                 })
                 .catch(error => {
@@ -128,7 +126,6 @@ export default {
         async getById(){
             try {
                 const response = await axios.get(`users/${this.id}`);
-                console.log(response);
                 this.user = response.data;
             } catch (error) {
                 console.log(error);

@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import transaction from './transaction.vue';
+import transaction from './transactionViewSimple.vue'
 import { loginService } from '../stores/login';
 import axios from '../axios';
 export default {
