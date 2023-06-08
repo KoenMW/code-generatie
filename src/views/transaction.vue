@@ -63,6 +63,9 @@ hr {
       </div>
 
     </div>
+    <div class="alert alert-danger m-5" role="alert" v-if="errorMessage">
+      <strong>Error:</strong> {{ errorMessage }}
+    </div>
   </div>
 </template>
   
@@ -77,7 +80,8 @@ export default {
       fromAccountIban: "",
       toAccountIban: "",
       amount: 0,
-      description: ""
+      description: "",
+      errorMessage: ""
     }
   },
   setup() {
@@ -96,20 +100,17 @@ export default {
         alert('Insufficient funds' + fromAccount.balance)
         return
       }
-      const response = await axios.post('/transactions', {
+      await axios.post('/transactions', {
         fromAccount: this.fromAccountIban,
         toAccount: this.toAccountIban,
         amount: this.amount,
         description: this.description
-      });
-      if (response.status !== 200) {
-        alert('Transfer failed')
-        return
-      }
-      else {
-        alert('Transfer successful')
+      }).then(response => {
+        console.log(response)
         this.$router.push('/home')
-      }
+      }).catch(error => {
+        this.errorMessage = error.response.data.message
+      });
     }, 
     validateAmount() {
       if (this.amount < 0) {

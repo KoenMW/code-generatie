@@ -21,6 +21,10 @@
             
             <singleAccountView :account="selectedAccount"></singleAccountView>
         </div>
+        
+    <div class="alert alert-danger m-5" role="alert" v-if="errorMessage">
+      <strong>Error:</strong> {{ errorMessage }}
+    </div>
     </div>
 </template>
 
@@ -42,7 +46,8 @@ export default {
                 balance: 0,
                 iban: "",
                 userReferenceId: 0
-            }
+            },
+            errorMessage: ""
         }
     },
     setup() {
@@ -92,13 +97,12 @@ export default {
                     iban: this.fromAccountIban,
                     amount: this.amount
                 });
-                alert('Withdrawal successful')
                 this.accounts = response.data;
                 this.amount = 0;
                 this.description = "";
                 this.getAccounts();
             } catch (error) {
-                alert('Withdrawal failed, please check absolut limit')
+                this.errorMessage = error.response.data.message;
                 console.error(error);
             }
         },
