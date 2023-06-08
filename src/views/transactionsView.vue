@@ -7,7 +7,7 @@
             <input type="date" v-model="dateFrom" class="form-control w-25 d-inline-block">
             <input type="date" v-model="dateTo" class="form-control w-25 d-inline-block">
         </div>
-        <transaction v-for="transaction in transactions" :key="transaction.id" :transaction="transaction"></transaction>
+        <transaction v-for="transaction in filteredTransactions" :key="transaction.id" :transaction="transaction"></transaction>
     </div>
 </template>
 
@@ -22,7 +22,9 @@ export default{
     },
     data(){
         return{
-            transactions: []
+            transactions: [],
+            dateFrom: '',
+            dateTo: ''
         };
     },
     setup(){
@@ -45,13 +47,16 @@ export default{
         this.getTransactions();
     },
     
-  computed:{
-    filteredTransactions(){
-      //filter all transactions and check if they are between two dates 
-        return this.transactions.filter(transaction => {
-            return transaction.timestamp >= this.dateFrom && transaction.timestamp <= this.dateTo;
-        });
+    computed:{
+        filteredTransactions(){
+        //filter all transactions and check if they are between two dates 
+            if(!this.dateFrom || !this.dateTo){
+                return this.transactions;
+            }
+            return this.transactions.filter(transaction => {
+                return transaction.timestamp >= this.dateFrom && transaction.timestamp <= this.dateTo;
+            });
+        }
     }
-  }
 }
 </script>
