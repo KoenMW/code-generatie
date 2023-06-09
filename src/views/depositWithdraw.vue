@@ -13,6 +13,8 @@
                         </div>
                     </select>
 
+                    <singleAccountView v-model="fromAccountIban" :account="selectedAccount"></singleAccountView>
+
                     <label id="label" for="amount">Amount:</label><br>
                     <input type="number" id="select" v-model="amount" class="form-control" required min="0" step="0.01" @input="validateAmount">
 
@@ -21,7 +23,7 @@
                 </div>
             </div>
                 
-            <singleAccountView :account="selectedAccount"></singleAccountView>
+            
         </div>
     </div>
         

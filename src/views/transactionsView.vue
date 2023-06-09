@@ -3,8 +3,8 @@
         <h3 class="text-purple mx-auto">All transactions</h3>
         <hr class="bg-purple">
         <div>
-            <label class="text-purple">Filter by date</label>
-            <input type="date" v-model="dateFrom" class="form-control w-25 d-inline-block">
+            <label class="text-purple">Filter by date</label><br>
+            <input type="date" v-model="dateFrom" class="form-control w-25 d-inline-block" style="margin-right: 20px;">
             <input type="date" v-model="dateTo" class="form-control w-25 d-inline-block">
         </div>
         <transaction v-for="transaction in filteredTransactions" :key="transaction.id" :transaction="transaction"></transaction>
