@@ -28,7 +28,7 @@
             <div class="input-group mb-3">
                 <span class="input-group-text">First name</span>
                 <input type="text" v-model="user.firstName" class="form-control" placeholder="First name"
-                       aria-label="First name" aria-describedby="basic-addon1">
+                       aria-label="First name" aria-describedby="basic-addon1" required>
             </div>
             <div class="input-group mb-3">
                 <span class="input-group-text">Last name</span>
@@ -88,11 +88,13 @@ export default {
         add() {
             axios.post('/users', this.user)
                 .then(response => {
+                    
                     this.$router.push('/');
                 })
                 .catch(error => {
                     console.log(error);
-                    document.getElementById("error").innerHTML = "Please fill in all the fields correctly";
+                    
+                    document.getElementById("error").innerHTML = error.response.data.message;
                 })
         },
     },

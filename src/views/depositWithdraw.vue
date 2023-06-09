@@ -11,6 +11,8 @@
                         <option v-for="account in getCheckingAccounts" :value="account.iban">iban: {{ account.iban }}</option>
                     </select>
 
+                    <singleAccountView v-model="fromAccountIban" :account="selectedAccount"></singleAccountView>
+
                     <label id="label" for="amount">Amount:</label><br>
                     <input type="number" id="select" v-model="amount" class="form-control" required min="0" step="0.01" @input="validateAmount">
 
@@ -19,7 +21,7 @@
                 </div>
             </div>
                 
-            <singleAccountView :account="selectedAccount"></singleAccountView>
+            
         </div>
     </div>
         
