@@ -97,7 +97,7 @@ export default {
                 })
                 .catch(error => {
                     console.log(error);
-                    document.getElementById("error").innerHTML = "Something went wrong, please try again";
+                    document.getElementById("error").innerHTML = error.response.data.message;
                 })
         },
     },

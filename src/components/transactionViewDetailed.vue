@@ -11,7 +11,7 @@
         <hr class="bg-blue">
         <div>Date: {{ transaction.timestamp }}</div>
         <hr class="bg-blue">
-        <div>Description: {{ transaction.description }}</div>
+        
     </div>
 </template>
 
@@ -56,6 +56,10 @@ export default{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    margin: 20px;
+    border: #9F82EB;
+    border-style: solid;
+    padding: 10px;
 }
 
 @media (min-width: 1800) {
