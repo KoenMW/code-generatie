@@ -12,14 +12,19 @@
                 <div class="form-group">
                     <label class="text-purple">Filter by date</label><br>
                     <br/>
-                    From: <input type="date" v-model="dateFrom" class="form-control w-25 d-inline-block" style="margin-right: 20px;">
-                    To: <input type="date" v-model="dateTo" class="form-control w-25 d-inline-block">
+                    <label class="text-purple">From:</label><br>
+                    <input type="date" v-model="dateFrom" class="form-control w-25 d-inline-block" style="margin-right: 20px;"><br>
+                    <label class="text-purple">To:</label><br>
+                    <input type="date" v-model="dateTo" class="form-control w-25 d-inline-block">
                 </div>
                 <div class="form-group">
-                    Filter by iban: <input type="text" v-model="iban" class="form-control w-25 d-inline-block" placeholder="Filter by IBAN">
+                    <label class="text-purple">Filter by iban</label><br>
+                    
+                    <input type="text-purple" v-model="iban" class="form-control w-25 d-inline-block" placeholder="Filter by IBAN">
                     <br/>
-                    Filter by amount:
-                    <input type="number" v-model="amount" class="form-control w-25 d-inline-block" placeholder="Filter by amount">
+                    <label class="text-purple">Filter by amount:</label><br>
+                    
+                    <input type="number" v-model="amount" class="form-control w-25 d-inline-block" placeholder="Filter by amount" style="margin-right: 20px;">
                     <select v-model="amountComparison" class="form-control w-25 d-inline-block">
                         <option value="equal">Equal to</option>
                         <option value="greater">Greater than</option>

@@ -11,7 +11,7 @@
         <hr class="bg-blue">
         <div>Date: {{ transaction.timestamp }}</div>
         <hr class="bg-blue">
-        <div>Description: {{ transaction.description }}</div>
+        
     </div>
 </template>
 
