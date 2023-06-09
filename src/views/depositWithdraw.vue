@@ -3,9 +3,10 @@
         <h2 id="title" class="pb-2  ">Deposit/Withdraw</h2>
         <hr />
 
-        <div class="depositWithdraw">
-            <div id="transfer" class="bg-dark">
-                <div class="container form">
+            <div id="transfer" class="bg-dark w-75">
+                <div class="container form depositWithdraw w-100">
+                    <div class="w-100">
+                        
                     <label id="label" for="fromAccount">From Account:</label><br>
                     <select id="accountDropdown" v-model="fromAccountIban" class="form-control" required @change="setSelectAccount">
                         <option v-for="account in getCheckingAccounts" :value="account.iban">iban: {{ account.iban }}</option>
@@ -14,13 +15,19 @@
                     <label id="label" for="amount">Amount:</label><br>
                     <input type="number" id="select" v-model="amount" class="form-control" required min="0" step="0.01" @input="validateAmount">
 
-                    <button type="submit" id="submitButton" class="btn" @click="deposit">Deposit</button>
-                    <button type="submit" id="submitButton" class="btn" @click="withdraw">Withdraw</button>
+                    <div class="d-flex justify-content-around w-100">
+                        <button type="submit" id="submitButton" class="btn m-auto" @click="deposit">Deposit</button>
+                        <button type="submit" id="submitButton" class="btn m-auto" @click="withdraw">Withdraw</button>
+                        
+
+                    </div>
+                    </div>
+                    <singleAccountView v-model="fromAccountIban" :account="selectedAccount"></singleAccountView>
+
                 </div>
             </div>
                 
-            <singleAccountView :account="selectedAccount"></singleAccountView>
-        </div>
+            
     </div>
         
     <div class="alert alert-danger m-5" role="alert" v-if="errorMessage">
