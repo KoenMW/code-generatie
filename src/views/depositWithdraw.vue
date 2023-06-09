@@ -8,9 +8,7 @@
                 <div class="container form">
                     <label id="label" for="fromAccount">From Account:</label><br>
                     <select id="accountDropdown" v-model="fromAccountIban" class="form-control" required @change="setSelectAccount">
-                        <div v-for="account in accounts">
-                            <option v-if="account.accountType != 'SAVINGS'" :value="account.iban" class="">Iban: {{ account.iban }} Balance: {{ account.balance }}</option>
-                        </div>
+                        <option v-for="account in getCheckingAccounts" :value="account.iban">iban: {{ account.iban }}</option>
                     </select>
 
                     <singleAccountView v-model="fromAccountIban" :account="selectedAccount"></singleAccountView>
@@ -68,7 +66,6 @@ export default {
             try {
                 const response = await axios.get('/accounts/' + this.store.getId);
                 this.accounts = response.data;
-                //set the first account as selected
                 this.fromAccountIban = this.accounts[0].iban;
                 this.setSelectAccount();
             } catch (error) {
@@ -132,6 +129,12 @@ export default {
     },
     mounted() {
         this.getAccounts();
+    },
+    computed: {
+        getCheckingAccounts() {
+            //get accounts were account.accountType == "CHECKING":
+            return this.accounts.filter(account => account.accountType == "CHECKING");
+        }
     }
 }
 </script>
