@@ -111,7 +111,7 @@ export default{
             }
         },
         checkTransactionAmount(transaction) {
-            if (this.amount !== null) {
+            if (this.amount !== null && this.amount !== '') {
                 switch (this.amountComparison) {
                 case 'equal':
                     return transaction.amount === this.amount;
@@ -136,6 +136,16 @@ export default{
         filteredTransactions(){
             const filtered = [];
             this.transactions.forEach( transaction => {
+                console.log('.');
+                console.log('.');
+                console.log(transaction);
+                console.log('.');
+                console.log(this.checkTransactionDate(transaction));
+                console.log(this.checkTransactionIban(transaction));
+                console.log(this.checkTransactionAmount(transaction));
+                console.log(this.amount)
+                console.log(this.amount == '')
+
                 if(this.checkTransactionDate(transaction) && this.checkTransactionIban(transaction) && this.checkTransactionAmount(transaction))
                 {
                     filtered.push(transaction);
