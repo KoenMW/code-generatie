@@ -88,7 +88,7 @@ export default {
         add() {
             axios.post('/users', this.user)
                 .then(response => {
-                    
+                    alert("Account registered succesfully!");
                     this.$router.push('/');
                 })
                 .catch(error => {

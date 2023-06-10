@@ -54,7 +54,11 @@ hr {
                     <div class="form-group">
                         <label id="label" for="fromUser">From user:</label><br>
                         <select id="accountDropdown" v-model="fromUser" class="form-control" required @change="setFromAccountList">
-                            <option v-for="user in users" :value="user.id">name: {{ user.username }}</option>
+                            <template v-for="user in users">
+                                <option v-if="checkUser(user)" :value="user.id" disabled>{{ user.username }}</option>
+                                <option v-else :value="user.id">{{ user.username }}</option>
+                            </template>
+                            
                         </select>
                     </div>
                     <div class="form-group">
@@ -90,7 +94,13 @@ hr {
   
 <script>
 import axios from '../axios.js'
+import { loginService } from '../stores/login';
 export default {
+    setup() {
+        return {
+            store: loginService()
+        }
+    },
     data() {
         return {
             users: [],
@@ -145,6 +155,15 @@ export default {
             .catch(error => {
                 console.log(error)
             })
+        },
+        checkUser(user){
+            if(user.id == this.store.getId || user.username == "Bank"){
+                
+                return true;
+            }
+            else{
+                return false;
+            }
         },
     },
     mounted() {

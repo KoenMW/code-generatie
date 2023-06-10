@@ -107,6 +107,7 @@ export default {
         amount: this.amount,
         description: this.description
       }).then(response => {
+        alert('Transfer successful')
         this.$router.push('/home')
       }).catch(error => {
         this.errorMessage = error.response.data.message

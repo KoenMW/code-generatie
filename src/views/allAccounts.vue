@@ -80,7 +80,8 @@ hr {
                     <td>{{account.balance}}</td>
                     <td>{{account.userReferenceId}}</td>
                     <td>{{account.accountType}}</td>
-                    <td>{{account.active}}</td>
+                    <td v-if="account.active == true" >Active</td>
+                    <td v-else>Innactive</td>
                     
                     <td>
                         <button v-if="!checkUser(account)" id="functionButton" @click="setAccountInnactive(account.iban,'update','active',false)" type="button" class="btn">

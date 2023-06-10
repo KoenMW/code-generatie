@@ -103,6 +103,7 @@ export default {
                     iban: this.fromAccountIban,
                     amount: this.amount
                 });
+                alert('Withdraw successful')
                 this.accounts = response.data;
                 this.amount = 0;
                 this.description = "";

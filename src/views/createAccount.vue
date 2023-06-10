@@ -117,6 +117,7 @@ export default {
         newAccount() {
             axios.post('/accounts', this.account)
                 .then(response => {
+                    alert("Account created");
                     this.$router.push('/admin/allAccounts');
                 })
                 .catch(error => {
