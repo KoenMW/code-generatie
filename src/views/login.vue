@@ -52,7 +52,7 @@
         
         <router-link to="/newUserAnon" class="text-blue">Create Account</router-link>
   
-        
+        <p id="error"></p>
     </form>
   </div>
 </template>
@@ -81,7 +81,8 @@ export default {
         this.$router.push('/home');
       }
       catch(error){
-        console.log(error);
+        document.getElementById("error").innerHTML = "Please fill in the correct username and password";
+        
       }
     }
   }

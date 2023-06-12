@@ -34,6 +34,10 @@ hr {
                 <div>
                     {{ formatString(account.balance) }}
                 </div>
+                <label class="labelText">Absolute limit: </label>
+                <div>
+                    {{ account.absoluteLimit }}
+                </div>
             </div>
 
 
