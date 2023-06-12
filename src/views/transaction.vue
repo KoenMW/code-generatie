@@ -48,7 +48,7 @@ hr {
         <label id="label" for="fromAccount">From Account:</label><br>
         <select id="accountDropdown" v-model="fromAccountIban" class="form-control" required>
           <template v-for="account in accounts">
-            <option v-if="account.accountType != 'SAVINGS'" :value="account.iban" class="">Iban: {{ account.iban }} Balance: {{ account.balance }}</option>
+            <option  :value="account.iban" class="">Iban: {{ account.iban }} Balance: {{ account.balance }}</option>
           </template>
         </select>
 
