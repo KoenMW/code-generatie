@@ -50,7 +50,10 @@ hr {
         <h2 id="title" class="pb-2 ">All accounts</h2>
         <hr />
 
-        
+        <label id="textLabel">Limit:</label>
+        <input id="field" type="text" v-model="limit" class="form-control" placeholder="Limit" aria-label="Limit" aria-describedby="basic-addon1">
+        <label id="textLabel">Offset:</label>
+        <input id="field" type="text" v-model="offset" class="form-control" placeholder="Offset" aria-label="Offset" aria-describedby="basic-addon1">
         <table class="table table-dark table-striped">
             <thead>
                 <tr>
@@ -108,7 +111,9 @@ export default {
                 op: "update",
                 key: "absoluteLimit",
                 value: 0
-            }
+            },
+            limit: 100,
+            offset: 0
         };
     },
     methods: {
@@ -116,7 +121,7 @@ export default {
         async getAccounts() {
             try {
                 //get all accounts from user with token
-                const response = await axios.get('/accounts?offset=0&limit=100');
+                const response = await axios.get('/accounts?offset='+this.offset+'&limit='+this.limit+'');
                 this.accounts = response.data;
 
 
@@ -139,6 +144,20 @@ export default {
         
 
 
+    },
+    watch: {
+        limit:{
+            immediate: true,
+            handler(){
+                this.getAccounts();
+            }
+        },
+        offset:{
+            immediate: true,
+            handler(){
+                this.getAccounts();
+            }
+        }
     },
     mounted() {
         this.getAccounts();

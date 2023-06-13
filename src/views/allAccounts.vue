@@ -47,6 +47,14 @@ hr {
 #backButton:hover {
     background-color: #321A72;
 }
+#textLabel{
+    color: #9F82EB;
+}
+#field{
+    max-width: 200px;
+    margin-bottom: 20px;
+    margin-right: 1100px;
+}
 </style>
 
 <template>
@@ -59,7 +67,11 @@ hr {
 
         <RouterLink to="/Account/create" id="newButton" class="btn">
             New account
-        </RouterLink>
+        </RouterLink><br>
+        <label id="textLabel">Limit:</label>
+        <input id="field" type="text" v-model="limit" class="form-control" placeholder="Limit" aria-label="Limit" aria-describedby="basic-addon1">
+        <label id="textLabel">Offset:</label>
+        <input id="field" type="text" v-model="offset" class="form-control" placeholder="Offset" aria-label="Offset" aria-describedby="basic-addon1">
         <table class="table table-dark table-striped">
             <thead>
                 <tr>
@@ -114,7 +126,9 @@ export default {
                 op: "update",
                 key: "active",
                 value: false	
-            }
+            },
+            limit: 100,
+            offset: 0
         };
     },
     methods: {
@@ -122,7 +136,7 @@ export default {
         async getAccounts() {
             try {
                 //get all accounts from user with token
-                const response = await axios.get('/accounts?offset=0&limit=100');
+                const response = await axios.get('/accounts?offset='+this.offset+'&limit='+this.limit+'');
                 this.accounts = response.data;
             }
             catch (error) {
@@ -154,6 +168,21 @@ export default {
             }
         },
         
+        
+    },
+    watch: {
+        limit:{
+            immediate: true,
+            handler(){
+                this.getAccounts();
+            }
+        },
+        offset:{
+            immediate: true,
+            handler(){
+                this.getAccounts();
+            }
+        }
     },
     mounted() {
         this.getAccounts();
