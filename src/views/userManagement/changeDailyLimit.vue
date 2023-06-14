@@ -1,7 +1,7 @@
 <style>
     #changeLimit{
-        /*margin: 0 auto;*/
-        /*margin-top: 10%;*/
+        margin: 0 auto;
+        margin-top: 10%;
         width: 50%;
         padding: 10px;
         border-radius: 5px;

@@ -144,8 +144,6 @@ export default {
                 console.log(error);
             }
         },
-        
-        
         setAccountInnactive(iban,op,key,value) {
             this.accountUpdate.iban = iban;
             this.accountUpdate.op = op;
@@ -171,8 +169,6 @@ export default {
                 return false;
             }
         },
-        
-        
     },
     watch: {
         limit:{
@@ -190,8 +186,6 @@ export default {
     },
     mounted() {
         this.getAccounts();
-        
-        
     }
 };
 </script>

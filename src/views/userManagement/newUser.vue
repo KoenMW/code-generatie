@@ -96,7 +96,6 @@ export default {
     },
     methods: {
         add() {
-
             if(this.user.password.length < 7){
                 document.getElementById("error").innerHTML = "Password needs to be at least 7 characters long";
                 return;
@@ -112,8 +111,6 @@ export default {
                     })
             }
         },
-
     },
-    
 };
 </script>
