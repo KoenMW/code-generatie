@@ -105,7 +105,8 @@ export default {
         fromAccount: this.fromAccountIban,
         toAccount: this.toAccountIban,
         amount: this.amount,
-        description: this.description
+        description: this.description,
+        userId: this.store.id
       }).then(response => {
         alert('Transfer successful')
         this.$router.push('/home')

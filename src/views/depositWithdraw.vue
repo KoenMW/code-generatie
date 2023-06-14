@@ -88,7 +88,8 @@ export default {
             try {
                 const response = await axios.post('/transactions/deposit', {
                     iban: this.fromAccountIban,
-                    amount: this.amount
+                    amount: this.amount,
+                    userId: this.store.getId
                 });
                 alert('Deposit successful')
                 this.accounts = response.data;
@@ -108,7 +109,8 @@ export default {
             try {
                 const response = await axios.post('/transactions/withdraw', {
                     iban: this.fromAccountIban,
-                    amount: this.amount
+                    amount: this.amount,
+                    userId: this.store.getId
                 });
                 alert('Withdraw successful')
                 this.accounts = response.data;

@@ -124,6 +124,7 @@ export default {
                 toAccount: this.toAccount,
                 amount: this.amount,
                 description: this.description,
+                userId: this.store.getId
             }).then(response => {
                 alert("Transfer successful")
                 this.$router.push('/home')
