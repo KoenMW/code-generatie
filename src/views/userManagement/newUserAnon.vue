@@ -11,12 +11,6 @@
         padding: 10px;
         border-radius: 5px;
     }
-    span{
-        display:block;
-        width: 25%;
-        height: 25%;
-        align-self: center;
-    }
 </style>
 
 <template>
@@ -26,27 +20,27 @@
             <h5 class="mb-4"></h5>
 
             <div class="input-group mb-3">
-                <span class="input-group-text">First name</span>
+                <span class="input-group-text inputType">First name</span>
                 <input type="text" v-model="user.firstName" class="form-control" placeholder="First name"
                        aria-label="First name" aria-describedby="basic-addon1" required>
             </div>
             <div class="input-group mb-3">
-                <span class="input-group-text">Last name</span>
+                <span class="input-group-text inputType">Last name</span>
                 <input type="text" v-model="user.lastName" class="form-control" placeholder="Last name"
                        aria-label="Last name" aria-describedby="basic-addon1">
             </div>
             <div class="input-group mb-3">
-                <span class="input-group-text">Username</span>
+                <span class="input-group-text inputType">Username</span>
                 <input type="text" v-model="user.username" class="form-control" placeholder="Username"
                        aria-label="Username" aria-describedby="basic-addon1">
             </div>
             <div class="input-group mb-3">
-                <span class="input-group-text">E-mail address</span>
+                <span class="input-group-text inputType">E-mail address</span>
                 <input type="email" v-model="user.email" class="form-control" placeholder="E-mail address"
                        aria-label="email" aria-describedby="basic-addon1">
             </div>
             <div class="input-group mb-3">
-                <span class="input-group-text">Password</span>
+                <span class="input-group-text inputType">Password</span>
                 <input type="password" v-model="user.password" class="form-control" placeholder="Password"
                        aria-label="Password" aria-describedby="basic-addon1">
             </div>

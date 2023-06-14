@@ -18,17 +18,13 @@
         align-self: center;
         margin-bottom: 10px;
     }
-    #cancelButton{
-        background-color: #402583;
+    .btnNewUser{
         color: white;
         border: none;
         border-radius: 5px;
         padding: 10px 20px;
         font-size: 16px;
         cursor: pointer;
-    }
-    #cancelButton:hover{
-        background-color: #321A72;
     }
 
 </style>
@@ -66,8 +62,8 @@
             </div>
 
             <div class="input-group mt-4">
-                <button id="submitB" @click="add()" type="button" class="btn">New user</button> 
-                <button id="cancelButton" type="button" class="btn" @click="this.$router.push('/userOverview')">
+                <button id="submitB" @click="add()" type="button" class="btnNewUser">New user</button>
+                <button id="cancel" type="button" class="btnNewUser" @click="this.$router.push('/userOverview')">
                     Cancel
                 </button>
             </div>
