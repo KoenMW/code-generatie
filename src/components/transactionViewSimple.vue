@@ -1,8 +1,13 @@
+<style>
+#amount{
+    font-weight: bold;
+}
+</style>
 <template>
     <hr>
     <div class="d-flex justify-content-between">
-        <div>Amount: {{ transaction.direction }}{{ transaction.amount }}</div>
-        <div>Description: {{ transaction.description }}</div>
+        <div id="amount">EUR {{ transaction.direction }}{{ transaction.amount }}</div>
+        <div> {{ transaction.description }}</div>
     </div>
 </template>
 

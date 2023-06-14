@@ -55,7 +55,7 @@ hr {
         <label id="label" for="Account" class="form-label">Receiver Iban:</label><br>
         <input type="text" id="select" v-model="toAccountIban" class="form-control" required placeholder="Iban">
 
-        <label id="label" for="amount">Amount:</label><br>
+        <label id="label" for="amount">Amount: </label><br>
         <input type="number" id="select" v-model="amount" class="form-control" required min="0" step="0.01" @input="validateAmount">
 
         <label id="label" for="description">Description:</label><br>

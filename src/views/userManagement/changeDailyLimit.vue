@@ -1,38 +1,37 @@
 <style>
     #changeLimit{
-        margin: 0 auto;
-        margin-top: 10%;
+        /*margin: 0 auto;*/
+        /*margin-top: 10%;*/
         width: 50%;
         padding: 10px;
         border-radius: 5px;
         max-width: 400px;
     }
-    #submitB {
-        background-color: #9F82EB;
+    .btnLimit{
         color: white;
         border: none;
         border-radius: 5px;
         padding: 10px 20px;
         font-size: 16px;
         cursor: pointer;
-        
+        height: 100%;
+    }
+    #submitB {
+        background-color: #9F82EB;
+        margin-right: 15px;
     }
     #submitB:hover{
         background-color: #321A72;
     }
-
-    #cancel {
+    #cancelLimit {
         background-color: #402583;
-        color: white;
-        border: none;
         border-radius: 5px;
-        padding: 10px 20px;
-        font-size: 16px;
-        cursor: pointer;
-        margin: 5px;
     }
-    #cancel:hover{
+    #cancelLimit:hover{
         background-color: #321A72;
+    }
+    #inputLimit{
+        border-radius: 5px;
     }
 </style>
 
@@ -44,14 +43,14 @@
                 <h5 class="mb-4"></h5>
 
                 <div class="input-group mb-3">
-                    <span>New day limit</span>
-                    <input type="number" v-model="userUpdate.value"  placeholder="New limit"
+                    <p>New day limit</p>
+                    <input id="inputLimit" type="number" v-model="userUpdate.value"  placeholder="New limit"
                         aria-label="New limit" aria-describedby="basic-addon1" required>
                 </div>
 
                 <div class="input-group mt-4">
-                    <button id="submitB" @click="updateLimit()" type="button" class="btn">Change limit</button>
-                    <button type="button" id="cancel" @click="this.$router.push('/userOverview')">
+                    <button id="submitB" @click="updateLimit()" type="button" class="btnLimit">Change limit</button>
+                    <button class="btnLimit" type="button" id="cancelLimit" @click="this.$router.push('/userOverview')">
                         Cancel
                     </button>
                 </div>
@@ -92,7 +91,11 @@
                 })
                 .catch(error => {
                     console.log(error);
-                    document.getElementById("error").innerHTML = "Something went wrong, please try again";
+                    if (error.response.status === 403) {
+                        document.getElementById("error").innerHTML = "Please fill all fields";
+                    } else {
+                        document.getElementById("error").innerHTML = error.response.data.message;
+                    }
                 })
         }
     }, 

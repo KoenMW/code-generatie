@@ -1,5 +1,5 @@
 <style>
-    form{
+    #newUser{
         padding-right: 50px;
         padding-left: 50px;
         padding-bottom: 50px;
@@ -11,15 +11,24 @@
         padding: 10px;
         border-radius: 5px;
     }
-    #test{
-       max-height: 50%;
-       margin: auto;
-    }
-    span{
+    .inputType{
         display:block;
         width: 25%;
         height: 25%;
         align-self: center;
+        margin-bottom: 10px;
+    }
+    #cancelButton{
+        background-color: #402583;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    #cancelButton:hover{
+        background-color: #321A72;
     }
 
 </style>
@@ -30,35 +39,35 @@
             <h2 class="mt-3 mt-lg-5">New user</h2>
             <h5 class="mb-4"></h5>
 
-            <div class="test input-group mb-3">
-                <span class="input-group-text">First name</span>
-                <input type="text" v-model="user.firstName" class="form-control" placeholder="First name"
+            <div class="input-group mb-3">
+                <span class="input-group-text inputType">First name</span>
+                <input type="text" v-model="user.firstName" class="form-control input" placeholder="First name"
                        aria-label="First name" >
             </div>
             <div class="input-group mb-3">
-                <span class="input-group-text">Last name</span>
+                <span class="input-group-text inputType">Last name</span>
                 <input type="text" v-model="user.lastName" class="form-control" placeholder="Last name"
                        aria-label="Last name" aria-describedby="basic-addon1">
             </div>
             <div class="input-group mb-3">
-                <span class="input-group-text">Username</span>
+                <span class="input-group-text inputType">Username</span>
                 <input type="text" v-model="user.username" class="form-control" placeholder="Username"
                        aria-label="Username" aria-describedby="basic-addon1">
             </div>
             <div class="input-group mb-3">
-                <span class="input-group-text">E-mail address</span>
+                <span class="input-group-text inputType">E-mail address</span>
                 <input type="email" v-model="user.email" class="form-control" placeholder="E-mail address"
                        aria-label="email" aria-describedby="basic-addon1">
             </div>
             <div class="input-group mb-3">
-                <span class="input-group-text">Password</span>
+                <span class="input-group-text inputType">Password</span>
                 <input type="password" v-model="user.password" class="form-control" placeholder="Password"
                        aria-label="Password" aria-describedby="basic-addon1">
             </div>
 
             <div class="input-group mt-4">
                 <button id="submitB" @click="add()" type="button" class="btn">New user</button> 
-                <button id="cancel" type="button" class="btn" @click="this.$router.push('/userOverview')">
+                <button id="cancelButton" type="button" class="btn" @click="this.$router.push('/userOverview')">
                     Cancel
                 </button>
             </div>
@@ -91,15 +100,23 @@ export default {
     },
     methods: {
         add() {
-            axios.post('/users', this.user)
-                .then(response => {
-                    this.$router.push('/userOverview');
-                })
-                .catch(error => {
-                    console.log(error);
-                    document.getElementById("error").innerHTML = error.response.data.message;
-                })
+
+            if(this.user.password.length < 7){
+                document.getElementById("error").innerHTML = "Password needs to be at least 7 characters long";
+                return;
+            }
+            else {
+                axios.post('/users', this.user)
+                    .then(response => {
+                        this.$router.push('/userOverview');
+                    })
+                    .catch(error => {
+                        console.log(error);
+                        document.getElementById("error").innerHTML = error.response.data.message;
+                    })
+            }
         },
+
     },
     
 };
