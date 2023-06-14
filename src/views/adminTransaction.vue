@@ -73,7 +73,11 @@ hr {
                     <div class="form-group">
                         <label id="label" for="toUser">To user:</label><br>
                         <select id="accountDropdown" v-model="toUser" class="form-control" required @change="setToAccountList">
-                            <option v-for="user in users" :value="user.id">name: {{ user.username }}</option>
+                            <template v-for="user in users">
+                                <option v-if="checkUser(user)" :value="user.id" disabled>{{ user.username }}</option>
+                                <option v-else :value="user.id">{{ user.username }}</option>
+                            </template>
+                            
                         </select>
                     </div>
                     <div class="form-group">
