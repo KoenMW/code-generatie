@@ -102,7 +102,6 @@ export default {
         return {
             store: loginService()
         }
-
     },
     name: "Login",
     data() {
@@ -131,10 +130,7 @@ export default {
                     else{
                         document.getElementById("error").innerHTML = error.response.data.message;
                     }
-
-                    
                 })
-
         },
         getAllUsers() {
             axios.get('/users')
@@ -154,12 +150,9 @@ export default {
                 return false;
             }
         },
-    
-
     },
     mounted() {
         this.getAllUsers();
     }
-
 };
 </script>

@@ -21,13 +21,6 @@
     #submitB:hover{
         background-color: #321A72;
     }
-
-    #cancelLimit {
-        background-color: #402583;
-    }
-    #cancelLimit:hover{
-        background-color: #321A72;
-    }
     #inputLimit{
         border-radius: 5px;
     }

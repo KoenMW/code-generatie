@@ -1,14 +1,4 @@
 <style>
-#card {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    margin-left: 20px;
-    margin-right: 20px;
-    border-radius: 10px;
-    padding: 10px;
-
-}
-
 #title {
     color: #9F82EB;
 }
@@ -56,6 +46,7 @@ hr {
         <RouterLink to="/newUser" id="newButton" class="btn">
             New user
         </RouterLink>
+
         <table class="table table-dark table-striped">
             <thead>
                 <tr>
@@ -120,9 +111,9 @@ export default {
             }
         },
         checkUser(user) {
-            if (user.id == this.store.id) {
+            if (user.id === this.store.id) {
                 return false
-            } else if(user.id == 2){ //bank
+            } else if(user.id === 2){ //bank
                 return false
             }else {
                 return true;

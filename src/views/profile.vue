@@ -69,8 +69,6 @@ export default {
             login: loginService(),
         }
     },
-
-    
     methods: {
         async getRemainingDailyLimit() {
             try {
