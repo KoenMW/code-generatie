@@ -11,7 +11,8 @@ hr {
     font-size: 16px;
     margin: 10px;
 }
-.labelText{
+
+.labelText {
     font-weight: bold;
 }
 </style>
@@ -20,7 +21,7 @@ hr {
     <hr />
     <div class="d-flex justify-content-between flex-wrap">
         <div v-for="account in accounts" :key="account.id" class="mx-auto">
-            <div id="accountCard" class="card">
+            <div v-if="account.active == true" id="accountCard" class="card">
                 <label class="labelText">Iban: </label>
                 <div> {{ account.iban }}</div>
                 <label class="labelText">Account type: </label>
@@ -38,8 +39,7 @@ hr {
 <script>
 import { loginService } from '../stores/login';
 import axios from '../axios';
-import { h } from 'vue';
-import { AxiosHeaders } from 'axios';
+
 export default {
     setup() {
         return {
@@ -57,22 +57,24 @@ export default {
         //get all accounts from user
         async getAccounts() {
             try {
-                //get all accounts from user with token
-                const response = await axios.get('/accounts/' + this.store.id);
-                this.accounts = response.data;
-
-
+                await axios.get('/accounts/' + this.store.id)
+                    .then(response => {
+                        this.accounts = response.data;
+                    }).catch(error => {
+                        console.log(error);
+                    });
             }
             catch (error) {
                 console.log(error);
             }
+            
         },
-        formatString(string){
+        formatString(string) {
             let number = parseFloat(string);
             return number.toLocaleString('nl-NL', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
         },
     },
-    mounted() {
+    async mounted() {
         this.getAccounts();
     }
 };

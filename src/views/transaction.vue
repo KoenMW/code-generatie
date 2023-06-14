@@ -48,7 +48,7 @@ hr {
         <label id="label" for="fromAccount">From Account:</label><br>
         <select id="accountDropdown" v-model="fromAccountIban" class="form-control" required>
           <template v-for="account in accounts">
-            <option  :value="account.iban" class="">Iban: {{ account.iban }} Balance: {{ account.balance }}</option>
+            <option v-if="account.active == true" :value="account.iban" class="">Iban: {{ account.iban }} Balance: {{ account.balance }} Type: {{ account.accountType }}</option>
           </template>
         </select>
 
@@ -128,6 +128,7 @@ export default {
         await axios.get('/accounts/' + this.store.id)
         .then(response => {
           this.accounts = response.data;
+          console.log(this.accounts);
         }).catch(error => {
           console.log(error);
         });

@@ -64,7 +64,10 @@ hr {
                     <div class="form-group">
                         <label id="label" for="fromAccount">From Account:</label><br>
                         <select id="select" v-model="fromAccount" class="form-control" >
-                            <option v-for="account in fromAccountList" :value="account.iban">Iban: {{ account.iban }}</option>
+                            <template v-for="account in fromAccountList">
+                                <option v-if="account.active == true" :value="account.iban" class="">Iban: {{ account.iban }} Balance: {{ account.balance }}</option>
+                            </template>
+                            
                         </select>
                     </div>
                     <div class="form-group">
