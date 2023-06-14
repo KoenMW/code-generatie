@@ -50,7 +50,7 @@
 
                 <div class="input-group mt-4">
                     <button id="submitB" @click="updateLimit()" type="button" class="btnLimit">Change limit</button>
-                    <button  class="btnLimit" type="button" id="cancelLimit" @click="this.$router.push('/userOverview')">
+                    <button  type="button" id="cancel" @click="this.$router.push('/userOverview')">
                         Cancel
                     </button>
                 </div>

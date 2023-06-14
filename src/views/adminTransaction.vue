@@ -40,12 +40,12 @@ hr {
 </style>
 
 <template>
+    <RouterLink to="/admin" id="backButton" class="btn">
+        Back
+    </RouterLink>
     <div id="transfer" class="bg-dark">
 
         <section>
-            <RouterLink to="/admin" id="backButton" class="btn">
-                Back
-            </RouterLink>
             <div class="container">
                 <div ref="form">
                     <h1 id="title">Transfer</h1>
