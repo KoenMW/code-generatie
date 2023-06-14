@@ -1,6 +1,13 @@
+<style>
+    .introName{
+        padding: 10px;
+        padding-top: 14px;
+    }
+</style>
+
 <template>
-    <div class="card bg-dark m-5 p-3 w-100">
-        <h3 class="text-purple">Welcome {{user.firstName}} {{user.lastName}}</h3>
+    <div class=" card bg-dark m-5 w-100">
+        <h3 class="introName text-purple">Welcome {{user.firstName}} {{user.lastName}}</h3>
     </div>
 </template>
 <script>

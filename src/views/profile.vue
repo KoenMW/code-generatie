@@ -44,7 +44,6 @@
                 <li class="listContent">EUR {{user.transactionLimit}}</li>
                 <li class="listItem">Remaining day limit</li>
                 <li class="listContent">EUR {{login.getRemainingDailyLimit}}</li>
-
             </ul>
         </div>
     </section>
@@ -55,7 +54,6 @@ import axios from '../axios';
 import loginService from '../stores/login';
 
 //on page load get the remaining daily limit from /users/dailylimit/{id} and display it
-
 export default {
     name: "profile",
     data() {

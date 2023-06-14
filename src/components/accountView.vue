@@ -2,10 +2,8 @@
 hr {
     color: #50A0C6;
 }
-
-#accountCard {
+#accountCard{
     background-color: #50A0C6;
-    ;
     color: white;
     border: none;
     border-radius: 5px;
@@ -22,28 +20,17 @@ hr {
 <template>
     <hr />
     <div class="d-flex justify-content-between flex-wrap">
-
         <div v-for="account in accounts" :key="account.id" class="mx-auto">
             <div v-if="account.active == true" id="accountCard" class="card">
                 <label class="labelText">Iban: </label>
-                <div>
-                    {{ account.iban }}
-                </div>
+                <div> {{ account.iban }}</div>
                 <label class="labelText">Account type: </label>
-                <div>
-                    {{ account.accountType }}
-                </div>
+                <div>{{ account.accountType }}</div>
                 <label class="labelText">Balance: </label>
-                <div>
-                    {{ formatString(account.balance) }}
-                </div>
+                <div>{{ formatString(account.balance) }}</div>
                 <label class="labelText">Absolute limit: </label>
-                <div>
-                    {{ account.absoluteLimit }}
-                </div>
+                <div>{{ account.absoluteLimit }}</div>
             </div>
-
-
         </div>
 
     </div>
@@ -85,7 +72,7 @@ export default {
         formatString(string) {
             let number = parseFloat(string);
             return number.toLocaleString('nl-NL', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-        }
+        },
     },
     async mounted() {
         this.getAccounts();
