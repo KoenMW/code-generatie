@@ -50,6 +50,8 @@
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
+    margin: 5px;
+    margin-left: 0px;
     
 }
 #submitB:hover{
@@ -76,6 +78,7 @@
     font-size: 16px;
     cursor: pointer;
     margin: 5px;
+    
 }
 #cancel:hover{
     background-color: #321A72;

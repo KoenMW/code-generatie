@@ -71,7 +71,14 @@ export default {
             try {
                 const response = await axios.get('/accounts/' + this.store.getId);
                 this.accounts = response.data;
-                this.fromAccountIban = this.accounts[0].iban;
+                
+                this.accounts.forEach(element => {
+                    if(element.accountType == "CHECKING")
+                    {
+                        this.fromAccountIban = element.iban;
+                    }
+                });
+                
                 this.setSelectAccount();
             } catch (error) {
                 console.error(error);
@@ -139,7 +146,7 @@ export default {
     computed: {
         getCheckingAccounts() {
             //get accounts were account.accountType == "CHECKING":
-            return this.accounts.filter(account => account.accountType == "CHECKING");
+            return this.accounts.filter(account => account.accountType == "CHECKING" && account.active == true);
         }
     }
 }

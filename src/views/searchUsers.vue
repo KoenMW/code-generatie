@@ -50,7 +50,7 @@ input {
             <div class="item" v-for="user in filteredUsers" :key="user">
                 <p>{{ user.firstName }} {{ user.lastName }}</p>
                 <p v-for="account in accounts">
-                <p v-if="user.id == account.userReferenceId && account.accountType == 'CHECKING'">{{ account.iban }}</p>
+                <p v-if="user.id == account.userReferenceId && account.accountType == 'CHECKING' && account.userReferenceId != 2">{{ account.iban }}</p>
                 </p>
             </div>
             <div class="error" v-if="input && !filteredUsers.length">

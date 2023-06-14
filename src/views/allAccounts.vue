@@ -138,20 +138,24 @@ export default {
                 //get all accounts from user with token
                 const response = await axios.get('/accounts?offset='+this.offset+'&limit='+this.limit+'');
                 this.accounts = response.data;
+                console.log(this.accounts);
             }
             catch (error) {
                 console.log(error);
             }
         },
+        
+        
         setAccountInnactive(iban,op,key,value) {
             this.accountUpdate.iban = iban;
             this.accountUpdate.op = op;
             this.accountUpdate.key = key;
             this.accountUpdate.value = value;
-            
+            console.log(this.accountUpdate);
             axios.patch('/accounts', this.accountUpdate)
                 .then(response => {
                     this.getAccounts();
+                    console.log(response);
                 })
                 .catch(error => {
                     console.log(error);
@@ -186,6 +190,7 @@ export default {
     },
     mounted() {
         this.getAccounts();
+        
         
     }
 };
