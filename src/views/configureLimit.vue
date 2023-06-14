@@ -51,9 +51,11 @@ hr {
         <hr />
 
         <label id="textLabel">Limit:</label>
-        <input id="field" type="text" v-model="limit" class="form-control" placeholder="Limit" aria-label="Limit" aria-describedby="basic-addon1">
+        <input id="field" type="text" v-model="limit" class="form-control" placeholder="Limit" aria-label="Limit"
+            aria-describedby="basic-addon1">
         <label id="textLabel">Offset:</label>
-        <input id="field" type="text" v-model="offset" class="form-control" placeholder="Offset" aria-label="Offset" aria-describedby="basic-addon1">
+        <input id="field" type="text" v-model="offset" class="form-control" placeholder="Offset" aria-label="Offset"
+            aria-describedby="basic-addon1">
         <table class="table table-dark table-striped">
             <thead>
                 <tr>
@@ -68,23 +70,26 @@ hr {
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="account in accounts" :key="account.iban">
+                <template v-for="account in accounts" :key="account.iban">
+                    <tr v-if="account.active == true">
 
-                    <td>{{ account.iban }}</td>
-                    <td>{{ account.balance }}</td>
-                    <td>{{ account.userReferenceId }}</td>
-                    <td>{{ account.accountType }}</td>
-                    <td>{{ account.active }}</td>
-                    <td>{{ account.absoluteLimit }}</td>
+                        <td>{{ account.iban }}</td>
+                        <td>{{ account.balance }}</td>
+                        <td>{{ account.userReferenceId }}</td>
+                        <td>{{ account.accountType }}</td>
+                        <td>{{ account.active }}</td>
+                        <td>{{ account.absoluteLimit }}</td>
 
-                    <td>
-                        <button v-if="!checkUser(account)" id="functionButton" type="button" class="btn"
-                            @click="this.$router.push('/changeLimit/' + account.iban);">
-                            Configure limit
-                        </button>
+                        <td>
+                            <button v-if="!checkUser(account)" id="functionButton" type="button" class="btn"
+                                @click="this.$router.push('/changeLimit/' + account.iban);">
+                                Configure limit
+                            </button>
 
-                    </td>
-                </tr>
+                        </td>
+                    </tr>
+                </template>
+
             </tbody>
         </table>
 
@@ -121,7 +126,7 @@ export default {
         async getAccounts() {
             try {
                 //get all accounts from user with token
-                const response = await axios.get('/accounts?offset='+this.offset+'&limit='+this.limit+'');
+                const response = await axios.get('/accounts?offset=' + this.offset + '&limit=' + this.limit + '');
                 this.accounts = response.data;
 
 
@@ -131,30 +136,30 @@ export default {
             }
         },
 
-        checkUser(account){
-            if(account.userReferenceId == this.store.getId || account.iban == 'NL01INHO0000000001'){
-                
+        checkUser(account) {
+            if (account.userReferenceId == this.store.getId || account.iban == 'NL01INHO0000000001') {
+
                 return true;
             }
-            else{
+            else {
                 return false;
             }
         },
-        
-        
+
+
 
 
     },
     watch: {
-        limit:{
+        limit: {
             immediate: true,
-            handler(){
+            handler() {
                 this.getAccounts();
             }
         },
-        offset:{
+        offset: {
             immediate: true,
-            handler(){
+            handler() {
                 this.getAccounts();
             }
         }
@@ -163,6 +168,6 @@ export default {
         this.getAccounts();
 
     },
-    
+
 };
 </script>
