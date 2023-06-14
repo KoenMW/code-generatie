@@ -73,7 +73,6 @@ export default {
                 await axios.get('/accounts/' + this.store.id)
                     .then(response => {
                         this.accounts = response.data;
-                        console.log(this.accounts);
                     }).catch(error => {
                         console.log(error);
                     });

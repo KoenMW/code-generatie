@@ -29,7 +29,9 @@
             <hr />
             <ul >
                 <li class="listItem">Name</li>
-                <li class="listContent">{{user.firstName}}</li>
+                <li class="listContent">{{user.firstName}} {{ user.lastName }}</li>
+                <li class="listItem">Username</li>
+                <li class="listContent">{{user.username}}</li>
                 <li class="listItem">Email</li>
                 <li class="listContent">{{user.email}}</li>
                 <div v-for="account in accounts">
