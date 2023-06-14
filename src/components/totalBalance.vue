@@ -56,7 +56,10 @@ export default {
         totalBalance(){
             let totalBalance = 0;
             for(let i = 0; i < this.accounts.length; i++){
-                totalBalance += this.accounts[i].balance;
+                if(this.accounts[i].active == true){
+                    totalBalance += this.accounts[i].balance;
+                }
+                
             }
             return totalBalance.toLocaleString('nl-NL', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
         }
